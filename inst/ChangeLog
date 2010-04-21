@@ -1,0 +1,32 @@
+changes in version 1.3.1 (2010-4-13)
+
+	* fixed the main url (eutils.ncbi.. not www.ncbi) and added tool and email options
+	to E-utility scripts (now required by NCBI).
+
+	* added details to genomes-update about reporting counts of new
+	IDs added and old IDs removed.   
+
+changes in version 1.3.1 (2010-4-11)
+
+	* added print.genomes method to print the first few rows and
+	columns of a genome table (also reordered the included datasets so
+	id, name, status, and released is in first 4 columns)
+
+	* improved messages for updating genomes.  Now the number of new
+	project ids added AND old projects ids removed is reported
+
+	* modified package to import XML package (no longer depends on
+	XML)
+
+	* added subset.genomes and [.genomes to extract parts of a genome
+	table (and preserve some genome class attributes and not others)
+
+	* added latin2char function to replace a few latin characters in
+	NCBI tables with ASCII. Now R CMD check runs without the "Portable
+	packages use only ASCII characters in their datasets" warning
+
+	* added new summary methods for tables without status column
+
+version 1.3.0 uploaded to BioConducotor for review (2010-2-19)
+
+

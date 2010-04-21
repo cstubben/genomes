@@ -1,0 +1,178 @@
+%\VignetteIndexEntry{Introduction to genome project tables}
+
+\documentclass[12pt]{article}
+
+\usepackage{Sweave}
+\usepackage{fullpage}
+\usepackage{hyperref}
+
+\newcommand{\R}{\textsf{R}}
+\newcommand{\Rcmd}[1]{\texttt{#1}}
+\newcommand{\pkg}[1]{\texttt{#1}}
+
+\title{ Genome  project tables in the genomes package  }
+\author{Chris Stubben}
+
+\begin{document}
+\maketitle
+
+%% for cutting and pasting use continue =""
+%% change margins on every chunk
+<<setup, echo=FALSE>>=
+library(genomes)
+options(warn=-1, width=75, digits=2, scipen=3,  "prompt" = "R> ", "continue" = " ")
+options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
+@
+
+The \pkg{genomes} package collects genome project metadata and
+provides tools to track, sort, group, summarize and plot the data.
+The genome project tables from the National Center for Biotechnology
+Information (NCBI) and the Genomes On Line Database (GOLD) are the
+primary sources of data and include a rapidly growing collection of
+organisms from all domains of life (viruses, archaea, bacteria,
+protists, fungi, plants, and animals) plus metagenomic sequences.
+
+Genome tables are a defined class (\emph{genomes}) in the package and
+each table is a data frame where rows are genome projects and columns
+are the fields describing the associated metadata.  At a minimum, the
+table should have a column listing the project name, status, and
+release date.  A number of methods are available that operate on
+genome tables including  \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
+
+\subsection*{NCBI tables}
+
+
+Genome tables at NCBI are downloaded from the Genome Project database.
+The primary tables include a list of prokaryotic projects
+(\Rcmd{lproks}), eukaryotic projects (\Rcmd{leuks}), and metagenomic
+projects (\Rcmd{lenvs}).  The \Rcmd{print} methods displays the first
+few rows and columns of the table (either select less than seven rows or convert the object to a
+\Rcmd{data.frame} to print all columns). The \Rcmd{summary} function displays the
+download date, a count of projects by status, and a list of recent
+submissions. The \Rcmd{plot} method displays a cumulative plot
+of genomes by release date in Figure \ref{lproks} (use \Rcmd{lines} to add
+additional tables).  The \Rcmd{update} method is not
+illustrated below, but can be used to download the latest version of
+the table from NCBI.
+
+<<lproks, fig=TRUE, include=FALSE, height=4, width=4>>=
+data(lproks)
+lproks
+summary(lproks)
+plot(lproks, log='y', las=1)
+data(leuks)
+data(lenvs)
+lines(leuks, col="red")
+lines(lenvs, col="green3")
+legend("topleft", c("Microbes", "Eukaryotes", "Metagenomes"),
+         lty=1,  bty='n', col=c("blue", "red", "green3"))
+@ 
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[height=3in,width=3in]{genome-tables-lproks.pdf}
+ \caption{Cumulative plot of genome projects by release date at NCBI.  }
+\label{lproks}
+\end{figure}
+
+
+For microbial genome projects, the number of complete genomes
+ doubles every 22 months and a new microbial genome is released about every
+other day.  At least in 2008, fewer complete genomes were released
+than the previous year (Figure \ref{complete}). 
+
+
+<<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
+complete<-subset(lproks, status=="Complete")
+doublingTime(complete)
+x<-table(format(complete$released, "%Y"))
+barplot(x, col="blue", ylim=c(0,max(x)*1.04), space=0.5, las=1,
+axis.lty=1, xlab="Year", ylab="Genomes per year")
+box()
+@ 
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[height=3in,width=5in]{genome-tables-complete.pdf}
+ \caption{Number of complete microbial genomes released each year at NCBI}
+\label{complete}
+\end{figure}
+
+
+A number of functions are available to assist in
+sorting and grouping genomes.   For example, the \Rcmd{species} and
+\Rcmd{genus} function can be used to extract the genus or species name.  
+The \Rcmd{table2} function formats and sorts a contingency table by counts.
+
+
+<<top>>=
+table2(species(lproks$name))
+@ 
+
+Because subsets of tables are often needed, the binary operator \Rcmd{like} allows
+pattern matching using wildcards.  The \Rcmd{plotby} function below expands on the default plot method and
+adds the ability to plot by groups (default is status) using either labeled points or multiple
+lines like Figure \ref{lproks}.  For example, the release dates of complete and
+draft sequences of \emph{Yersinia pestis} are displayed in Figure
+\ref{yersinia}.  
+
+<<yersinia, fig=TRUE, include=FALSE, height=4, width=4>>=
+## Yersinia pestis
+yp<-subset(lproks, name %like% 'Yersinia pestis*')
+plotby(yp, labels=TRUE, cex=.5, lbty='n')
+
+@ 
+
+\begin{figure}[t]
+\centering
+\includegraphics[height=3in,width=3in]{genome-tables-yersinia.pdf}
+ \caption{Cumulative plot of \emph{Yersinia pestis} genomes by release date.}
+\label{yersinia}
+\end{figure}
+
+
+
+
+\subsection*{GOLD and other tables}
+
+The Genomes Online Database (GOLD) is a comprehensive resource that
+collects detailed project metadata from over 7,000 genomes.
+There are currenlty over 100 columns in this large table with specific fields
+relating to the organism, host, environment, and sequencing methods.  Just two of the hundreds of
+possible queries are illustated below.  In first example, a list of
+endosymbiotic intracellular organisms is divided into pathogens and
+commensal bacteria.  In the second example, the comma-separated list
+of phenotypes is split and a new table is
+created listing the GOLD identifier, name, and a single phenotype.
+Then genomes matching ``Arsenic metabolizer'' are displayed.
+
+<<<gold>>=
+data(gold)
+obligate<-subset(gold, symbiotic.interaction=="Endosymbiotic intracellular", 
+c(goldstamp, name, phenotype))
+obligate$pathogen<-"Pathogen"
+obligate$pathogen[ obligate$phenotype %like% "Non-*|Symb*|Carb"]<-"Commensal"
+obligate$pathogen[ obligate$phenotype ==""]<-"Commensal"
+table2(genus(obligate$name), obligate$pathogen)
+
+
+## split comma separated list of phenotypes
+x<-subset(gold, phenotype!="")
+x2<-strsplit(x$phenotype, ", ")
+gold2<- as.data.frame(
+ cbind(goldstamp = rep(x$goldstamp, sapply(x2, length)),
+            name = rep(x$name, sapply(x2, length)),
+       phenotype = unlist(x2)) )
+table2(gold2$phenotype)
+subset(gold2, phenotype %like% 'Arsenic metabol*')
+@ 
+
+Finally, genome data from the Human Microbiome Project is stored in the \Rcmd{hmp} dataset and
+includes additional information such as the primary body site occupied by a
+sequenced organism.
+
+
+
+\end{document}
