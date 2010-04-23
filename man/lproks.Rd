@@ -51,10 +51,6 @@ tabs at \url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}.
 Complete genomes and In Progress tabs are combined and then joined to
 the Organism Info tab.
 
-Nearly all of the Assembly genomes released after Sept 2009 are missing release
-dates.  If needed, these dates are available from Entrez Genomes (see
-the example in \code{\link{wgs}}).
-
 The \code{ update(genomes)} function downloads a recent copy of the
 table from NCBI.  The number of new project IDs are reported as well
 as the number of project IDs removed (which are typically Assembly
