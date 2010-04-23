@@ -6,7 +6,6 @@
 \alias{updatelproks}
 \alias{updatevirus}
 \alias{updatehmp}
-\alias{updatewgs}
 \alias{latin2char}
 \alias{extract.genomes}
 \alias{[.genomes}
