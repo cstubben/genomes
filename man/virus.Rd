@@ -21,6 +21,7 @@
     \item{\code{isolate}}{ isolate name}
     \item{\code{size}}{ genome size (nt)}
     \item{\code{proteins}}{number of proteins}
+    \item{\code{modified}}{ modified date}
   }
 }
 \details{

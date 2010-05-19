@@ -21,57 +21,68 @@ updatelproks <- function()
    # FIXES, most likely number of columns will change in the future  
    # Complete
    # Dec 2008 - GenBank accessions added
-   if (ncol(prj[[2]]) != 15) {stop("Complete Genome table has changed - one or more columns have been added", call.=FALSE)}
-   names(prj[[2]]) <-  c("pid", "taxid", "name", "kingdom", "group", "size", "GC", "chromosomes",
-                    "plasmids", "released", "modified", "genbank", "refseq", "publication", "center")
+   # May 2010 - Refseq project Ids added
+   if (ncol(prj[[2]]) != 16) {stop("Complete Genome table has changed - one or more columns have been added", call.=FALSE)}
+   names(prj[[2]]) <-  c("refseq_pid",  "pid",      "taxid",       "name",
+                         "kingdom",     "group",    "size",        "GC",
+                         "chromosomes", "plasmids", "released",    "modified",
+                         "genbank",     "refseq",   "publication", "center")
    
    # format DATES
    prj[[2]]$released <- as.Date(prj[[2]]$released, "%m/%d/%Y")
    prj[[2]]$modified <- as.Date(prj[[2]]$modified, "%m/%d/%Y")
-   # publications are separated by &uid= , replace with comma
-   prj[[2]]$publication  <-  gsub("&uid=", ",", prj[[2]]$publication)
+   # publications are separated by &uid=  - fixed 2010
+   # prj[[2]]$publication  <-  gsub("&uid=", ",", prj[[2]]$publication)
 
    # In progress
-   if (ncol(prj[[3]]) != 14) {stop("In Progress table has changed - one or more columns have been added", call.=FALSE)}
-   names(prj[[3]]) <-  c("pid", "taxid", "name", "kingdom", "group", "status", "accession",
-                 "contigs", "cds", "size", "GC", "released", "center", "url")
+   if (ncol(prj[[3]]) != 16) {stop("In Progress table has changed - one or more columns have been added", call.=FALSE)}
+   names(prj[[3]]) <-  c("refseq_pid", "pid",      "taxid",  "name",
+                         "kingdom",    "group",    "status", "refseq",
+                         "genbank",    "contigs",  "cds",    "size",
+                         "GC",         "released", "center", "url")
 
    # Dates have 2 digit year (%y)
    prj[[3]]$released <- as.Date(prj[[3]]$released,"%m/%d/%y")
-   if(ncol(prj[[1]]) != 20){stop("Organism Info table has changed - one or more columns have been added", call.=FALSE)}
+   if(ncol(prj[[1]]) != 23){stop("Organism Info table has changed - one or more columns have been added", call.=FALSE)}
    # Organism info
-   names(prj[[1]]) <-  c("pid", "taxid", "name", "kingdom", "group", "status", "size", "GC", "gram", "shape", "arrange",
-                   "endospore", "motility", "salinity", "oxygen", "habitat", "temp", "range", "pathogen" ,"disease")
+   names(prj[[1]]) <-  c("refseq_pid", "pid",      "taxid",    "name",
+                         "kingdom",    "group",    "status",   "size",
+                         "GC",         "gram",     "shape",    "arrange",
+                         "endospore",  "motility", "salinity", "oxygen",
+                         "habitat",    "temp",     "range",    "pathogen" ,
+                         "disease",    "genbank",  "refseq" )
    #--------------------------------------------------#   
    # join tabs into one large table   
-   # Keep column order from Complete - 15 columns
-   x <- data.frame(prj[[2]], status="Complete", contigs=apply(prj[[2]][,8:9], 1, sum, na.rm=TRUE),
+   # Keep column order from Complete - ALL 16 columns
+   x <- data.frame(prj[[2]],  status="Complete", contigs= rowSums( prj[[2]][,c("chromosomes", "plasmids")], na.rm=TRUE),
                     cds=NA, url=NA,      stringsAsFactors=FALSE)
 
-   ## add In Progress - 4 additional columns = status contigs cds url
+   ## add In Progress plus 2 additional columns = cds url
 
-   ## status column is not reliable  - use accession  (fixed apr 2010)
-   prj[[3]]$status <- "In Progress"
-   n<-prj[[3]]$accession %like% 'NZ*'
-   prj[[3]]$status[n] <- "Assembly"
-   ## even a few NC*
-   n<-prj[[3]]$accession %like% 'NC*'
-   prj[[3]]$status[n] <- "Complete"
-   
- 
-   y <- data.frame(prj[[3]][, c(1:5,10:11)], chromosomes=NA,plasmids=NA, released=prj[[3]][,12], modified=NA, genbank=NA,
-                 refseq=prj[[3]][,7], publication=NA, prj[[3]][,c(13, 6, 8, 9, 14)], stringsAsFactors=FALSE)
+   ## status column is not reliable  - use genbank accession  (fixed apr 2010)
+   ##  SEE table(is.na(prj[[3]]$genbank), prj[[3]]$status)
+
+   prj[[3]]$status <- "Assembly"
+   n<-is.na( prj[[3]]$genbank) 
+   prj[[3]]$status[n] <- "In Progress"
+         
+   ## first six columns are same as complete
+   y <- data.frame(prj[[3]][, c("refseq_pid","pid","taxid","name","kingdom","group","size","GC")],  
+                   chromosomes=NA, plasmids=NA,  released= prj[[3]]$released,   modified=NA,
+                   genbank=prj[[3]]$genbank,  refseq=prj[[3]]$refseq, publication=NA,
+                   prj[[3]][,c("center", "status", "contigs", "cds", "url")], stringsAsFactors=FALSE)
    ## combine Complete and In progress
    z <- rbind(x, y)
-   ## merge Org Info - 12 columns
-   z <- merge(z, prj[[1]][, c(1,9:20)], all.x=TRUE)
+   
+   ## merge Org Info - 12 columns - pid IS now first column
+   z <- merge(z, prj[[1]][, c(2,10:21)], all.x=TRUE)
 
    ## re-order by name
    prj <- z[order(z$name), ]
    rownames(prj) <- 1:nrow(prj)
 
    ## put id, name, status, released in first 4 columns (for printing)
-   prj <- prj[,c(1,3, 16, 10, 2,4:9,11:15, 17:31)]
+   prj <- prj[,c(1,4, 17, 11, 2, 3,5:10,12:16, 18:32)]
 
    ## extra spaces in center (and probably others)
    lproks$center<-gsub("  ", " ", lproks$center)

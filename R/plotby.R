@@ -40,7 +40,7 @@ plotby<-function(x, groupby="status", subset=NA,top=5, labels=FALSE, abbrev=TRUE
    if (nrow(x) == 0) {stop("No rows to plot")}
    
    ## get top matches (total lines in plot)
-   y <- table2(x$groupby)
+   y <- table2(x$groupby, n=top)
    y <- head(rownames(y), top)
    x <- x[x$groupby %in% y, ]
 

@@ -13,7 +13,9 @@
     \item{\code{name}}{taxonomy name}
    \item{\code{status}}{ sequencing status, Complete, Assemby, or
       In Progress genomes}
-    \item{\code{released}}{released date, complete and WGS genomes only}
+    \item{\code{released}}{released date, complete and WGS genomes
+        only}
+    \item{\code{refseq_pid}}{ RefSeq project id}    
     \item{\code{taxid}}{taxonomy id}
     \item{\code{kingdom}}{kingdom}
     \item{\code{group}}{phylum or class}
@@ -72,7 +74,7 @@ class(lproks)
 ## download stats
 attributes(lproks)[c("stats", "date","url")] 
 summary(lproks)
-## many Assembly genomes are now missing release dates
+## check for missing release dates
 table2(!is.na(lproks$released), lproks$status, dnn=list("Released Date?", "Status"))
 plot(lproks)
 plotby(lproks, log='y', las=1)
