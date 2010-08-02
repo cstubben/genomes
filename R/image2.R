@@ -10,12 +10,6 @@ image2<-function(x, col=rev(heat.colors(24)),  breaks, log=FALSE, zeroNA=TRUE, s
    op <- par(mar=mar, xpd=TRUE)
    x1 <- ncol(x)                          ## number of columns and rows
    y1 <- nrow(x)
-   ## if large matrix, only display 50 rows and 50 columns unless you really want to display ALL 
-   if(!all){
-      if(x1 > 50) { x <- x[, 1:50]; x1<-50 }
-      if(y1 > 50) { x <- x[1:50, ]; y1<-50 }
-   }
-   x <- x[nrow(x):1, ,  drop=FALSE]       ## flip matrix so top row on botton
    # sort profile string
    if(sort01){
       zz <- x
@@ -23,9 +17,16 @@ image2<-function(x, col=rev(heat.colors(24)),  breaks, log=FALSE, zeroNA=TRUE, s
       n <- nchar(max(zz)) 
       ## sort binary string
       zz <- apply(zz, 1,  function(x) {paste(sprintf(paste("%0", n, "d", sep=""),x), collapse="")})
-      n <- order(zz)
+      n <- rev(order(zz))
       x <- x[n,]
-   }   
+   }
+   ## if large matrix, only display 50 rows and 50 columns unless you really want to display ALL 
+   if(!all){
+      if(x1 > 50) { x <- x[, 1:50]; x1<-50 }
+      if(y1 > 50) { x <- x[1:50, ]; y1<-50 }
+   }
+   x <- x[nrow(x):1, ,  drop=FALSE]       ## flip matrix so top row on botton
+
    # hack to get three colors needed for cut
    if(length(col) == 1){col <- rep(col, 3)}
    if(length(col) == 2){col <- c(col, col[-1])}

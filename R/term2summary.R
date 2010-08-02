@@ -71,8 +71,9 @@ term2summary<-function(term, db = "genomeprj", sortdate = FALSE, fulltable = FAL
       ## 4 columns instead of full 20 (size is often incorrect)
       if (!fulltable) {
         ### remove Overviews (=Top Level), Refseq projects (duplicate of genome sequencing, but with release dates!)
-        x2<- subset(x2, x2$type=="Genome sequencing")
-        x2<-   x2[, c(1, 2, 19, 7)]    
+        x2 <- subset(x2, x2$type=="Genome sequencing")
+        if(nrow(x2) == 0) {stop("No genome sequencing types found.  Try adding full=TRUE")}
+        x2 <-   x2[, c(1, 2, 19, 7)]    
       } else{
          x2<-   x2[, c(1, 2, 19, 7, 3:6,8:18,20)] 
       }

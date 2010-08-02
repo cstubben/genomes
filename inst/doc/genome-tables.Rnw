@@ -55,8 +55,15 @@ install.packages("genomes",
    repos="http://www.bioconductor.org/packages/release/bioC")
 @ 
 
-Finally, since the format of online genome tables may change (and then \Rcmd{update} commands may fail), I would recommend downloading
-the development version for fixes in between the six month release cycle.
+Finally, since the format of online genome tables may change (and then
+\Rcmd{update} commands may fail), I would recommend downloading the
+development version for fixes in between the six month release cycle.
+On some systems (Mac 10.4), you may need to add the
+\Rcmd{type='source'} option to install the package source.  In
+addition, the \Rcmd{genomes} package depends on some functions in the
+\Rcmd{lattice} and \Rcmd{XML} packages, so these two should be
+installed first (\Rcmd{lattice} is usually installed by default, but
+not \Rcmd{XML}).
 
 <<install, eval=FALSE, keep.source=TRUE>>=
 install.packages("genomes", 
