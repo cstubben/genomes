@@ -1,6 +1,11 @@
+changes in version 1.5.4 (2010-8-2)
+
+	* deleted Sweave file about Entrez queries (remote queries were
+	causing frequent errors in package builds)
+
 changes in version 1.5.3 (2010-7-30)
 
-	* move sort01 routine before option to limit matrix to 50 rows in
+	* moved sort01 routine before option to limit matrix to 50 rows in
 	image2
 
 	* fixed term2summary.  Searches in genome projects may return
