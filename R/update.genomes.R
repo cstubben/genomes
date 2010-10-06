@@ -11,7 +11,7 @@ update.genomes <- function(object, ...)
    }
    
    if(Sys.Date() == attributes(object)$date){
-   stop("Genome projects already downloaded today", call.=FALSE) }
+   stop("Genome projects in ", sQuote(substitute(object)), " were already downloaded today", call.=FALSE) }
 
    ## Update using text string in update attribute
    prj <- eval(parse(text=attr(object, "update"))) 

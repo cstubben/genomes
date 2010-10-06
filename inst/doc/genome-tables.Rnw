@@ -39,8 +39,8 @@ table should have a column listing the project name, status, and
 release date.  A number of methods are available that operate on
 genome tables including  \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
 
-There are a number of ways to install this package.  If you are running
-\R~version 2.11, you can use the \Rcmd{biocLite} command.
+There are a number of ways to install this package.  If you are
+running the most recent \R~version, you can use the \Rcmd{biocLite} command.
 
 <<biocLite, eval=FALSE>>=
 source("http://bioconductor.org/biocLite.R")

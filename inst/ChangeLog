@@ -1,3 +1,8 @@
+changes in version 1.5.5 (2010-10-6)
+
+	* updated datasets before next BioC release
+	* set released dates with 2000-1-1 to NA in lproks
+
 changes in version 1.5.4 (2010-8-2)
 
 	* deleted Sweave file about Entrez queries (remote queries were
@@ -9,7 +14,7 @@ changes in version 1.5.3 (2010-7-30)
 	image2
 
 	* fixed term2summary.  Searches in genome projects may return
-	matches but not "genome sequencing" types, so this caused 
+	matches but not "genome sequencing" types, so this caused an 
 	unhelpful error message.
 
 changes in version 1.5.2 (2010-5-18)
