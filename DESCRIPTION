@@ -8,6 +8,6 @@ Maintainer: Chris Stubben <stubben@lanl.gov>
 License: Artistic-2.0
 Depends: lattice
 Imports: XML
-BiocViews: GenomicSequence, Annotation, Genetics
+biocViews: GenomicSequence, Annotation, Genetics
 Description: Collects genome sequencing project metadata from NCBI and GOLD and provides tools to track, sort, group, summarize and plot the data.
 
