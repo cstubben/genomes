@@ -84,13 +84,8 @@ updatelproks <- function()
    ## put id, name, status, released in first 4 columns (for printing)
    prj <- prj[,c(1,4, 17, 11, 2, 3,5:10,12:16, 18:32)]
 
-   ## extra spaces in center (and probably others)
-   prj$center<-gsub("  ", " ", prj$center)
-   prj$center<-gsub("  ", " ", prj$center)
 
-   # Bad release date, 2000-1-1 should be NULL
-   prj$released[prj$released=='2000-01-01' & !is.na(prj$released)]<-NA
-   
+  
    #  ASCII characters required for package datasets
    if( capabilities("iconv")){
       isLatin1 <- apply(prj, 2, function(y) any( is.na(iconv(y, "latin1","ASCII")))) 
@@ -101,6 +96,14 @@ updatelproks <- function()
          }
       }
    }
+   
+  # Bad release date, 2000-1-1 should be NULL
+   prj$released[prj$released=='2000-01-01' & !is.na(prj$released)]<-NA
+  
+   ## extra spaces in center (and probably others)
+   prj$center<-gsub("  ", " ", prj$center)
+   prj$center<-gsub("  ", " ", prj$center)
+
    
    #--------------------------------------------------#      
    # SET attributes
