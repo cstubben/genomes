@@ -51,17 +51,13 @@ image2(x, col = rev(heat.colors(24)), breaks, log = FALSE,
 \seealso{  \code{\link{image}}  }
 \examples{
 
-data(gold)
-## Top 12 journals with most microbial genome publications,
-c1<-subset(gold, !is.na(released) & domain \%in\% c("bacterial", "archael") )
-x<-c1$publication
-## get journal name - stop at digit, in press, Epub, or parentheses
-x1<-gsub("(.*?)( ([[:digit:]]|in press|Epub|,|\\\\().*)", "\\\\1", x, perl=TRUE)
-c1$publication <- x1
-# skip unpublished
-c1a<-subset(c1, !publication \%like\% "Unpublish*" & top(publication, 13))
-x2<-table(c1a$publication, format(c1a$released, "\%Y"))
-image2(x2, mar=c(1, 9,2,1), sort=TRUE)
+
+## Journals with most microbial genome publications,
+data(pubmed)
+z<-table2(pubmed$journal, pubmed$year, n=15)
+image2(z[,-ncol(z)], sort=TRUE, mar=c(1,10,3,1), cex=.8)
+
+
 }
 
 \keyword{ color }

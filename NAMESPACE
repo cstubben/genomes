@@ -1,4 +1,4 @@
-importFrom(XML, xmlTreeParse, xmlRoot, xmlSApply, xmlValue)
+importFrom(XML, xmlTreeParse, xmlRoot, xmlSApply, xmlValue, xpathSApply, xmlParse, xmlDoc, free, getNodeSet)
 #  All functions exported other than those starting with "."
 exportPattern("^[^\\.]")
 
@@ -9,3 +9,5 @@ S3method(plot,genomes)
 S3method(summary,genomes)
 S3method(update,genomes)
 S3method(lines,genomes)
+S3method(print,genomes)
+S3method(subset,genomes)

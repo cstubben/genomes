@@ -2,14 +2,17 @@ updatevirus <- function()
 {  
    url <- "http://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?taxid=10239&opt=Virus&sort=genome&cmd=download"
    dtime <- system.time( prj <-  read.table(url, sep="\t", fill=TRUE, as.is=TRUE, quote="") )
-   ##columns 5 and 11 are empty
-   prj <- prj[,c(1:4,6:10)]  
+
+   # feb 2011 - host column added... need better checks.  
+
+   ##columns 5 and 12 are empty
+   prj <- prj[,c(1:4,6:11)]  
    ## column names
    names(prj) <- c( "name", "refseq",   "isolate",  "segments" ,
-                  "size", "proteins", "neighbors", "released", "modified")
-   ## Release and modified date
+                  "size", "proteins", "neighbors", "host", "released", "updated")
+   ## Release and updated date
    prj$released <- as.Date(prj$released, "%m/%d/%Y")
-   prj$modified <- as.Date(prj$modified, "%m/%d/%Y")
+   prj$updated <- as.Date(prj$updated, "%m/%d/%Y")
    
    #  Virus table has segment details under expanded nodes  [-]  (closed by default on web page)
    #   refseq like NC*  - 1 segment
@@ -59,7 +62,7 @@ updatevirus <- function()
    ## re-number rows (already alphabetical)
    row.names(prj) <- 1:nrow(prj)
    ## put  name, released in first 2 columns (for printing)
-   prj <- prj[,c(1,8,7,4,2,3,5,6, 9)]
+   prj <- prj[,c(1,9,7,4,2,3,5,6,8, 10)]
    
    ## attributes
    class(prj) <- c("genomes", "data.frame")

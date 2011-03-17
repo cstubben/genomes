@@ -1,4 +1,4 @@
-%\VignetteIndexEntry{Introduction to genome project tables}
+%\VignetteIndexEntry{Introduction to genome projects}
 
 \documentclass[12pt]{article}
 
@@ -10,7 +10,7 @@
 \newcommand{\Rcmd}[1]{\texttt{#1}}
 \newcommand{\pkg}[1]{\texttt{#1}}
 
-\title{ Genome  project tables in the genomes package  }
+\title{ Genome project tables in the genomes package  }
 \author{Chris Stubben}
 
 \begin{document}
@@ -24,67 +24,52 @@ options(warn=-1, width=75, digits=2, scipen=3,  "prompt" = "R> ", "continue" = "
 options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
 @
 
-The \pkg{genomes} package collects genome project metadata and
-provides tools to track, sort, group, summarize and plot the data.
-The genome project tables from the National Center for Biotechnology
-Information (NCBI) and the Genomes On Line Database (GOLD) are the
-primary sources of data and include a rapidly growing collection of
-organisms from all domains of life (viruses, archaea, bacteria,
-protists, fungi, plants, and animals) plus metagenomic sequences.
+The number of genome sequencing projects submitted to public sequence
+databases is growing rapidly.  In addition to the raw sequence
+data, the amount of associated metadata describing each project is
+also increasing.   The \pkg{genomes} package collects genome project
+metadata and provides tools to summarize, compare and plot the data in
+the \R~programming environment.
 
-Genome tables are a defined class (\emph{genomes}) in the package and
+
+Genome tables are a defined class (\emph{genomes}) and
 each table is a data frame where rows are genome projects and columns
 are the fields describing the associated metadata.  At a minimum, the
 table should have a column listing the project name, status, and
 release date.  A number of methods are available that operate on
-genome tables including  \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
+genome tables including \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and
+\Rcmd{update}.
 
 There are a number of ways to install this package.  If you are
-running the most recent \R~version, you can use the \Rcmd{biocLite} command.
+running the most recent \R~version, you can use the \Rcmd{biocLite}
+command.
 
 <<biocLite, eval=FALSE>>=
 source("http://bioconductor.org/biocLite.R")
 biocLite("genomes")
 @ 
 
-You can also install the package on earlier versions of \R~using
-\Rcmd{install.packages}, but this has not been tested completely.
-
-<<install, eval=FALSE, keep.source=TRUE>>=
-install.packages("genomes", 
-   repos="http://www.bioconductor.org/packages/release/bioC")
-@ 
-
-Finally, since the format of online genome tables may change (and then
+Since the format of online genome tables may change (and then
 \Rcmd{update} commands may fail), I would recommend downloading the
 development version for fixes in between the six month release cycle.
-On some systems (Mac 10.4), you may need to add the
-\Rcmd{type='source'} option to install the package source.  In
-addition, the \Rcmd{genomes} package depends on some functions in the
-\Rcmd{lattice} and \Rcmd{XML} packages, so these two should be
-installed first (\Rcmd{lattice} is usually installed by default, but
-not \Rcmd{XML}).
 
 <<install, eval=FALSE, keep.source=TRUE>>=
 install.packages("genomes", 
    repos="http://www.bioconductor.org/packages/devel/bioC")
 @ 
 
-\subsection*{NCBI tables}
 
 
-Genome tables at NCBI are downloaded from the Genome Project database.
-The primary tables include a list of prokaryotic projects
-(\Rcmd{lproks}), eukaryotic projects (\Rcmd{leuks}), and metagenomic
-projects (\Rcmd{lenvs}).  The \Rcmd{print} methods displays the first
-few rows and columns of the table (either select less than seven rows or convert the object to a
-\Rcmd{data.frame} to print all columns). The \Rcmd{summary} function displays the
-download date, a count of projects by status, and a list of recent
-submissions. The \Rcmd{plot} method displays a cumulative plot
-of genomes by release date in Figure \ref{lproks} (use \Rcmd{lines} to add
-additional tables).  The \Rcmd{update} method is not
-illustrated below, but can be used to download the latest version of
-the table from NCBI.
+Genome tables from the Genome Project database at NCBI
+(\url{http://www.ncbi.nlm.nih.gov}) include prokaryotic projects (\Rcmd{lproks}),
+eukaryotic projects (\Rcmd{leuks}), and metagenomic projects
+(\Rcmd{lenvs}).  The \Rcmd{print} methods displays the first few rows
+and columns of the table (either select less than seven rows or
+convert the object to a \Rcmd{data.frame} to print all columns). The
+\Rcmd{summary} function displays the download date, a count of
+projects by status, and a list of recent submissions. The \Rcmd{plot}
+method displays a cumulative plot of genomes by release date in Figure
+\ref{lproks} (use \Rcmd{lines} to add additional tables).
 
 <<lproks, fig=TRUE, include=FALSE, height=4, width=4>>=
 data(lproks)
@@ -108,16 +93,32 @@ legend("topleft", c("Microbes", "Eukaryotes", "Metagenomes"),
 \end{figure}
 
 
-For microbial genome projects, the number of complete genomes
- doubles every 22 months and a new microbial genome is released about every
-other day.  At least in 2008, fewer complete genomes were released
-than the previous year (Figure \ref{complete}). 
+Most importantly, the \Rcmd{update} method downloads the latest version of
+the table from NCBI and displays a message listing the number of
+project IDs added and removed (not run).
+
+<<update, eval=FALSE>>=
+update(lproks)
+@ 
+
+A number of additional functions assist in selecting, sorting and
+grouping genomes.  The \Rcmd{species} and \Rcmd{genus} functions can
+be used to extract the species or genus from a scientific name.  The
+\Rcmd{table2} function formats and sorts a contingency table by
+counts.
+
+<<table2>>=
+spp<-species(lproks$name)
+table2(spp)
+@ 
+
+The \Rcmd{month} and \Rcmd{year} functions can be used to extract the month or
+year from the release date  (Figure \ref{complete}). 
 
 
 <<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
-complete<-subset(lproks, status=="Complete")
-doublingTime(complete)
-x<-table(format(complete$released, "%Y"))
+complete <- subset(lproks, status == "Complete")
+x<-table(year(complete$released))
 barplot(x, col="blue", ylim=c(0,max(x)*1.04), space=0.5, las=1,
 axis.lty=1, xlab="Year", ylab="Genomes per year")
 box()
@@ -132,22 +133,11 @@ box()
 \end{figure}
 
 
-A number of functions are available to assist in
-sorting and grouping genomes.   For example, the \Rcmd{species} and
-\Rcmd{genus} function can be used to extract the genus or species name.  
-The \Rcmd{table2} function formats and sorts a contingency table by counts.
-
-
-<<top>>=
-table2(species(lproks$name))
-@ 
-
 Because subsets of tables are often needed, the binary operator \Rcmd{like} allows
-pattern matching using wildcards.  The \Rcmd{plotby} function below expands on the default plot method and
-adds the ability to plot by groups (default is status) using either labeled points or multiple
-lines like Figure \ref{lproks}.  For example, the release dates of complete and
-draft sequences of \emph{Yersinia pestis} are displayed in Figure
-\ref{yersinia}.  
+pattern matching using wildcards.   The \Rcmd{plotby} function can
+then be used to plot the release dates by status using labeled points,
+in this case to identify complete and draft sequences of \emph{Yersinia pestis} (Figure
+\ref{yersinia}).  
 
 <<yersinia, fig=TRUE, include=FALSE, height=4, width=4>>=
 ## Yersinia pestis
@@ -163,47 +153,13 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n')
 \label{yersinia}
 \end{figure}
 
-
-
-
-\subsection*{GOLD and other tables}
-
-The Genomes Online Database (GOLD) is a comprehensive resource that
-collects detailed project metadata from over 7,000 genomes.
-There are currenlty over 100 columns in this large table with specific fields
-relating to the organism, host, environment, and sequencing methods.  Just two of the hundreds of
-possible queries are illustated below.  In first example, a list of
-endosymbiotic intracellular organisms is divided into pathogens and
-commensal bacteria.  In the second example, the comma-separated list
-of phenotypes is split and a new table is
-created listing the GOLD identifier, name, and a single phenotype.
-Then genomes matching ``Arsenic metabolizer'' are displayed.
-
-<<<gold>>=
-data(gold)
-obligate<-subset(gold, symbiotic.interaction=="Endosymbiotic intracellular", 
-c(goldstamp, name, phenotype))
-obligate$pathogen<-"Pathogen"
-obligate$pathogen[ obligate$phenotype %like% "Non-*|Symb*|Carb"]<-"Commensal"
-obligate$pathogen[ obligate$phenotype ==""]<-"Commensal"
-table2(genus(obligate$name), obligate$pathogen)
-
-
-## split comma separated list of phenotypes
-x<-subset(gold, phenotype!="")
-x2<-strsplit(x$phenotype, ", ")
-gold2<- as.data.frame(
- cbind(goldstamp = rep(x$goldstamp, sapply(x2, length)),
-            name = rep(x$name, sapply(x2, length)),
-       phenotype = unlist(x2)) )
-table2(gold2$phenotype)
-subset(gold2, phenotype %like% 'Arsenic metabol*')
-@ 
-
-Finally, genome data from the Human Microbiome Project is stored in the \Rcmd{hmp} dataset and
-includes additional information such as the primary body site occupied by a
-sequenced organism.
-
+  A number of recent functions have been added that allow \R~users to
+run Entrez queries.  For example, users can retreive genome summaries
+or neighbors using a valid Entrez search query, list taxonomy names
+matching taxonomy ids, find the published dates of a pubmed ids, or
+return the release dates for an accession number. The full details
+about these functions and many others can be found in \Rcmd{genomes}
+package help pages.
 
 
 \end{document}

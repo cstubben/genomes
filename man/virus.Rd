@@ -11,7 +11,7 @@
 }
 \usage{data(virus)}
 \format{
-  A genomes data frame with the following 8 variables.
+  A genomes data frame with the following 10 variables.
   \describe{
     \item{\code{name}}{virus name}
     \item{\code{released}}{ release date}
@@ -21,7 +21,8 @@
     \item{\code{isolate}}{ isolate name}
     \item{\code{size}}{ genome size (nt)}
     \item{\code{proteins}}{number of proteins}
-    \item{\code{modified}}{ modified date}
+   \item{\code{host}}{host name}
+    \item{\code{updated}}{ modified date}
   }
 }
 \details{

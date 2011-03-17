@@ -13,7 +13,7 @@ return names and lineages for valid taxonomy ids
 taxid2names(ids)
 }
 \arguments{
-  \item{ids}{ an NCBI taxonomy id }
+  \item{ids}{ a vector of NCBI taxonomy ids }
 }
 \details{
 The function searches the Taxonomy database using the EFetch utility

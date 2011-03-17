@@ -1,11 +1,9 @@
 \name{genomes-internal}
 \alias{abbrev}
-\alias{updategold}
 \alias{updatelenvs}
 \alias{updateleuks}
 \alias{updatelproks}
 \alias{updatevirus}
-\alias{updatehmp}
 \alias{latin2char}
 \alias{extract.genomes}
 \alias{[.genomes}

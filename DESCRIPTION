@@ -1,13 +1,13 @@
 Package: genomes
 Type: Package
 Title: Genome sequencing project metadata
-Version: 1.7.0
-Date: 2010-10-14
+Version: 1.7.1
+Date: 2011-03-15
 Author: Chris Stubben
 Maintainer: Chris Stubben <stubben@lanl.gov>
 License: Artistic-2.0
 Depends: lattice
 Imports: XML
 biocViews: Annotation, Genetics
-Description: Collects genome sequencing project metadata from NCBI and GOLD and provides tools to track, sort, group, summarize and plot the data.
+Description: Collects genome sequencing project metadata from NCBI (http://www.ncbi.nlm.nih.gov) and provides tools to summarize and plot the data.
 

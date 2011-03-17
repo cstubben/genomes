@@ -1,6 +1,18 @@
-changes in version 1.5.5 (2010-10-6)
+changes in version 1.7.1 (2011-1-12)
+	* added pub2date to retrieve publications details from PubMed.  The
+	pubmed table was created using pub2date.
+	* added acc2date to retrieve release dates from the Sequence Revision
+	History. The revhist table was created using acc2date.
+	* added functions to parse month or year from release dates
+	* removed the gold dataset since GOLD is no longer publically
+	available (email 3/2011). HMP uses GOLD data so I removed hmp
+	too.
+	
+changes in version 1.5.6 (2010-10-14)
 
-	* updated datasets before next BioC release
+	* updated biocViews in DESCRIPTION
+	* fixed updateproks to replace latin characters before removing
+	extra spaces (which caused an error) 
 	* set released dates with 2000-1-1 to NA in lproks
 
 changes in version 1.5.4 (2010-8-2)
@@ -12,7 +24,6 @@ changes in version 1.5.3 (2010-7-30)
 
 	* moved sort01 routine before option to limit matrix to 50 rows in
 	image2
-
 	* fixed term2summary.  Searches in genome projects may return
 	matches but not "genome sequencing" types, so this caused an 
 	unhelpful error message.
@@ -20,12 +31,9 @@ changes in version 1.5.3 (2010-7-30)
 changes in version 1.5.2 (2010-5-18)
 
 	* added image2 to plot a matrix
-
 	* fixed error in plotby.  Previously limited to 10 groups.
-
 	* fixed update(lproks) after refseq ids were added to all three
 	lproks tabs and genbank accessions were added to in progress tab
-
 	* fixed update(virus) after modified date added to table
 
 changes in version 1.5.1 (2010-4-23)
@@ -38,7 +46,6 @@ changes in version 1.4.0 (2010-4-13)
 
 	* fixed the main url (eutils.ncbi.. not www.ncbi) and added tool
 	and email options to E-utility scripts (now required by NCBI).
-
 	* added details to genomes-update about reporting counts of new
 	IDs added and old IDs removed.
 
@@ -47,20 +54,15 @@ changes in version 1.3.1 (2010-4-11)
 	* added print.genomes method to print the first few rows and
 	columns of a genome table (also reordered the datasets so
 	id, name, status, and released is in first 4 columns)
-
 	* improved messages for updating genomes.  Now the number of new
 	project ids added AND old projects ids removed is reported
-
 	* modified package to import XML package (no longer depends on
 	XML)
-
 	* added subset.genomes and [.genomes to extract parts of a genome
 	table (and preserve some genome class attributes and not others)
-
 	* added latin2char function to replace a few latin characters in
 	NCBI tables with ASCII. Now R CMD check runs without the "Portable
 	packages use only ASCII characters in their datasets" warning
-
 	* added new summary methods for tables without status column
 
 version 1.3.0 uploaded to BioConductor for review (2010-2-19)
