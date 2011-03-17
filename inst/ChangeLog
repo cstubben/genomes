@@ -4,14 +4,14 @@ changes in version 1.7.1 (2011-1-12)
 	* added acc2date to retrieve release dates from the Sequence Revision
 	History. The revhist table was created using acc2date.
 	* added functions to parse month or year from release dates
-	* removed the gold dataset since GOLD is no longer publically
-	available (email 3/2011). HMP uses GOLD data so I removed hmp
-	too.
+	* removed the gold dataset since GOLD is no longer freely
+	available (email 3/2011). HMP uses GOLD data so I removed that
+	dataset too.
 	
 changes in version 1.5.6 (2010-10-14)
 
 	* updated biocViews in DESCRIPTION
-	* fixed updateproks to replace latin characters before removing
+	* fixed updatelproks to replace latin characters before removing
 	extra spaces (which caused an error) 
 	* set released dates with 2000-1-1 to NA in lproks
 

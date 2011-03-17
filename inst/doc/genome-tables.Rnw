@@ -28,7 +28,7 @@ The number of genome sequencing projects submitted to public sequence
 databases is growing rapidly.  In addition to the raw sequence
 data, the amount of associated metadata describing each project is
 also increasing.   The \pkg{genomes} package collects genome project
-metadata and provides tools to summarize, compare and plot the data in
+metadata from NCBI (\url{http://www.ncbi.nlm.nih.gov}) and provides tools to summarize, compare and plot the data in
 the \R~programming environment.
 
 
@@ -61,15 +61,15 @@ install.packages("genomes",
 
 
 Genome tables from the Genome Project database at NCBI
-(\url{http://www.ncbi.nlm.nih.gov}) include prokaryotic projects (\Rcmd{lproks}),
-eukaryotic projects (\Rcmd{leuks}), and metagenomic projects
-(\Rcmd{lenvs}).  The \Rcmd{print} methods displays the first few rows
+ include prokaryotic projects (\Rcmd{lproks}),
+eukaryotic projects (\Rcmd{leuks}),  metagenomes
+(\Rcmd{lenvs}) and viruses (\Rcmd{virus}).  The \Rcmd{print} methods displays the first few rows
 and columns of the table (either select less than seven rows or
 convert the object to a \Rcmd{data.frame} to print all columns). The
 \Rcmd{summary} function displays the download date, a count of
 projects by status, and a list of recent submissions. The \Rcmd{plot}
-method displays a cumulative plot of genomes by release date in Figure
-\ref{lproks} (use \Rcmd{lines} to add additional tables).
+method displays a cumulative plot of genomes by release date (  Figure
+\ref{lproks}, use \Rcmd{lines} to add additional tables).
 
 <<lproks, fig=TRUE, include=FALSE, height=4, width=4>>=
 data(lproks)
@@ -113,7 +113,7 @@ table2(spp)
 @ 
 
 The \Rcmd{month} and \Rcmd{year} functions can be used to extract the month or
-year from the release date  (Figure \ref{complete}). 
+year from the release date  (Figure \ref{complete}).  
 
 
 <<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
@@ -154,12 +154,12 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n')
 \end{figure}
 
   A number of recent functions have been added that allow \R~users to
-run Entrez queries.  For example, users can retreive genome summaries
+run Entrez queries.  For example, users can retrieve genome summaries
 or neighbors using a valid Entrez search query, list taxonomy names
-matching taxonomy ids, find the published dates of a pubmed ids, or
-return the release dates for an accession number. The full details
+matching taxonomy ids, find the published dates of pubmed ids, or
+return the release dates given accession numbers. The full details
 about these functions and many others can be found in \Rcmd{genomes}
-package help pages.
+ help pages.
 
 
 \end{document}
