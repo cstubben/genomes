@@ -77,6 +77,10 @@ updatelproks <- function()
    ## merge Org Info - 12 columns - pid IS now first column
    z <- merge(z, prj[[1]][, c(2,10:21)], all.x=TRUE)
 
+   # remove quotes from names (or else will sort first)
+   # z$name<-gsub("'", "", z$name)
+   z$name[z$pid==30807]<-"Nostoc azollae 0708"
+   
    ## re-order by name
    prj <- z[order(z$name), ]
    rownames(prj) <- 1:nrow(prj)
