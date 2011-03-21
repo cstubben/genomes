@@ -5,8 +5,8 @@ changes in version 1.7.1 (2011-1-12)
 	History. The revhist table was created using acc2date.
 	* added functions to parse month or year from release dates
 	* removed the gold dataset since GOLD is no longer freely
-	available (email 3/2011). HMP uses GOLD data so I removed that
-	dataset too.
+	available (email 3/2011 - "we cannot support redistribution in any
+	form"). HMP uses GOLD data so I removed that dataset too.
 	
 changes in version 1.5.6 (2010-10-14)
 

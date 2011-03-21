@@ -5,7 +5,7 @@
 Doubling time for genome projects
 }
 \description{
-Calculates the doubling time of genome sequencing project submissions
+Calculates the doubling time of genome sequencing project releases
 }
 \usage{
 doublingTime(x, subset, time = "days")

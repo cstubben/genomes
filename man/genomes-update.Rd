@@ -17,7 +17,8 @@
 \code{update} will retrieve the new genome table using the update
 string in \code{attr(object, 'update')}.  The new table will replace the existing
 version,  \emph{but not permanently}, since reloading the dataset using \code{data}
-will restore the older version.  
+will restore the older version.  If you have write permission, one option is to use
+\code{\link{system.file}} to replace the data set (see the example below).
 
 }
 \value{
