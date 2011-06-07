@@ -1,4 +1,10 @@
-changes in version 1.7.1 (2011-1-12)
+changes in version 1.9.1 (2011-6-7)
+	* removed query using sequencing status in term2summary example
+	 (genome project is being replaced by bioproject and some queries
+	are returning errors) 
+	* fixed abbrev to skip unkwown species
+
+changes in version 1.7.1 (2011-3-15)
 	* added pub2date to retrieve publications details from PubMed.  The
 	pubmed table was created using pub2date.
 	* added acc2date to retrieve release dates from the Sequence Revision

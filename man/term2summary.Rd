@@ -55,9 +55,6 @@ summary(x)
 data(lproks)
 summary(lproks, center \%like\% '*Los Alamos*')
 
-##In progress microbial genomes with data in the Short Read Archive
-x <- term2summary( 'inprogress[Sequencing status] AND genomeprj sra[Filter] NOT eukaryota[Organism]')
-x
 
 ## Taxonomy queries like genomes in Bacteroidetes phylum
 x <- term2summary("Bacteroidetes[ORGN]")
