@@ -2,37 +2,33 @@
 \Rdversion{1.1}
 \alias{acc2date}
 \title{
-Retrieve release dates from NCBI's revision history
+Retrieve release dates using NCBI's revision history display settings
 }
 \description{
-Returns the date a sequence was first seen at NCBI using the revision history.
+Returns the date a sequence was first seen at NCBI using the revision
+history display.
 }
 \usage{
-acc2date(ids, common=TRUE)
+acc2date(ids, db="nuccore")
 }
 
 \arguments{
   \item{ids}{  a vector or comma-separated list of  sequence accessions or GI numbers }
-  \item{common }{ if present, use the common revision history link }
+  \item{db }{ Entrez database to search, default nuccore  }
 }
-\details{ Searches the sequence revision history at NCBI
-  \url{http://www.ncbi.nlm.nih.gov/sviewer/girevhist.cgi} and parses
-  the line listing the date a sequence was \emph{first seen at
-    NCBI}. In many cases, a sequence replaces earlier IDs and will
-  therefore include a common revision history link.  If this option is set, each
-  common history link is searched and the earliest release date from the
-  collection of  sequence ids is returned instead.
+\details{ Searches the  revision history display  and parses the line listing the date a sequence was \emph{first seen at
+    NCBI}. In many cases, a sequence replaces earlier IDs and the
+  function will print a warning to check the common history using \code{\link{acc2dateCommon}}.
  }
 \value{
-A data frame listing the sequence identifier, release date, and if
-common revision history was used.
+A data frame listing the sequence identifier and release date
 }
 %\references{ }
 \author{
 Chris Stubben
 }
 %%\note{} 
-\seealso{  \code{\link{revhist}}  }
+\seealso{  \code{\link{acc2dateCommon}}  }
 
 \examples{
 data(lproks)
@@ -41,7 +37,8 @@ yp$genbank
 # 1 chromosome and 3 plasmids
 acc2date(yp$genbank)
 
-acc2date(yp$genbank, common=FALSE)
+# protein acc
+acc2date("CAA21395", db="protein")
 
 }
 

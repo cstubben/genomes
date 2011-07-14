@@ -18,15 +18,21 @@ pub2date(pmids)
 to return a short citation.
 }
 \value{
-A data.frame with 9 columns: pmid, authors, year, title, journal,
-volume, pages, published date, and article date.
+A data.frame with 9 columns
+   \item{\code{pmid}}{PubMed id}
+    \item{\code{authors}}{first 3 author names}
+    \item{\code{year}}{year journal was published }
+    \item{\code{title}}{ title}
+    \item{\code{journal}}{journal name}
+    \item{\code{volume}}{volume number}
+    \item{\code{pages}}{pages}
+    \item{\code{pubdate}}{ date journal was published (from PubDate tag)}
+    \item{\code{artdate}}{ date electronic copy was available (from ArticleDate tag)}
+
 }
 %\references{}
 \author{ Chris Stubben }
-\note{ 
-The article date is the date an electronic copy was available. See
-\code{\link{pubmed}} for additional details about columns.
- }
+%\note{ }
 
 %\seealso{  }
 \examples{

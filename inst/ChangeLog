@@ -1,3 +1,11 @@
+changes in version 1.9.2 (2011-7-14)
+	* updated acc2date to query revision history display in Entrez
+	(girevhist.cgi is no longer available)
+	* added acc2dateCommon to find earliest relased date from replaced
+	sequences (the "Common revision history link" in defunct
+	girevhist.cgi)
+	* fixed term2summary to query bioproject instead of old genomeprj
+
 changes in version 1.9.1 (2011-6-7)
 	* removed query using sequencing status in term2summary example
 	 (genome project is being replaced by bioproject and some queries
@@ -5,13 +13,11 @@ changes in version 1.9.1 (2011-6-7)
 	* fixed abbrev to skip unkwown species
 
 changes in version 1.7.1 (2011-3-15)
-	* added pub2date to retrieve publications details from PubMed.  The
-	pubmed table was created using pub2date.
-	* added acc2date to retrieve release dates from the Sequence Revision
-	History. The revhist table was created using acc2date.
+	* added pub2date to retrieve publications details from PubMed.  
+	* added acc2date to retrieve release dates from Revision History. 
 	* added functions to parse month or year from release dates
 	* removed the gold dataset since GOLD is no longer freely
-	available (email 3/2011 - "we cannot support redistribution in any
+	available (see email 3/2011 - "we cannot support redistribution in any
 	form"). HMP uses GOLD data so I removed that dataset too.
 	
 changes in version 1.5.6 (2010-10-14)

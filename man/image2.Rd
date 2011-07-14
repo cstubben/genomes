@@ -52,11 +52,10 @@ image2(x, col = rev(heat.colors(24)), breaks, log = FALSE,
 \examples{
 
 
-## Journals with most microbial genome publications,
-data(pubmed)
-z<-table2(pubmed$journal, pubmed$year, n=15)
-image2(z[,-ncol(z)], sort=TRUE, mar=c(1,10,3,1), cex=.8)
-
+## top 20 Genus by year
+data(lproks)
+z<-table2(genus(lproks$name), year(lproks$released), n=20)
+ image2(z[,-ncol(z)], sort=TRUE, mar=c(1,10,3,1), cex=.8)
 
 }
 

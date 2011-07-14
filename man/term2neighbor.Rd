@@ -31,7 +31,7 @@ term2neighbor(term, derived = FALSE, sortdate = FALSE, fulltable = FALSE)
   strains are linked as Genome Neighbors.  
 }
 
-\seealso{ \code{\link{term2summary}} and \code{\link{virus}}  }
+\seealso{  \code{\link{virus}}  }
 \examples{
 data(virus)
 ## Nipah virus list 7 neighbors

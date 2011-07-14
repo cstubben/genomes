@@ -13,13 +13,14 @@ term2neighbor<-function(term, derived = FALSE, sortdate = FALSE, fulltable = FAL
    x <- gsub("<[^>]*>", "", x)          # replace start tags
    x <- unlist(strsplit(x, "-!-"))      # split into 5 fields (count, retmax, retstart, querykey, webenv)
    ## count in x[1]
-   if (!x[1] > 0) {stop("No matches to ", term, " found",  call.=FALSE)}
+   if (!x[1] > 0) {
+      print(paste("No matches to", term, "found"))
+   }else{
+                   
    querykey <- x[4]
    webenv   <- x[5]
 
-   
    # GET  Neighbors in  genome_nuccore_samespecies  
-
    ## E-Link using neighbor history
    elink <- paste(url, "elink.fcgi?dbfrom=", db,
            "&db=nuccore&cmd=neighbor_history&linkname=genome_nuccore_samespecies&query_key=", 
@@ -108,4 +109,5 @@ term2neighbor<-function(term, derived = FALSE, sortdate = FALSE, fulltable = FAL
    attr(x2, "update") <- paste("term2neighbor(\"", term, "\", ",
                            derived, ", ", sortdate, ", " , fulltable, ")", sep="")
    x2
+ }
 }
