@@ -24,21 +24,15 @@ options(warn=-1, width=75, digits=2, scipen=3,  "prompt" = "R> ", "continue" = "
 options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
 @
 
-The number of genome sequencing projects submitted to public sequence
-databases is growing rapidly.  In addition to the raw sequence
-data, the amount of associated metadata describing each project is
-also increasing.   The \pkg{genomes} package collects genome project
-metadata from NCBI (\url{http://www.ncbi.nlm.nih.gov}) and provides tools to summarize, compare and plot the data in
-the \R~programming environment.
-
-
-Genome tables are a defined class (\emph{genomes}) and
-each table is a data frame where rows are genome projects and columns
-are the fields describing the associated metadata.  At a minimum, the
-table should have a column listing the project name, status, and
-release date.  A number of methods are available that operate on
-genome tables including \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and
-\Rcmd{update}.
+The \pkg{genomes} package collects genome project metadata from NCBI
+(\url{http://www.ncbi.nlm.nih.gov}) and provides tools to summarize,
+compare and plot the data in the \R~programming environment. Genome
+tables are a defined class (\emph{genomes}) and each table is a data
+frame where rows are genome projects and columns are the fields
+describing the associated metadata.  At a minimum, the table should
+have a column listing the project name, status, and release date.  A
+number of methods are available that operate on genome tables
+including \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
 
 There are a number of ways to install this package.  If you are
 running the most recent \R~version, you can use the \Rcmd{biocLite}
@@ -55,23 +49,23 @@ development version for fixes in between the six month release cycle.
 
 <<install, eval=FALSE, keep.source=TRUE>>=
 install.packages("genomes", 
-   repos="http://www.bioconductor.org/packages/devel/bioC")
+   repos="http://www.bioconductor.org/packages/devel/bioC", type="source")
 @ 
 
 
 
-Genome tables from the Genome Project database at NCBI
- include prokaryotic projects (\Rcmd{lproks}),
-eukaryotic projects (\Rcmd{leuks}),  metagenomes
-(\Rcmd{lenvs}) and viruses (\Rcmd{virus}).  The \Rcmd{print} methods displays the first few rows
-and columns of the table (either select less than seven rows or
-convert the object to a \Rcmd{data.frame} to print all columns). The
-\Rcmd{summary} function displays the download date, a count of
-projects by status, and a list of recent submissions. The \Rcmd{plot}
-method displays a cumulative plot of genomes by release date (  Figure
-\ref{lproks}, use \Rcmd{lines} to add additional tables).
+Genome tables from the Genome Project database at NCBI include
+prokaryotic projects (\Rcmd{lproks}), eukaryotic projects
+(\Rcmd{leuks}), metagenomes (\Rcmd{lenvs}) and viruses (\Rcmd{virus}).
+The \Rcmd{print} methods displays the first few rows and columns of
+the table (either select less than seven rows or convert the object to
+a \Rcmd{data.frame} to print all columns). The \Rcmd{summary} function
+displays the download date, a count of projects by status, and a list
+of recent submissions. The \Rcmd{plot} method displays a cumulative
+plot of genomes by release date ( Figure \ref{lproks}, use
+\Rcmd{lines} to add additional tables).
 
-<<lproks, fig=TRUE, include=FALSE, height=4, width=4>>=
+<<lproks, fig=TRUE, include=FALSE, height=5, width=5>>=
 data(lproks)
 lproks
 summary(lproks)
@@ -87,7 +81,7 @@ legend("topleft", c("Microbes", "Eukaryotes", "Metagenomes"),
 
 \begin{figure}[t]
 \centering
-\includegraphics[height=3in,width=3in]{genome-tables-lproks.pdf}
+\includegraphics[height=5in,width=5in]{genome-tables-lproks.pdf}
  \caption{Cumulative plot of genome projects by release date at NCBI.  }
 \label{lproks}
 \end{figure}
@@ -139,7 +133,7 @@ then be used to plot the release dates by status using labeled points,
 in this case to identify complete and draft sequences of \emph{Yersinia pestis} (Figure
 \ref{yersinia}).  
 
-<<yersinia, fig=TRUE, include=FALSE, height=4, width=4>>=
+<<yersinia, fig=TRUE, include=FALSE, height=5, width=5>>=
 ## Yersinia pestis
 yp<-subset(lproks, name %like% 'Yersinia pestis*')
 plotby(yp, labels=TRUE, cex=.5, lbty='n')
@@ -148,7 +142,7 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n')
 
 \begin{figure}[t]
 \centering
-\includegraphics[height=3in,width=3in]{genome-tables-yersinia.pdf}
+\includegraphics[height=5in,width=5in]{genome-tables-yersinia.pdf}
  \caption{Cumulative plot of \emph{Yersinia pestis} genomes by release date.}
 \label{yersinia}
 \end{figure}
@@ -157,7 +151,7 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n')
 run Entrez queries.  For example, users can retrieve genome summaries
 or neighbors using a valid Entrez search query, list taxonomy names
 matching taxonomy ids, find the published dates of pubmed ids, or
-return the release dates given accession numbers. The full details
+return the release dates of accession numbers. The full details
 about these functions and many others can be found in \Rcmd{genomes}
  help pages.
 

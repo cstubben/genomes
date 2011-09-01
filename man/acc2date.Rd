@@ -9,16 +9,19 @@ Returns the date a sequence was first seen at NCBI using the revision
 history display.
 }
 \usage{
-acc2date(ids, db="nuccore")
+acc2date(ids, db="nuccore", batchsize = 20)
 }
 
 \arguments{
   \item{ids}{  a vector or comma-separated list of  sequence accessions or GI numbers }
   \item{db }{ Entrez database to search, default nuccore  }
+  \item{batchsize }{ the number of ids to query, currently limited to 20  }
 }
 \details{ Searches the  revision history display  and parses the line listing the date a sequence was \emph{first seen at
     NCBI}. In many cases, a sequence replaces earlier IDs and the
-  function will print a warning to check the common history using \code{\link{acc2dateCommon}}.
+  function will print a warning to check the common history using
+  \code{\link{acc2dateCommon}}. Currently only 20 ids can be displayed
+  on a single page, so the batchsize is limited. 
  }
 \value{
 A data frame listing the sequence identifier and release date

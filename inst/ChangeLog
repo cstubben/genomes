@@ -1,3 +1,12 @@
+changes in version 1.9.3 (2011-9-1)
+	* added option to include current date in plotby
+	* added dates to 725 assemblies with missing release dates (these
+	assembles only have a Genbank accession). The dates will be lost 
+	after updating the table.
+	* added dataset for complete microbial genomes with release date,
+	revision history date, published date, assembly release date (if
+	available previously as WGS).
+
 changes in version 1.9.2 (2011-7-14)
 	* updated acc2date to query revision history display in Entrez
 	(girevhist.cgi is no longer available)
