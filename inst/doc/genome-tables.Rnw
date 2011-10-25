@@ -25,7 +25,8 @@ options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
 @
 
 The \pkg{genomes} package collects genome project metadata from NCBI
-(\url{http://www.ncbi.nlm.nih.gov}) and provides tools to summarize,
+(\url{http://www.ncbi.nlm.nih.gov}) and the ENA (\url{http://www.ebi.ac.uk/ena}) 
+and provides tools to summarize,
 compare and plot the data in the \R~programming environment. Genome
 tables are a defined class (\emph{genomes}) and each table is a data
 frame where rows are genome projects and columns are the fields
@@ -148,12 +149,8 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n')
 \end{figure}
 
   A number of recent functions have been added that allow \R~users to
-run Entrez queries.  For example, users can retrieve genome summaries
-or neighbors using a valid Entrez search query, list taxonomy names
-matching taxonomy ids, find the published dates of pubmed ids, or
-return the release dates of accession numbers. The full details
-about these functions and many others can be found in \Rcmd{genomes}
- help pages.
+query NCBI databases or the European Nucleotide Archive.  These functions will be 
+described in a separate vignette.
 
 
 \end{document}

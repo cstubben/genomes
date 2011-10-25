@@ -1,4 +1,4 @@
-importFrom(XML, xmlTreeParse, xmlRoot, xmlSApply, xmlValue, xpathSApply, xmlParse, xmlDoc, free, getNodeSet)
+importFrom(XML, xmlTreeParse, xmlRoot, xmlName, xmlAttrs, xpathApply, xmlSApply, xmlValue, xpathSApply, xmlParse, xmlDoc, free, getNodeSet)
 #  All functions exported other than those starting with "."
 exportPattern("^[^\\.]")
 

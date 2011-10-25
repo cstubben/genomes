@@ -8,13 +8,15 @@ Doubling time for genome projects
 Calculates the doubling time of genome sequencing project releases
 }
 \usage{
-doublingTime(x, subset, time = "days")
+doublingTime(x, subset, time = "days", curdate=TRUE)
 }
 \arguments{
   \item{x}{   genomes data frame with class 'genomes'}
   \item{subset}{logical vector indicating rows to keep }
   \item{time}{  return doubling time in days (default), months, or
       years  }
+  \item{ curdate}{ include the current date in calculation, if false, then
+      default is range of release dates }
 }
 %\details{ }
 \value{

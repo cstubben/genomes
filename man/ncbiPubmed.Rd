@@ -1,21 +1,21 @@
-\name{pub2date}
-\alias{pub2date}
+\name{ncbiPubmed}
+\alias{ncbiPubmed}
 \title{
-Retrieve the published date from NCBI's PubMed database
+NCBI PubMed database
 }
 \description{ 
 Searches the PubMed database at NCBI and returns a short
 citation with author, year, title, journal and published date. 
  }
 \usage{
-pub2date(pmids)
+ncbiPubmed(term)
 }
 \arguments{
-  \item{pmids}{ a vector or comma-separated list of pubmed IDs}
+  \item{term}{ Any valid combination of Entrez search terms or a vector of pubmed IDs}
 }
 \details{
- Searches the Pubmed database using EFetch and parses the XML summary
-to return a short citation.
+  The function uses either Epost (for numeric pubmed IDs) or Esearch to query 
+ the PubMed database and then parses the XML summary to return a short citation
 }
 \value{
 A data.frame with 9 columns
@@ -34,15 +34,15 @@ A data.frame with 9 columns
 \author{ Chris Stubben }
 %\note{ }
 
-%\seealso{  }
+\seealso{ \code{\link{pub}} for complete microbial genome publications }
 \examples{
 data(lproks)
 yp<-subset(lproks, name \%like\% 'Yersinia*CO92')
 # comma-separated list
 yp$publication
-pub2date(yp$publication)
+ncbiPubmed(yp$publication)
 # or vector
-pub2date( c(7542800, 7569993))
+ncbiPubmed( c(7542800, 7569993))
 
 }
 

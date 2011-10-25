@@ -1,13 +1,17 @@
 \name{genomes-internal}
 \alias{abbrev}
+\alias{bases}
+\alias{extract.genomes}
+\alias{[.genomes}
+\alias{latin2char}
+\alias{tax2id}
 \alias{updatelenvs}
 \alias{updateleuks}
 \alias{updatelproks}
 \alias{updatevirus}
-\alias{latin2char}
-\alias{extract.genomes}
-\alias{[.genomes}
-
+\alias{xattr}
+\alias{xtags}
+\alias{xvalue}
 \title{Internal genomes Functions}
 \description{
   Internal genomes functions.

@@ -71,7 +71,7 @@ plotby(lproks, factor(lproks$pathogen \%in\% c("No"),
    labels=c("Pathogen", "Non-pathogen")), pathogen!="")
 
 # OR plot labels
-plotby(lproks, subset=name \%like\% 'Yersinia pestis*', labels=TRUE, cex=.5, lbty='n')
+plotby(lproks, subset=name \%like\% 'Yersinia pestis*', labels=TRUE, cex=.7, lbty='n')
 
 }
 

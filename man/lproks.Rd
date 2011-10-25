@@ -51,15 +51,16 @@
 \details{ This table is constructed using all three
 tabs at \url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}.
 Complete genomes and In Progress tabs are combined and then joined to
-the Organism Info tab.
+the Organism Info tab.  A few manual updates were also added:
+ 725 missing released dates from GenBank assemblies were added, 178 complete 
+ genomes with assembly released dates were corrected (see \code{\link{complete}}, 
+ and genome size outliers were removed (these changes will not be kept in new updates below)
 
-The \code{ update(genomes)} function downloads a recent copy of the
+
+The \code{update(genomes)} function downloads a recent copy of the
 table from NCBI.  The number of new project IDs are reported as well
 as the number of project IDs removed (which are typically Assembly
-genomes that are now available as a Complete sequence).  Please note
-that NCBI is currently changing how prokaryotic genomes are managed
- and some changes to these tables are possible (see 
-\url{http://www.ncbi.nlm.nih.gov/genomeprj} for details).  }
+genomes that are now available as a Complete sequence).    }
 
 \source{
  downloaded from \url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}
@@ -84,6 +85,6 @@ plotby(lproks, log='y', las=1)
 yp <- subset(lproks, name \%like\% 'Yersinia*')
 yp
 summary(yp)
-plotby(yp, labels=TRUE, cex=.5, lbty='n')
+plotby(yp, labels=TRUE, cex=.7, lbty='n')
 }
 \keyword{datasets}

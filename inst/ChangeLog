@@ -1,3 +1,17 @@
+changes in version 1.99.1 (2011-10-24)
+        * added functions to query European Nucleotide Archive (ENA) using a 
+          taxonomy name or id (enaTaxonomy, enaSRA, and enaProject)
+        * added functions to query ENA using a SRA accession
+           (enaStudy, enaSubmission, enaExperiment, and enaFiles)
+	* added sra dataset listing all microbial SRA samples from ENA
+	* added ncbiInfo to list NCBI databases and fields. 
+        * updated and renamed functions to query specific Entrez databases 
+          (ncbiTaxonomy, ncbiProject, ncbiGenome, ncbiNucleotide)
+        * updated and renamed functions to return release dates in Revsion 
+          History (ncbiRelease) or publication dates (ncbiPubmed)
+        * added ncbiSubmit to return GenBank submission dates
+	* removed duplicate project ids from lproks table (35 on Oct 2011)
+
 changes in version 1.9.3 (2011-9-1)
 	* added option to include current date in plotby
 	* added dates to 725 assemblies with missing release dates (these
