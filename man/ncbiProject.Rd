@@ -7,11 +7,11 @@
 
 }
 \usage{
-ncbiProject(term, all = FALSE)
+ncbiProject(term, refseq = TRUE)
 }
 \arguments{
-  \item{term}{ Any valid combination of Entrez search terms  }
-  \item{all}{ Return all projects (Overview and RefSeq). Default is primary submissions excluding RefSeq. }
+  \item{term}{ any valid combination of Entrez search terms  }
+  \item{refseq}{ include RefSeq and Overview projects, if false then only primary submissions excluding RefSeq. }
 }
 \details{
 Searches the new BioProject database using the ESearch utility
@@ -28,7 +28,8 @@ Searches the new BioProject database using the ESearch utility
 \seealso{ \code{\link{ncbiGenome}}  }
 
 \examples{
-x <- ncbiProject("Yersinia[ORGN]")
+#ncbiProject("Pan[ORGN]")
+x <- ncbiProject("Yersinia[ORGN]", refseq=FALSE)
 x
 t(x[2,])  #second row
 summary(x)

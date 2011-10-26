@@ -22,8 +22,8 @@ Dates associated with complete microbial genomes at NCBI
     \item{\code{submitted}}{ the submission date associated with the genbank ID}
     \item{\code{pmid}}{ pubmed ID of genome paper from the comma-separated list
         in the \code{lproks} table.  }
-    \item{\code{published}}{ the published date of the first pubmed ID}
-    \item{\code{wgs}}{the WGS accession }
+    \item{\code{published}}{ the published date of the pubmed ID}
+    \item{\code{wgs}}{the WGS accession, if previously released as an assembly}
     \item{\code{assembled}}{the assembly release date}
     \item{\code{source}}{ likely source of the \code{lproks} release
         date }

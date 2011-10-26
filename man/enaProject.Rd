@@ -3,7 +3,7 @@
 \title{ ENA projects }
 \description{Search for projects at ENA using a taxonomy name or id}
 \usage{
-enaProject(tax, limit = 1000, refseq = FALSE)
+enaProject(tax, limit = 1000, refseq = TRUE)
 }
 \arguments{
   \item{tax}{a taxonomy ID or name }
@@ -22,7 +22,7 @@ uses a \code{\link{ncbiTaxonomy}} ID lookup at NCBI.
 \seealso{\code{\link{enaSRA} to search for SRA samples.}
 }
 \examples{
-pan<-enaProject(9596, refseq=TRUE)
+pan<-enaProject(9596)
 head(pan)
 table(pan$type, pan$method)
 

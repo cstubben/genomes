@@ -1,4 +1,4 @@
-ncbiProject<-function(term, all=FALSE )
+ncbiProject<-function(term, refseq=TRUE )
 {
    db <- "bioproject"
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
@@ -41,7 +41,7 @@ ncbiProject<-function(term, all=FALSE )
          x$released[x$released=="1/01/01 00:00"]<-NA
          x$released <- as.Date(substr(x$released, 1,10), "%Y/%m/%d")
 
-         if (!all) {
+         if (!refseq) {
            # SKIP Organism overview AND Umbrella project
            x <- subset(x, x$project_type=="Primary submission" )
            # SKIP RefSeq genomes 

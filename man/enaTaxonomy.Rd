@@ -12,7 +12,9 @@ enaTaxonomy(tax, h = TRUE, round = 0)
   \item{round}{ number of digits to round bases}
 }
 % \details{ }
-\value{ a data.frame listing direct and subtree records in various data classes }
+\value{ a data.frame listing direct and subtree records in eight data classes: Assembled Nucleotide Sequences (release), Annotated Nucleotide Sequence update (std_update), Whole Genome Shotgun Sequence update (wgs_update), Genomic Contig Sequence update (con_update), Protein-coding Sequences (cds), Trace Archive (trace), SRA samples (sra_sample) and Projects (project).
+
+}
 \references{ see \url{http://www.ebi.ac.uk/ena/about/browser#taxonomy_portal_options} for details }
 \author{ Chris Stubben }
 \note{ The ENA urls require a taxonomy ID and therefore searching by a taxonomy name will be slower

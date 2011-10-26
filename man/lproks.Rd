@@ -53,8 +53,8 @@ tabs at \url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}.
 Complete genomes and In Progress tabs are combined and then joined to
 the Organism Info tab.  A few manual updates were also added:
  725 missing released dates from GenBank assemblies were added, 178 complete 
- genomes with assembly released dates were corrected (see \code{\link{complete}}, 
- and genome size outliers were removed (these changes will not be kept in new updates below)
+ genomes with assembly released dates were corrected (see \code{\link{complete}}), 
+ and genome size outliers were removed.
 
 
 The \code{update(genomes)} function downloads a recent copy of the
