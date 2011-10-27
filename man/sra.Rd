@@ -7,7 +7,7 @@ at the European Nucleotide Archive (ENA).
 }
 \usage{data(sra)}
 \format{
-  A data frame with 17161 observations on the following 123 variables.
+  A data frame with 18279 observations on the following 13 variables.
   \describe{
     \item{\code{taxid}}{ taxonomy id}
     \item{\code{name}}{ scientific name (if missing, then title) }
@@ -24,7 +24,7 @@ at the European Nucleotide Archive (ENA).
     \item{\code{type}}{ study type }
   }
 }
-\details{ Downloaded from ENA on Oct 3, 2011.  Created by joining \code{enaSRA("Bacteria")} and 
+\details{ Downloaded from ENA on Oct 27, 2011.  Created by joining \code{enaSRA("Bacteria")} and 
  \code{enaSRA("Archaea")} and adding submission dates using \code{\link{enaSubmission}}, model 
   using \code{\link{enaExperiment}} and study type using \code{\link{enaStudy}}.  Microbes represent ~6\% of the total bases in the SRA.
 }
@@ -45,10 +45,6 @@ data.frame(read=round(tapply(sra$bases/sra$reads, list(sra$model ), mean, na.rm=
 y <- tapply(sra$bases, list(sra$model, year( sra$submit ) ), sum, na.rm=TRUE)
 image2( y / 1e9, mar=c(1,11, 4,1) , log=TRUE, round=1)
 title("Total microbial bases submitted per year (billions)", cex.main=1, line=2)
-
-
-
-
 
 
 }

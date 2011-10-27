@@ -42,7 +42,7 @@ for a list of the 473 assembly projects superceded by a complete genome sequence
 % \references{ }
 \examples{
 data(complete)
-# Note: some early genomes use published dates from the wrong paper! (eg, 2nd and 4th genomes below) 
+# some early genomes use published dates from the wrong paper (eg, 2nd and 4th genomes below) 
 complete[1:5, ]
 # likely source of release dates 
 table2(complete$source)
