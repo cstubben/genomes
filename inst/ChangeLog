@@ -1,3 +1,11 @@
+changes in version 2.1.1 (2011-11-29)
+        *  Entrez Genome was updated by NCBI on Nov 9,2011 and required two fixes: 
+         *  The genome_nuccore_samespecies link is no longer available and  
+            therefore ncbiGenome was updated to use genome_nuccore and 
+            nuccore_nuccore_samespecies_rsgb links
+         *  E-fetch no longer supports retrievals to the Genome database (the first 
+            example in ncbiSubmit was changed to use the nucleotide database).
+
 changes in version 1.99.1 (2011-10-24)
         * added functions to query European Nucleotide Archive (ENA) using a 
           taxonomy name or id (enaTaxonomy, enaSRA, and enaProject)

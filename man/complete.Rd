@@ -33,8 +33,8 @@ Dates associated with complete microbial genomes at NCBI
   The revision history date was added using \code{\link{ncbiRelease}}, the submission date using 
   \code{\link{ncbiSubmit}}, and publication date using the \code{\link{pub}} dataset.
   Currently, 178 complete genomes are mislabeled with the assembly release date
-  (out of 473 that were previously released as an assembly) , the source for 204 others is unknown.
-  and many of the first genomes released report "published" dates. 
+  (out of 473 that were previously released as an assembly) and the source for 204 others is unknown.
+  Many of the first genomes released report "published" dates. 
 }
 \source{  See \url{http://www.ncbi.nlm.nih.gov/projects/WGS/WGSprojectlist.cgi }
 for a list of the 473 assembly projects superceded by a complete genome sequence.

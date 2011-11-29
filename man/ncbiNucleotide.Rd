@@ -26,8 +26,8 @@ marb
 # two peaks in size distribution (partial and complete sequences)
 hist(marb$size, col="blue", br=30, main="Marburg virus sequences", xlab="Length (bp)")
 
-# Compare to NCBI Genomes (1 reference and 19 neighbors= 20)
-marbg <-ncbiGenome("Marburgvirus[ORGN]",  neighbor=TRUE)
+# Compare to linked NCBI Genomes (20 genomes)
+marbg <-ncbiGenome("Marburgvirus[ORGN]")
 # Remove "nucleoprotein (NP)... genes" from 3 long deflines for display
 marb$name <- gsub("(.*)( nucleoprotein.*)(, complete.*)", "\\1\\3",  marb$name)
 # 13 genomes out of 33 missing links to Entrez Genome 

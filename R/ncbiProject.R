@@ -2,7 +2,7 @@ ncbiProject<-function(term, refseq=TRUE )
 {
    db <- "bioproject"
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
-   esearch <- paste(url, "esearch.fcgi?retmax=1&tool=term2summary.R&email=stubben@lanl.gov&usehistory=y&db=", 
+   esearch <- paste(url, "esearch.fcgi?retmax=1&tool=ncbiProject.R&email=stubben@lanl.gov&usehistory=y&db=", 
         db, "&term=", gsub(" ", "%20", term), sep = "")
    gp <- readLines(esearch)
    connecterror <- grepl("ERROR", gp)

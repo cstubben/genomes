@@ -1,6 +1,7 @@
 ncbiSubmit<-function(term, db="nuccore", retmax=1000) 
 {
    # USE E-Post?
+   if(db=="genome"){stop("E-fetch no longer supports retrievals from the Genome database")}
    if(length(term) > 1){ term  <- paste(term, collapse = ",") }  # comma-separated list of accessions?
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
    esearch <- paste(url, "esearch.fcgi?retmax=1&tool=term2gbk.R&email=stubben@lanl.gov&usehistory=y&db=", 

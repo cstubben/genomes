@@ -15,7 +15,7 @@ enaFiles<-function(acc, file="submitted")
       for(i in 1:n)
       {
          x <-read.delim(paste( url1, acc[i], sep="/") , stringsAsFactors=FALSE)
-         print(paste("Downloading files from", acc[i]))
+         print(paste("Listing files from", acc[i]))
          z[[i]]<- x
       }
       do.call("rbind", z)

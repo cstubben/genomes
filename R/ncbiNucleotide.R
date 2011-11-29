@@ -4,7 +4,7 @@ ncbiNucleotide<-function(term, fulltable = FALSE)
    db  <- "nuccore"
    if(length(term) > 1){ term  <- paste(term, collapse = ",") }  # comma-separated list of accessions?
    #E-search 
-   esearch <- paste(url, "esearch.fcgi?retmax=1&tool=term2summary.R&email=stubben@lanl.gov&usehistory=y&db=", db, "&term=", 
+   esearch <- paste(url, "esearch.fcgi?retmax=1&tool=ncbiNucleotide.R&email=stubben@lanl.gov&usehistory=y&db=", db, "&term=", 
         gsub(" ", "%20", term), sep = "")
 
    gp <- readLines(esearch)
