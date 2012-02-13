@@ -1,16 +1,16 @@
-changes in version 2.1.1 (2011-11-29)
-        *  Entrez Genome was updated by NCBI on Nov 9,2011 and required two fixes: 
-         *  The genome_nuccore_samespecies link is no longer available and  
-            therefore ncbiGenome was updated to use genome_nuccore and 
-            nuccore_nuccore_samespecies_rsgb links
-         *  E-fetch no longer supports retrievals to the Genome database (the first 
-            example in ncbiSubmit was changed to use the nucleotide database).
+changes in version 2.1.3 (2012-02-13)
+	* enaProject was updated to parse new XML format
+        * The Entrez Genome Database was updated by NCBI on Nov 9,2011.  The
+	  new ncbiGenome only returns summaries and a new function ncbiGenomeNuc 
+	  returns linked neighbors.
+	* E-fetch no longer supports retrievals to the Genome database (the first 
+          example in ncbiSubmit was changed to use the nucleotide database).
 
 changes in version 1.99.1 (2011-10-24)
         * added functions to query European Nucleotide Archive (ENA) using a 
           taxonomy name or id (enaTaxonomy, enaSRA, and enaProject)
         * added functions to query ENA using a SRA accession
-           (enaStudy, enaSubmission, enaExperiment, and enaFiles)
+          (enaStudy, enaSubmission, enaExperiment, and enaFiles)
 	* added sra dataset listing all microbial SRA samples from ENA
 	* added ncbiInfo to list NCBI databases and fields. 
         * updated and renamed functions to query specific Entrez databases 
@@ -23,24 +23,24 @@ changes in version 1.99.1 (2011-10-24)
 changes in version 1.9.3 (2011-9-1)
 	* added option to include current date in plotby
 	* added dates to 725 assemblies with missing release dates (these
-	assembles only have a Genbank accession). The dates will be lost 
-	after updating the table.
+	  assembles only have a Genbank accession). The dates will be lost 
+	  after updating the table.
 	* added dataset for complete microbial genomes with release date,
-	revision history date, published date, assembly release date (if
-	available previously as WGS).
+	  revision history date, published date, assembly release date (if
+	  available previously as WGS).
 
 changes in version 1.9.2 (2011-7-14)
 	* updated acc2date to query revision history display in Entrez
-	(girevhist.cgi is no longer available)
+	  (girevhist.cgi is no longer available)
 	* added acc2dateCommon to find earliest relased date from replaced
-	sequences (the "Common revision history link" in defunct
-	girevhist.cgi)
+	  sequences (the "Common revision history link" in defunct
+	  girevhist.cgi)
 	* fixed term2summary to query bioproject instead of old genomeprj
 
 changes in version 1.9.1 (2011-6-7)
 	* removed query using sequencing status in term2summary example
-	 (genome project is being replaced by bioproject and some queries
-	are returning errors) 
+	  (genome project is being replaced by bioproject and some queries
+	  are returning errors) 
 	* fixed abbrev to skip unkwown species
 
 changes in version 1.7.1 (2011-3-15)
@@ -48,64 +48,64 @@ changes in version 1.7.1 (2011-3-15)
 	* added acc2date to retrieve release dates from Revision History. 
 	* added functions to parse month or year from release dates
 	* removed the gold dataset since GOLD is no longer freely
-	available (see email 3/2011 - "we cannot support redistribution in any
-	form"). HMP uses GOLD data so I removed that dataset too.
+	  available (see email 3/2011 - "we cannot support redistribution in any
+	  form"). HMP uses GOLD data so I removed that dataset too.
 	
 changes in version 1.5.6 (2010-10-14)
 
 	* updated biocViews in DESCRIPTION
 	* fixed updatelproks to replace latin characters before removing
-	extra spaces (which caused an error) 
+	  extra spaces (which caused an error) 
 	* set released dates with 2000-1-1 to NA in lproks
 
 changes in version 1.5.4 (2010-8-2)
 
 	* deleted Sweave file about Entrez queries (remote queries were
-	causing frequent errors in package builds)
+	  causing frequent errors in package builds)
 
 changes in version 1.5.3 (2010-7-30)
 
 	* moved sort01 routine before option to limit matrix to 50 rows in
-	image2
+	  image2
 	* fixed term2summary.  Searches in genome projects may return
-	matches but not "genome sequencing" types, so this caused an 
-	unhelpful error message.
+	  matches but not "genome sequencing" types, so this caused an 
+	  unhelpful error message.
 
 changes in version 1.5.2 (2010-5-18)
 
 	* added image2 to plot a matrix
 	* fixed error in plotby.  Previously limited to 10 groups.
 	* fixed update(lproks) after refseq ids were added to all three
-	lproks tabs and genbank accessions were added to in progress tab
+	  lproks tabs and genbank accessions were added to in progress tab
 	* fixed update(virus) after modified date added to table
 
 changes in version 1.5.1 (2010-4-23)
 
 	* removed the wgs dataset.  The lproks table again reports release
-	dates for assembly genomes (no release dates were added between
-	9/15/09 and 4/15/10)
+	  dates for assembly genomes (no release dates were added between
+	  9/15/09 and 4/15/10)
 
 changes in version 1.4.0 (2010-4-13)
 
 	* fixed the main url (eutils.ncbi.. not www.ncbi) and added tool
-	and email options to E-utility scripts (now required by NCBI).
+	  and email options to E-utility scripts (now required by NCBI).
 	* added details to genomes-update about reporting counts of new
-	IDs added and old IDs removed.
+	  IDs added and old IDs removed.
 
 changes in version 1.3.1 (2010-4-11)
 
 	* added print.genomes method to print the first few rows and
-	columns of a genome table (also reordered the datasets so
-	id, name, status, and released is in first 4 columns)
+	  columns of a genome table (also reordered the datasets so
+	  id, name, status, and released is in first 4 columns)
 	* improved messages for updating genomes.  Now the number of new
-	project ids added AND old projects ids removed is reported
+	  project ids added AND old projects ids removed is reported
 	* modified package to import XML package (no longer depends on
-	XML)
+	  XML)
 	* added subset.genomes and [.genomes to extract parts of a genome
-	table (and preserve some genome class attributes and not others)
+	  table (and preserve some genome class attributes and not others)
 	* added latin2char function to replace a few latin characters in
-	NCBI tables with ASCII. Now R CMD check runs without the "Portable
-	packages use only ASCII characters in their datasets" warning
+	  NCBI tables with ASCII. Now R CMD check runs without the "Portable
+	  packages use only ASCII characters in their datasets" warning
 	* added new summary methods for tables without status column
 
 version 1.3.0 uploaded to BioConductor for review (2010-2-19)

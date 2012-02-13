@@ -1,11 +1,11 @@
-\name{ncbiGenome}
+\name{ncbiGenomeNuc}
 \Rdversion{1.1}
-\alias{ncbiGenome}
-\title{  NCBI Genome Database  }
-\description{  Search Entrez Genome at NCBI and retrieve genome sequences
+\alias{ncbiGenomeNuc}
+\title{ NCBI Genome links to the Nucleotide database}
+\description{  Search Entrez Genome at NCBI and retrieves linked genomes
   in the Nucleotide database }
 \usage{
-ncbiGenome(term, refseq=FALSE, fulltable = FALSE)
+ncbiGenomeNuc(term, refseq=FALSE, fulltable = FALSE)
 }
 \arguments{
   \item{term}{ Any valid combination of Entrez search terms }
@@ -22,15 +22,15 @@ nuccore_nuccore_samespecies_rsgb (Other INSDC Genome Sequences). }
   \url{http://eutils.ncbi.nlm.nih.gov/}. }
 \author{ Chris Stubben }
 \note{ The script was updated after the new Entrez Genome release on November 9, 2011. See 
-url{http://www.ncbi.nlm.nih.gov/About/news/17Nov2011.html} for details.
+\url{http://www.ncbi.nlm.nih.gov/About/news/17Nov2011.html} for details.
 
 }
 
 %\seealso{    }
 
 \examples{
- ncbiGenome('Nipah virus[orgn]')
- ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
+ ncbiGenomeNuc('Nipah virus[orgn]')
+ ncbiGenomeNuc('Nipah virus[orgn]', refseq=TRUE)
 }
 
 \keyword{ methods }

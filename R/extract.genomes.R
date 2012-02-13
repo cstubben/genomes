@@ -1,6 +1,6 @@
 "[.genomes" <- function(x, i, j, drop)
 {
-   ## usee [.data.frame (next class after genomes)
+   ## use [.data.frame (next class after genomes)
    y <- NextMethod("[")
    
    ## check if this is still a genomes dataframe...

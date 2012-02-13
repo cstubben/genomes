@@ -1,4 +1,4 @@
-ncbiGenome<-function(term, refseq = FALSE, fulltable = FALSE)
+ncbiGenomeNuc<-function(term, refseq = FALSE, fulltable = FALSE)
 {
    db  <- "genome"
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"

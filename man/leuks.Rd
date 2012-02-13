@@ -31,7 +31,9 @@
     \item{\code{ftp}}{ comma-separated list of ftps}
   }
 }
-% \details{  }
+\details{ 
+This table is no longer supported by NCBI.  See \url{http://www.ncbi.nlm.nih.gov/About/news/17Nov2011.html} for details.
+ }
 \source{
   downloaded from Entrez genome project at \url{http://www.ncbi.nlm.nih.gov/genomes/leuks.cgi}
 }

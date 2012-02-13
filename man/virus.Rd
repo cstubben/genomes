@@ -30,8 +30,8 @@ Please refer to the Viral genomes page at NCBI
 \url{http://www.ncbi.nlm.nih.gov/genomes/GenomesHome.cgi?taxid=10239&hopt=aboutsite}
 for details on Reference genomes.  One Reference genome is selected
 per viral species and other strains are linked as Genome Neighbors
-(other complete sequences for the species).  See the \code{neighbor} option in the
-\code{\link{ncbiGenome}} function to get a list of Genome
+(other complete sequences for the species).  See the
+\code{\link{ncbiGenomeNuc}} function to get a list of Genome
 neighbors.
 
 Summing the number of segments in this table should return the total
@@ -53,8 +53,8 @@ sum(virus$segments)
 # some neighbors repeat (others are missing)
 subset(virus, name \%like\% 'Dengue*')
 subset(virus, name \%like\% 'Monkey*')
-# list neighbors 
-ncbiGenome("Monkeypox virus[orgn]")
+# list linked neighbors
+ncbiGenomeNuc("Monkeypox virus[orgn]")
 
 ## most common phages
 table2(species(grep("phage", virus$name, value=TRUE)))

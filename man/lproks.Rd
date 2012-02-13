@@ -56,11 +56,13 @@ the Organism Info tab.  A few manual updates were also added:
  genomes with assembly released dates were corrected (see \code{\link{complete}}), 
  and genome size outliers were removed.
 
-
 The \code{update(genomes)} function downloads a recent copy of the
 table from NCBI.  The number of new project IDs are reported as well
 as the number of project IDs removed (which are typically Assembly
-genomes that are now available as a Complete sequence).    }
+genomes that are now available as a Complete sequence).  
+
+This table is no longer supported by NCBI.  See \url{http://www.ncbi.nlm.nih.gov/About/news/17Nov2011.html} for details.
+  }
 
 \source{
  downloaded from \url{http://www.ncbi.nlm.nih.gov/genomes/lproks.cgi}

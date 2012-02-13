@@ -22,7 +22,7 @@
     \item{\code{traces}}{ has traces }
   }
 }
-%\details{  }
+\details{ This table is no longer supported by NCBI.  See \url{http://www.ncbi.nlm.nih.gov/About/news/17Nov2011.html} for details. }
 \source{
   downloaded from \url{http://www.ncbi.nlm.nih.gov/genomes/lenvs.cgi} 
 }

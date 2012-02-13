@@ -17,52 +17,43 @@ enaProject <-function(tax, limit =1000, refseq=TRUE)
    } else{
       doc <- xmlParse(x)
       ###   CREATE LOOP
-      z <- getNodeSet(doc, "//Project")
+      z <- getNodeSet(doc, "//PROJECT")
       n <- length(z)
+      print(paste( "Matches", n, "projects"))
       prj <- vector("list", n)
       for (i in 1:n) {
          z2  <- xmlDoc(z[[i]])
-         pid      <- as.numeric( xvalue(z2, "//ProjectID") )
-         taxid      <- as.numeric( xvalue(z2, "//TaxID") )
-         name     <- xvalue(z2, "//Submission/OrganismName")
-         # strain <- xvalue(z2, "//Submission/Strain")
-         locus      <- xvalue(z2, "//Submission/LTP")
-         type     <- xvalue(z2, "//Submission/Type")
-         method   <- xvalue(z2, "//Submission/Method")
-         submitted    <- xvalue(z2, "//Submission/Date")
-          if(!is.na(submitted)){ submitted <- as.Date(substr(submitted, 1,10), "%m/%d/%Y") }
-         center <- xvalue(z2,  "//Submission/Submittor" )
-         #center   <- xvalue(z2, "//Center/Name")
-         model <- xvalue(z2, "//Submission/SeqTechno")
-         depth<- xvalue(z2, "//Submission/SequenceDepth")
-         annotated <- xvalue(z2, "//Submission/Annotated")
-       
-         habitat  <- xvalue(z2, "//Description/Habitat")
-         pathogen <- xvalue(z2, "//Description/Pathogen")
-         defline  <- xvalue(z2, "//DefLine")
-         size     <- xvalue(z2, "//GenomeSize")         
-         replicons<- xpathSApply(z2, "//Chromosomes/ChrType", xmlValue)
-         chr      <-sum(replicons == "eChromosome")
-         # plasmid  <-sum(replicons == "ePlasmid")
-         orgnl      <-sum(replicons %in% c("ePlasmid", "eMitochondrial") )
-         wgs      <-sum(replicons == "eWGS")
 
+         pid <- xtags(z2, "//PROJECT_ATTRIBUTE", "TAG", "VALUE" ,"PROJECT-ID")
+         ## SUBMISSION _PROJECT
+         taxid     <- as.numeric(xvalue(z2, "//TAXON_ID"))
+         name      <- xvalue(z2, "//SCIENTIFIC_NAME")
+         locus     <- xvalue(z2, "//LOCUS_TAG_PREFIX")
+         scope     <- xattr(z2, "//SUBMISSION_PROJECT", "scope")
+         material  <- xattr(z2, "//SUBMISSION_PROJECT", "material")    
+         selection <- xattr(z2, "//SUBMISSION_PROJECT", "selection")    
+         ## PROJECT
+         project     <- xvalue(z2, "//PROJECT/NAME")      # same as scientific name?
+         title       <- xvalue(z2, "//PROJECT/TITLE")
+         description <- xvalue(z2, "//PROJECT/DESCRIPTION")
+         description <- gsub("<[^>]*>", "", description)  # remove html tags 
+         accession   <- xattr(z2, "//PROJECT", "accession")
+         released    <- xattr(z2, "//PROJECT", "first_public")
+          if(released=="") released<-NA
+         released    <- as.Date(substr(released, 1, 10))
+         center      <- xattr(z2, "//PROJECT", "center_name")
 
-           ## check replicons types?
-         if(length(replicons) != chr+orgnl+wgs){print(paste("WARNING: new ChrType:", unique(replicons)))}
-         # remove "e"
-         type <- gsub("^e", "", type)
-          method <- gsub("^e", "", method)
-          model <- gsub("^e", "", model)
-
-
-         prj[[i]] <- data.frame(pid, taxid, name, defline, submitted,   type, method, model, depth, annotated, center, locus, habitat, pathogen, size, wgs, chr, orgnl, stringsAsFactors = FALSE)
+         prj[[i]] <- data.frame(pid, name, released, locus, 
+                scope, material, selection, taxid, 
+                project, title, accession, center, description, stringsAsFactors = FALSE)
          free(z2)
       }
       prj <- do.call("rbind", prj)
-      if(!refseq) { prj <- subset(prj, type!="RefSeq")}
-      prj <- prj[order(prj$name, prj$type),]
+      prj <- prj[order(prj$name ), ]
       rownames(prj) <- NULL
+       class(prj)<-c("genomes", "data.frame")
+       ## save date 
+       attr(prj, "date")   <- Sys.Date()
       prj
    }  
 }

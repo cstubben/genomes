@@ -46,10 +46,12 @@ ncbiProject<-function(term, refseq=TRUE )
            x <- subset(x, x$project_type=="Primary submission" )
            # SKIP RefSeq genomes 
            x <- subset(x, x$project_data_type!="RefSeq Genome" )
-           x <- x[order(x$name),]
+           
            print(paste( "Keeping", nrow(x), "primary submissions (excluding RefSeq)"))
-           rownames(x)<-NULL
+           
          }
+         x <- x[order(x$name),]
+         rownames(x)<-NULL
          class(x)<-c("genomes", "data.frame")
          ## save date 
          attr(x, "date")   <- Sys.Date()

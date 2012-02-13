@@ -1,8 +1,8 @@
 Package: genomes
 Type: Package
 Title: Genome sequencing project metadata
-Version: 2.1.2
-Date: 2011-11-29
+Version: 2.1.3
+Date: 2012-2-13
 Author: Chris Stubben
 Maintainer: Chris Stubben <stubben@lanl.gov>
 License: Artistic-2.0
