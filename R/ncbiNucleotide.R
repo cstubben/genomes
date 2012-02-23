@@ -1,4 +1,4 @@
-ncbiNucleotide<-function(term, fulltable = FALSE)
+ncbiNucleotide<-function(term, fulltable = FALSE, verbose=TRUE, sort=TRUE)
 {
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
    db  <- "nuccore"
@@ -16,7 +16,7 @@ ncbiNucleotide<-function(term, fulltable = FALSE)
    x <- unlist( strsplit( gp[3], "<[^>]*>" ))
    x <- x[x != ""]
    if (!x[1] > 0) { stop("No matches to ", term, " found") }
-   print(paste( "Matches", x[1], "sequences"))
+   if(verbose)  print(paste( "Matches", x[1], "sequences"))
 
    ## E-summary
    esum <- paste(url, "esummary.fcgi?db=", db, "&query_key=", 
@@ -49,7 +49,7 @@ ncbiNucleotide<-function(term, fulltable = FALSE)
    #6  columns?  acc, name, released, size, taxid, and gi
    if (!fulltable) {   x2 <- x2[, 1:6]  } 
 
-   x2<-x2[ order(x2$name), ]
+   if(sort) x2<-x2[ order(x2$name), ]
 
    rownames(x2) <- 1:nrow(x2)
    ##  add class

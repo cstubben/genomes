@@ -24,9 +24,9 @@ enaSubmission("ERA000746")
 # enaSubmission("SRA000600-SRA000610")
 
 # chimps
-pan<-enaSRA(9596) 
-head(pan)
-enaSubmission(pan$submission)
+#pan<-enaSRA(9596) 
+#head(pan)
+#enaSubmission(pan$submission)
 
 }
 \keyword{ methods }

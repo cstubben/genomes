@@ -19,7 +19,13 @@ ncbiSubmit<-function(term, db="nuccore", retmax=1000)
    # limit records??  or USE an efetch loop
    if(as.numeric(x[1]) > retmax){print(paste("WARNING: More records found than retmax value. Only first", 
                                                 retmax, "of", as.numeric(x[1]), "records will be downloaded"))}
-   efetch <- paste(url, "efetch.fcgi?db=", db, "&retmax=", retmax, "&rettype=gb&seq_start=1&seq_stop=60&query_key=",  x[4], "&WebEnv=", x[5], sep = "")
+#   efetch <- paste(url, "efetch.fcgi?db=", db, "&retmax=", retmax, "&rettype=gb&seq_start=1&seq_stop=60&query_key=",  x[4], "&WebEnv=", x[5], sep = "")
+# Feb 17, 2012 - new Efetch changes - XML is now default which cause error
+    efetch <- paste(url, "efetch.fcgi?db=", db, "&retmax=", retmax, 
+                     "&rettype=gb&retmode=text&seq_start=1&seq_stop=60&query_key=",  
+                      x[4], "&WebEnv=", x[5], sep = "")
+ 
+
    gb <- readLines(efetch)
    n <- c( grep("^LOCUS", gb), length(gb) )
 

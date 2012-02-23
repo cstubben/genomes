@@ -3,11 +3,13 @@
 \title{ NCBI Nucleotide database }
 \description{  Search Entrez Nucleotide at NCBI and retrieve summary tables }
 \usage{
-ncbiNucleotide(term, fulltable = FALSE)
+ncbiNucleotide(term, fulltable = FALSE, verbose = TRUE, sort = TRUE)
 }
 \arguments{
   \item{term}{ Any valid combination of Entrez search terms or a vector of accessions numbers }
   \item{fulltable}{ Return all summary fields }
+  \item{verbose}{ Print comments }
+  \item{sort}{ Sort by taxonomy name }
 }
 \details{ Returns a summary from Entrez Nucleotide.  }
 \value{ A genomes data frame with acc, name, released, taxid, size and gi.  }

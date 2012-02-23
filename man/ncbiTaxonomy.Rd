@@ -29,8 +29,8 @@ ncbiTaxonomy("cellular organisms[Next Level]")
 # new Hantavirus species in 2011
 ncbiTaxonomy("Hantavirus[subtree] AND 2011[date] AND species[rank]") 
 # difference between summary and lineage (Efetch) results
-ncbiTaxonomy (1000587)
-ncbiTaxonomy (1000587, "lineage")
+#ncbiTaxonomy (1000587)
+#ncbiTaxonomy (1000587, "lineage")
 
 
 }
