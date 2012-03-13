@@ -5,6 +5,7 @@
 \alias{[.genomes}
 \alias{latin2char}
 \alias{tax2id}
+\alias{top}
 \alias{updatelenvs}
 \alias{updateleuks}
 \alias{updatelproks}

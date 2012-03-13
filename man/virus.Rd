@@ -31,7 +31,7 @@ Please refer to the Viral genomes page at NCBI
 for details on Reference genomes.  One Reference genome is selected
 per viral species and other strains are linked as Genome Neighbors
 (other complete sequences for the species).  See the
-\code{\link{ncbiGenomeNuc}} function to get a list of Genome
+\code{\link{ncbiGenome}} function to get a list of Genome
 neighbors.
 
 Summing the number of segments in this table should return the total
@@ -54,7 +54,7 @@ sum(virus$segments)
 subset(virus, name \%like\% 'Dengue*')
 subset(virus, name \%like\% 'Monkey*')
 # list linked neighbors
-ncbiGenomeNuc("Monkeypox virus[orgn]")
+# ncbiGenome("Monkeypox virus[orgn]")
 
 ## most common phages
 table2(species(grep("phage", virus$name, value=TRUE)))

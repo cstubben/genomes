@@ -7,7 +7,7 @@
 
 }
 \usage{
-ncbiProject(term, refseq = TRUE)
+ncbiProject(term, refseq = FALSE)
 }
 \arguments{
   \item{term}{ any valid combination of Entrez search terms  }
@@ -28,11 +28,12 @@ Searches the new BioProject database using the ESearch utility
 \seealso{ \code{\link{ncbiGenome}}  }
 
 \examples{
+\dontrun{
 #ncbiProject("Pan[ORGN]")
-x <- ncbiProject("Yersinia[ORGN]", refseq=FALSE)
+x <- ncbiProject("Yersinia[ORGN]")
 x
 t(x[2,])  #second row
 summary(x)
 }
-
+}
 \keyword{ methods}

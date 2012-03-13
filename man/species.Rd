@@ -31,12 +31,12 @@ species("Bacillus anthracis Ames", abbrev=TRUE)
 species("Bacillus anthracis Ames", epithet=TRUE)
 data(lproks)
 x <- table2(species(lproks$name))[1:10,]
-dotplot(rev(x), xlab="Genomes")
+dotchart(rev(x), xlab="Genomes", pch=16)
 ## abbreviate genus name
 x <- subset(lproks, name \%like\% 'Bacillus*')
 x <- table2(species(x$name))[1:10, ]
 names(x) <- species(names(x), TRUE)
-dotplot(rev(x), xlab=expression(italic(Bacillus) ~ genomes))
+dotchart(rev(x), xlab=expression(italic(Bacillus) ~ genomes), pch=16)
 
 }
 

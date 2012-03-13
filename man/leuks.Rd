@@ -45,7 +45,7 @@ leuks
 t(leuks[1,])
 plot(leuks)
 summary(leuks)
-dotplot(sort(table(leuks$subgroup)), pch=16, xlab="Genome projects")
+dotchart(sort(table(leuks$subgroup)), pch=16, xlab="Genome projects")
 
 }
 \keyword{datasets}

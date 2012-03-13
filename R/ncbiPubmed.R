@@ -1,39 +1,15 @@
 ncbiPubmed<-function(term)
 { 
-   url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
-   # use EPost if term is a numeric vector 
-   if (is.numeric(term) & length(term) > 1) {   
-       epost <- paste(url, "epost.fcgi?&db=pubmed&id=", paste(term, collapse=","),sep="" )
-       gp <- readLines(epost)
-   } else{ 
-       if(length(term) >1) term  <- paste(term, collapse = " OR ")
-       esearch <- paste(url, "esearch.fcgi?db=pubmed&retmax=1&usehistory=y&term=",  gsub(" ", "%20", term ) , sep = "")
-       gp <- readLines(esearch) 
-   }
-   # CHECK FOR errors
-   connecterror <- grepl("ERROR", gp)
-   if (any(connecterror)) {
-        # R CMD check on bioconductor may fail if using stop() 
-        print(paste("Error connecting to NCBI ", gp[connecterror]))
-   #-----------------------------------------------------------------------
-   # PARSE Query key and web env
-   }else{
-      # EPost returns query key in line 4 and web env in line 5
-      if (length(term) > 1) {
-          x<-gsub("<[^>]*>", "", gp)
-          x <- gsub("\t", "", x)
-      }else{
-           # Esearch returns all results on line 3.  Parse into 5 fields: count, retmax, retstart, querykey, webenv
-           x <- unlist( strsplit( gp[3], "<[^>]*>" ))
-           x <- x[x != ""]
-           if (!x[1] > 0) { stop("No matches to ", term, " found") }
-      }
-      #-------------------------------------------------------------------
+   if(length(term) > 1){ term  <- paste(term, collapse = ",") }  
 
-      efetch <- paste(url, "efetch.fcgi?db=pubmed&retmode=xml&retmax=1000&query_key=", 
-              x[4], "&WebEnv=", x[5], sep = "")
-      gp  <- readLines(efetch) 
-      doc <- xmlParse(gp)  
+   # CHECK if IDs (and skip esearch)
+   if( grepl("^[0-9, ]*$", term)){
+     x <- efetch(term, "pubmed", retmode="xml")
+   }else{
+     x <- efetch(esearch(term, "pubmed") , retmode="xml" )
+   }
+
+      doc <- xmlParse(x)  
       z<- getNodeSet(doc, "//PubmedArticle")
       n<-length(z)
       if(n==0){stop("No results found")} 
@@ -71,5 +47,4 @@ ncbiPubmed<-function(term)
           free(z2)
       }
       do.call("rbind", pubs)
-   }
 }

@@ -28,7 +28,7 @@ A vector of genus names
 genus("Bacillus anthracis Ames")
 data(lproks)
 x <- table2(genus(lproks$name))[1:10,]
-dotplot(rev(x), xlab="Genomes")
+dotchart(rev(x), xlab="Genomes", pch=16)
 }
 
 \keyword{ methods }

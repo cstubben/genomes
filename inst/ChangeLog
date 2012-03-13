@@ -1,3 +1,13 @@
+changes in version 2.1.4 (2012-03-13)
+	* added 5 new E-utility scripts (einfo, esearch, esummary, efetch and elink)
+        * updated ncbi* functions to use new e-utility functions
+	* added \dontrun{} for all e-utility examples - R CMD check always exits with 
+	  an error for some reason
+	* dropped required lattice package
+	* updated package datasets - note that leuks, lenvs and lproks (assemblies) 
+	  are no longer supported (no updates since Aug 2011). The new genome tables 
+	  at www.ncbi.nlm.nih.gov/genome/browse will be included in future releases.
+
 changes in version 2.1.3 (2012-02-13)
 	* enaProject was updated to parse new XML format
         * The Entrez Genome Database was updated by NCBI on Nov 9,2011.  The

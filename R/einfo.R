@@ -1,4 +1,4 @@
-ncbiInfo<-function(db, list="field")
+einfo<-function(db, links=FALSE)
 {
    url <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi"
    if(missing(db)){
@@ -12,11 +12,11 @@ ncbiInfo<-function(db, list="field")
         print(paste("Can not retrieve DbInfo for db=", db, sep=""))
      }else{
         doc <-  xmlParse(x) 
-        # Field List or Link List...
-        if( list=="field"){
-          z <- getNodeSet(doc, "//FieldList/Field")
-        } else{
+        # Link List or Field List...
+        if( links ){
           z <- getNodeSet(doc, "//LinkList/Link")
+        } else{
+          z <- getNodeSet(doc, "//FieldList/Field")
         }
         x <- sapply(z, function(x) xmlSApply(x, xmlValue))
         x <- data.frame(t(x), stringsAsFactors = FALSE)

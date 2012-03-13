@@ -14,8 +14,7 @@ ncbiPubmed(term)
   \item{term}{ Any valid combination of Entrez search terms or a vector of pubmed IDs}
 }
 \details{
-  The function uses either Epost (for numeric pubmed IDs) or Esearch to query 
- the PubMed database and then parses the XML summary to return a short citation
+  The function searches the PubMed database and parses the efetch XML summary to return a short citation
 }
 \value{
 A data.frame with 9 columns

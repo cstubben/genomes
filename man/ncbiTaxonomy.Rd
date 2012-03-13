@@ -1,37 +1,38 @@
 \name{ncbiTaxonomy}
 \alias{ncbiTaxonomy}
 \title{  NCBI taxonomy database  }
-\description{ Search the Entrez taxonomy database at NCBI 
- and return summaries using Esummary or Efetch
+\description{ Search the Entrez taxonomy database at NCBI
 }
 \usage{
-ncbiTaxonomy(term, results = "summary", full = FALSE)
+ncbiTaxonomy(term, summary=TRUE)
 }
 \arguments{
-  \item{term}{ either a valid Entrez search term or a vector of taxonomy IDs (passed to Epost) or names (joined using OR)  }
-  \item{results}{ return a summary using Esummary (default) or lineage using Efetch}
-  \item{full}{ return all 14 Esummary fields, default is 9 }
+  \item{term}{ either a valid Entrez search term or a vector of taxonomy Ids or names  }
+  \item{summary }{ return results using Esummary (default) or Efetch}
 }
-\details{ The function uses either Epost (for numeric taxonomy IDs)
-or Esearch to query the taxonomy database and then passes the results to
-either Esummary or Efetch. Esummary returns the id, name, rank, division
-and number of linked records in various Entrez databses.  Efetch returns the id, name,
-rank, lineage and date.
+\details{
+This function uses either Esummary or Efetch to return taxonomy data from NCBI.  The Efetch XML 
+include parent ids and lineage tags not found in Esummary XML.  The term may be also be a vector 
+of taxonomy Ids (joined using a comma) or taxonomy names (joined using "OR").  
  }
 \value{ a data.frame }
 \references{ NCBI taxonomy database \url{http://www.ncbi.nlm.nih.gov/sites/entrez?db=taxonomy}  }
 \author{ Chris Stubben }
 %\note{ }
 
-\seealso{ \code{\link{ncbiInfo}} for a list of fields in the taxonomy database }
-\examples{
-ncbiTaxonomy("cellular organisms[Next Level]")  
-# new Hantavirus species in 2011
-ncbiTaxonomy("Hantavirus[subtree] AND 2011[date] AND species[rank]") 
-# difference between summary and lineage (Efetch) results
-#ncbiTaxonomy (1000587)
-#ncbiTaxonomy (1000587, "lineage")
+\seealso{ \code{\link{einfo}} for a list of fields in the taxonomy database.  }
 
+\examples{
+\dontrun{
+ncbiTaxonomy(c("Bacillus anthracis", "Yersinia pestis"))
+ncbiTaxonomy("cellular organisms[Next Level]")  
+# new Hantavirus species added in 2012
+ncbiTaxonomy("Hantavirus[subtree] AND 2012[date] AND species[rank]") 
+# efetch results
+ncbiTaxonomy (1145238, FALSE)
+# can also use Lineage field
+ncbiTaxonomy("Necocli virus[Lineage]")
+}
 
 }
 \keyword{ methods }
