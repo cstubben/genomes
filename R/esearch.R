@@ -34,7 +34,7 @@ esearch <-function(term, db="pubmed", usehistory="y", parse=TRUE, verbose=TRUE, 
               }
                 query <- xvalue(gp, "//QueryKey")
                 web   <- xvalue(gp, "//WebEnv")
-                y <- data.frame( db= db, results=count,  query_key = query, WebEnv = web)
+                y <- data.frame( db= db, results=count,  query_key = query, WebEnv = web, stringsAsFactors=FALSE)
                 class(y) <- c("EntrezHistory", "data.frame")
                 y
             # or id list

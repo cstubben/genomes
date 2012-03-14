@@ -30,11 +30,12 @@ A data frame listing the accession, release date, and whether replaced sequences
 %% \seealso{  \code{\link{ }}  }
 
 \examples{
-
+\dontrun{
 #Yersinia pestis - 1 chromosome and 3 plasmids
 ncbiRelease("AL590842,AL117189,AL109969,AL117211")
 # or skip common revision history
 ncbiRelease("AL590842", common=FALSE)
+}
 # Protein acc
 ncbiRelease("CAA21395", db="protein")
 

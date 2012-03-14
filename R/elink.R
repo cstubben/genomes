@@ -32,7 +32,7 @@ elink <-function(id, cmd="neighbor_history", parse=TRUE, ...)
                web <- xvalue(gp, "//WebEnv")
                dbto <- xvalue(gp, "//DbTo")
                linkname <- xvalue(gp, "//LinkName")
-               y <- data.frame( db= dbto, link=linkname, query_key = query, WebEnv = web)
+               y <- data.frame( db= dbto, link=linkname, query_key = query, WebEnv = web, stringsAsFactors=FALSE)
                class(y) <- c("EntrezHistory", "data.frame")
                y
             }

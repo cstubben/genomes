@@ -6,6 +6,7 @@ efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, ...
    if(class(id)[1]=="EntrezHistory"){
       # is db always the same as ESearch db?
       opts<-c(db=id$db, query_key = id$query_key, WebEnv = id$WebEnv)
+      
    }else{
       id <- gsub(" ", "", id) # remove spaces
       if(is.vector(id)) id<-paste(id, collapse=",")
@@ -16,6 +17,8 @@ efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, ...
    if( any(duplicated(names(opts)))){ stop("Duplicated keys are not allowed in url strings")}
    fetch <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
    fetch <- paste(fetch, opts, sep = "?")
+   # print(fetch)
+
    # if retmode=xml-  will complain about  incomplete final line - use getURL 
    gp <- readLines(fetch)
    gp

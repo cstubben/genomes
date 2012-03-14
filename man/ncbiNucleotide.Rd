@@ -18,14 +18,14 @@ ncbiNucleotide(term)
 
 \seealso{ \code{\link{ncbiGenome}} }
 \examples{
-\dontrun{
+
 ncbiNucleotide("AL117189,AL109969,AL117211")[,1:6]
 # Exclude Patents and Refseq 
 marb <- ncbiNucleotide( "Marburgvirus[ORGN] NOT gbdiv_pat[PROP] NOT srcdb_refseq[PROP]")
 marb
 # two peaks in size distribution (partial and complete sequences)
 hist(marb$size, col="blue", br=30, main="Marburg virus sequences", xlab="Length (bp)")
-}
+
 
 }
 \keyword{ methods}

@@ -21,7 +21,7 @@ elink(id, cmd = "neighbor_history", parse = TRUE, ...)
 %\note{ }
 % \seealso{}
 \examples{
-\dontrun{
+
 elink("15718680,157427902", dbfrom="protein", db="gene")
 elink("15718680,157427902", dbfrom="protein", db="gene", cmd="neighbor")
 # list linknames
@@ -31,6 +31,6 @@ x <- esearch("Nipah virus", "genome")
 esummary( elink(x, db="nuccore"))
 # Link to other genomes
 esummary( elink(x, db="nuccore", linkname="genome_nuccore_samespecies"))
-}
+
 }
 \keyword{ methods }

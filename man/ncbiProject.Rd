@@ -28,12 +28,12 @@ Searches the new BioProject database using the ESearch utility
 \seealso{ \code{\link{ncbiGenome}}  }
 
 \examples{
-\dontrun{
+
 #ncbiProject("Pan[ORGN]")
 x <- ncbiProject("Yersinia[ORGN]")
 x
 t(x[2,])  #second row
 summary(x)
-}
+
 }
 \keyword{ methods}

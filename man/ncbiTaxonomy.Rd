@@ -23,7 +23,7 @@ of taxonomy Ids (joined using a comma) or taxonomy names (joined using "OR").
 \seealso{ \code{\link{einfo}} for a list of fields in the taxonomy database.  }
 
 \examples{
-\dontrun{
+
 ncbiTaxonomy(c("Bacillus anthracis", "Yersinia pestis"))
 ncbiTaxonomy("cellular organisms[Next Level]")  
 # new Hantavirus species added in 2012
@@ -32,7 +32,7 @@ ncbiTaxonomy("Hantavirus[subtree] AND 2012[date] AND species[rank]")
 ncbiTaxonomy (1145238, FALSE)
 # can also use Lineage field
 ncbiTaxonomy("Necocli virus[Lineage]")
-}
+
 
 }
 \keyword{ methods }

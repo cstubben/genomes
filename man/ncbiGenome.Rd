@@ -27,10 +27,10 @@ duplicate RefSeq from results).  }
 %\seealso{    }
 
 \examples{
-\dontrun{
+
  ncbiGenome('Nipah virus[orgn]')
  ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
-}
+
 }
 
 \keyword{ methods }
