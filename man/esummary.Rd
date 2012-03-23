@@ -1,7 +1,7 @@
 \name{esummary}
 \alias{esummary}
 \title{ Entrez database summaries }
-\description{  Summaries of entrez database records at NCBI  }
+\description{ Summaries of Entrez database records at NCBI  }
 \usage{
 esummary(id, db = "pubmed", parse = TRUE, ...)
 }
@@ -13,7 +13,7 @@ esummary(id, db = "pubmed", parse = TRUE, ...)
 }
 %\details{  }
 \value{  A data.frame or XML results if parse=FALSE }
-\references{ \url{ http://www.ncbi.nlm.nih.gov/books/NBK25499 } }
+\references{ \url{http://www.ncbi.nlm.nih.gov/books/NBK25499} }
 \author{ Chris Stubben }
 \note{ If EntrezHistory results are the input, then the database listed in that object is used. 
   If using a vector of Ids, the database option must be included.  Also, do not pass more than 200 Ids 
@@ -28,6 +28,8 @@ esummary(id, db = "pubmed", parse = TRUE, ...)
 \examples{
 
 # BioC articles published in the last year
+# use entrez search field or esearch reldate key
+# bioconductor[TITLE] AND 2012[Date - Publication]
 x <- esearch("bioconductor[TITLE]", reldate=360)
 y <- esummary(x, version="2.0")
 y[, c(1, 42, 6, 3, 8, 10)]

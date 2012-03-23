@@ -25,7 +25,7 @@ for searching by Primary Acession.
 The default EntrezHistory object may be passed directly to the other E-utilities.
 }
 \references{
- \url{ http://www.ncbi.nlm.nih.gov/books/NBK25499 }
+ \url{http://www.ncbi.nlm.nih.gov/books/NBK25499}
 }
 \author{ Chris Stubben }
 % \note{ }

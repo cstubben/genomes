@@ -11,7 +11,7 @@ enaSRA(tax, limit = 5000)
 }
 \details{ Searches the sra_sample data from the taxonomy portal at ENA. }
 \value{ a data.frame listing SRA samples }
-\references{ \url{ http://www.ebi.ac.uk/ena/about/browser#taxonomy_portal_options } }
+\references{ \url{http://www.ebi.ac.uk/ena/about/browser#taxonomy_portal_options} }
 \author{ Chris Stubben }
 \note{ URL strings at ENA require a taxonomy ID, so searching by name 
 uses a \code{\link{ncbiTaxonomy}} ID lookup. }

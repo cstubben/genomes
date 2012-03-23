@@ -10,15 +10,15 @@ elink(id, cmd = "neighbor_history", parse = TRUE, ...)
   \item{cmd}{ Command mode }
   \item{parse}{  Parse results into an EntrezHistory object (default) or 
       vector of linked Ids (if cmd="neighbor").  All other cmd options return XML }
-  \item{\dots}{ Other key-value pairs passed to the elink url string }
+  \item{\dots}{ Other key-value pairs such as dbfrom, db, linkname  passed to the elink url string }
 }
-\details{ See \code{\link{einfo} to find available links } }
+\details{ See \code{\link{einfo}} to find available links  }
 
 \value{ Same as \code{\link{esearch}} }
 
-\references{\url{ http://www.ncbi.nlm.nih.gov/books/NBK25499 } }
+\references{\url{http://www.ncbi.nlm.nih.gov/books/NBK25499} }
 \author{ Chris Stubben}
-%\note{ }
+\note{If EntrezHistory results are the input, then the database listed in that object is used as the \code{dbfrom} key. }
 % \seealso{}
 \examples{
 
@@ -27,9 +27,12 @@ elink("15718680,157427902", dbfrom="protein", db="gene", cmd="neighbor")
 # list linknames
 einfo("genome", TRUE)[, 1:2]
 x <- esearch("Nipah virus", "genome")
-# genome_nuccore is default link. Links to reference AND genbank sequence the reference was derived from
-esummary( elink(x, db="nuccore"))
-# Link to other genomes
+# dbfrom is set to "genome" and default link is "genome_nuccore"  
+y <- elink(x, db="nuccore")
+y
+# Links to reference AND genbank sequence the reference was derived from
+esummary(y)
+# OR link to Other genomes for Species
 esummary( elink(x, db="nuccore", linkname="genome_nuccore_samespecies"))
 
 }

@@ -1,3 +1,7 @@
+changes in version 2.1.5 (2012-03-23)
+	* added stop() to esearch and elink if no results found - needed if 
+          nesting functions like esummary(esearch())
+
 changes in version 2.1.4 (2012-03-13)
 	* added 5 new E-utility scripts (einfo, esearch, esummary, efetch and elink)
         * updated ncbi* functions to use new e-utility functions

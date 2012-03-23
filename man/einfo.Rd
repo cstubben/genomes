@@ -14,7 +14,7 @@ einfo(db, links=FALSE)
 \details{ Runs Einfo and parses XML results }
 \value{ A data.frame listing databases, fields, or links }
 \references{
- \url{ http://www.ncbi.nlm.nih.gov/books/NBK25499 }
+ \url{http://www.ncbi.nlm.nih.gov/books/NBK25499 }
 }
 \author{ Chris Stubben }
 % \note{ }

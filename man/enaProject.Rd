@@ -12,7 +12,7 @@ enaProject(tax, limit = 1000, refseq = TRUE)
 }
 \details{Searches the project data from the taxonomy portal at ENA. }
 \value{ a data.frame listing projects and submission details }
-\references{ \url{ http://www.ebi.ac.uk/ena/about/browser#taxonomy_portal_options } }
+\references{ \url{http://www.ebi.ac.uk/ena/about/browser#taxonomy_portal_options} }
 \author{ Chris Stubben }
 \note{ URL strings at ENA require a taxonomy ID, so searching by name 
 uses a \code{\link{ncbiTaxonomy}} ID lookup at NCBI. 

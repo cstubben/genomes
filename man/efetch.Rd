@@ -9,17 +9,17 @@ efetch(id, db = "pubmed", rettype = "", retmode = "text", seq_stop = 700, ...)
 \arguments{
   \item{id}{ An EntrezHistory object or vector of Ids }
   \item{db}{An Entrez database, default pubmed }
-  \item{rettype}{Retrieval type, see Table 1 for details  }
-  \item{retmode}{Retrieval mode, see Table 1 for details  }
+  \item{rettype}{Retrieval type, see note for details  }
+  \item{retmode}{Retrieval mode, see note for details  }
   \item{seq_stop}{ Last sequence base to retrieve.  The stop is set low to avoid 
      unintentional downloads of large sequences.  Set to NA or an empty string to download the entire sequence.}
   \item{\dots}{ Other key-value pairs passed to the efetch url string }
 }
 %\details{ }
-\value{ A character vector with the number of lines read for the given retrieval type and mode. }
-\references{ Table 1 \url{ http://www.ncbi.nlm.nih.gov/books/NBK25499 } }
+\value{ A character vector for the given retrieval type and mode. }
+\references{ \url{http://www.ncbi.nlm.nih.gov/books/NBK25499 } }
 \author{ Chris Stubben }
-\note{  See  \url{http://www.ncbi.nlm.nih.gov/books/NBK25499/table/chapter4.chapter4_table1} 
+\note{  See Table 1  \url{http://www.ncbi.nlm.nih.gov/books/NBK25499/table/chapter4.chapter4_table1} 
 for a list of valid  retrieval types and modes.
 
 If EntrezHistory results are the input, then the database listed in that object is used. 
