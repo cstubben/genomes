@@ -55,37 +55,23 @@ install.packages("genomes",
 
 
 
-Genome tables from the Genome Project database at NCBI include
-prokaryotic projects (\Rcmd{lproks}), eukaryotic projects
-(\Rcmd{leuks}), metagenomes (\Rcmd{lenvs}) and viruses (\Rcmd{virus}).
+Genome tables from the Genome database at NCBI include
+prokaryotic (\Rcmd{proks}), eukaryotic
+(\Rcmd{euks}) and virus genomes (\Rcmd{virus}).
 The \Rcmd{print} methods displays the first few rows and columns of
 the table (either select less than seven rows or convert the object to
 a \Rcmd{data.frame} to print all columns). The \Rcmd{summary} function
 displays the download date, a count of projects by status, and a list
 of recent submissions. The \Rcmd{plot} method displays a cumulative
-plot of genomes by release date ( Figure \ref{lproks}, use
-\Rcmd{lines} to add additional tables).
+plot of genomes by release date.
 
-<<lproks, fig=TRUE, include=FALSE, height=5, width=5>>=
-data(lproks)
-lproks
-summary(lproks)
-plot(lproks, log='y', las=1)
-data(leuks)
-data(lenvs)
-lines(leuks, col="red")
-lines(lenvs, col="green3")
-legend("topleft", c("Microbes", "Eukaryotes", "Metagenomes"),
-         lty=1,  bty='n', col=c("blue", "red", "green3"))
+<<proks>>=
+data(proks)
+proks
+summary(proks)
+plot(proks, log='y', las=1)
+
 @ 
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[height=5in,width=5in]{genome-tables-lproks.pdf}
- \caption{Cumulative plot of genome projects by release date at NCBI.  }
-\label{lproks}
-\end{figure}
 
 
 Most importantly, the \Rcmd{update} method downloads the latest version of
@@ -93,7 +79,7 @@ the table from NCBI and displays a message listing the number of
 project IDs added and removed (not run).
 
 <<update, eval=FALSE>>=
-update(lproks)
+update(proks)
 @ 
 
 A number of additional functions assist in selecting, sorting and
@@ -103,7 +89,7 @@ be used to extract the species or genus from a scientific name.  The
 counts.
 
 <<table2>>=
-spp<-species(lproks$name)
+spp<-species(proks$name)
 table2(spp)
 @ 
 
@@ -112,7 +98,7 @@ year from the release date  (Figure \ref{complete}).
 
 
 <<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
-complete <- subset(lproks, status == "Complete")
+complete <- subset(proks, status == "Complete")
 x<-table(year(complete$released))
 barplot(x, col="blue", ylim=c(0,max(x)*1.04), space=0.5, las=1,
 axis.lty=1, xlab="Year", ylab="Genomes per year")
@@ -136,7 +122,7 @@ in this case to identify complete and draft sequences of \emph{Yersinia pestis} 
 
 <<yersinia, fig=TRUE, include=FALSE, height=5, width=5>>=
 ## Yersinia pestis
-yp<-subset(lproks, name %like% 'Yersinia pestis*')
+yp<-subset(proks, name %like% 'Yersinia pestis*')
 plotby(yp, labels=TRUE, cex=.5, lbty='n')
 
 @ 

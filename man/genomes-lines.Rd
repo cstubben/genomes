@@ -21,20 +21,18 @@
   genome table.  This function adds new lines from different genome tables
   to the same plot. 
 }
-%\value{ A  line  }
+%\value{   }
 %\references{ }
 \author{Chris Stubben }
 %\note{ }
 \seealso{ \code{\link{plotby}}  }
 \examples{
-data(lproks)
-data(leuks)
-data(lenvs)
-plot(lproks, log='y', las=1, lty=3)
-lines(leuks, col="red", lty=2)
-lines(lenvs, col="green3", lty=1) 
-legend("topleft", c("Microbes", "Eukaryotes", "Metagenomes"),
-                  bty='n',   lty=3:1, col=c("blue", "red", "green3"))
+data(proks)
+data(euks)
+
+plot(proks, log='y', las=1, lty=3)
+lines(euks, col="red", lty=2)
+
 
 
 }

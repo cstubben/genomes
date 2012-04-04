@@ -6,9 +6,9 @@
 \alias{latin2char}
 \alias{tax2id}
 \alias{top}
-\alias{updatelenvs}
-\alias{updateleuks}
 \alias{updatelproks}
+\alias{updateproks}
+\alias{updateeuks}
 \alias{updatevirus}
 \alias{xattr}
 \alias{xtags}

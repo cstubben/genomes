@@ -6,59 +6,45 @@
   Virus genomes at NCBI
 }
 \description{
- Viral reference genome sequencing projects at NCBI.
-
+ Viral reference genome sequencing projects at NCBI
 }
 \usage{data(virus)}
 \format{
-  A genomes data frame with the following 10 variables.
+  A genomes data frame with the following 13 variables.
   \describe{
-    \item{\code{name}}{virus name}
-    \item{\code{released}}{ release date}
-    \item{\code{neighbors}}{number of Genome Neighbors}
-    \item{\code{segments}}{number of segments}
-    \item{\code{refseq}}{RefSeq accession number }
-    \item{\code{isolate}}{ isolate name}
-    \item{\code{size}}{ genome size (nt)}
-    \item{\code{proteins}}{number of proteins}
-   \item{\code{host}}{host name}
-    \item{\code{updated}}{ modified date}
+    \item{\code{acc}}{ BioProject Accession number }
+    \item{\code{name}}{ Organism name }
+    \item{\code{status}}{ Highest level of assembly; Complete, SRA or No data}
+    \item{\code{released}}{First public sequence release}
+    \item{\code{group}}{Phylum}
+    \item{\code{subgroup}}{Class level}
+    \item{\code{size}}{Total length of DNA (Mb)}
+    \item{\code{gc}}{Percent GC (guanine or cytosine)}
+    \item{\code{host}}{ Natural host of a virus}
+    \item{\code{segments}}{ Number of segments}
+    \item{\code{genes}}{Number of genes}
+    \item{\code{proteins}}{Number of proteins}
+    \item{\code{modified}}{Sequence modification date}
   }
 }
 \details{
-Please refer to the Viral genomes page at NCBI
-\url{http://www.ncbi.nlm.nih.gov/genomes/GenomesHome.cgi?taxid=10239&hopt=aboutsite}
-for details on Reference genomes.  One Reference genome is selected
-per viral species and other strains are linked as Genome Neighbors
-(other complete sequences for the species).  See the
-\code{\link{ncbiGenome}} function to get a list of Genome
-neighbors.
-
-Summing the number of segments in this table should return the total
-number of reference sequences; however, summing the number of genome
-neighbors will not return the number of linked GenBank sequences since
-many counts are duplicated or missing (eg, Dengue virus neighbors are
-listed 4 times, Influenza A and B neighbors are missing.
+Includes only data represented in the RefSeq dataset.
 
 }
 \source{
-downloaded from \url{http://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?taxid=10239&opt=Virus&sort=genome}
+downloaded from \url{ftp.ncbi.nlm.nih.gov/genomes/GENOME_REPORTS/viruses.txt}
 }
 %\references{}
 \examples{
 data(virus)
 plot(virus)
 summary(virus)
-sum(virus$segments)
-# some neighbors repeat (others are missing)
-subset(virus, name \%like\% 'Dengue*')
-subset(virus, name \%like\% 'Monkey*')
-# list linked neighbors
-# ncbiGenome("Monkeypox virus[orgn]")
-
+table(virus$segments)
+table2(virus$host)
 ## most common phages
 table2(species(grep("phage", virus$name, value=TRUE)))
-
-
+# TABLE only includes RefSeq genomes - see ncbiGenome for links
+subset(virus, name=="Nipah virus")
+ncbiGenome('Nipah virus[ORGN]')
 }
 \keyword{datasets}

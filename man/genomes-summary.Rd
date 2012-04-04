@@ -27,9 +27,9 @@ genomes, counts by status (if column is present), and a table listing recent sub
 %\note{ }
 \seealso{ \code{\link{plot.genomes}}   }
 \examples{
-data(leuks)
-summary(leuks)
-summary(leuks, group=='Fungi')
+data(euks)
+summary(euks)
+summary(euks, group=='Fungi')
 }
 
 \keyword{methods }

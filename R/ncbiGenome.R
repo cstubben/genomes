@@ -8,9 +8,10 @@ ncbiGenome<-function(term, refseq = FALSE)
    x1 <- esummary(elink)
 
    #  get Other INSDC Genome Sequences
-   x2 <- esummary( elink ( elink, db="nuccore",  linkname="nuccore_nuccore_samespecies_rsgb"))
-   x1 <- rbind(x1,x2)
-
+   x2 <-  try( esummary( elink ( elink, db="nuccore",  linkname="nuccore_nuccore_samespecies_rsgb")))
+   if(class(x2) != "try-error"){  
+      x1 <- rbind(x1,x2)
+   }
    colnames(x1) <- c("id", "acc", "name" ,    "defline" , "gi", "created", 
         "updated", "flags", "taxid" , "size", "status", "replace", "comment")
    # drop reference (duplicate)   

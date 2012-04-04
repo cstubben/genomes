@@ -23,12 +23,12 @@ rows or columns with zero counts are also removed from the matrix.}
 %\note{ }
 \seealso{ \code{\link{table}}  }
 \examples{
-data(leuks)
-table(leuks$subgroup)
-table2(leuks$subgroup)
+data(euks)
+table(euks$subgroup)
+table2(euks$subgroup)
 ## to display all rows, use NA or a large number...
-table2(leuks$subgroup, n=100)
+table2(euks$subgroup, n=100)
 # 2-d table
-table2(leuks$group, format(leuks$released, "\%Y"))
+table2(euks$group, year(euks$released))
 }
 \keyword{ methods }

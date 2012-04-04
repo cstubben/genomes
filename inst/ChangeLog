@@ -1,3 +1,11 @@
+changes in version 2.3.1 (2012-04-03)
+        * fixed second elink in ncbiGenome (other Genome sequences).  This was returning an
+          error instead of first elink (assemblies) if no results were found. 
+	* added new proks, euks, and virus genome tables from genomes/GENOME_REPORTS ftp.
+	* removed old leuks and lenvs genome project tables that are no 
+          longer supported (since Aug 2011). The lproks table receives only "complete" 
+          genome updates and was kept for now.
+
 changes in version 2.1.5 (2012-03-23)
 	* added stop() to esearch and elink if no results found - needed if 
           nesting functions like esummary(esearch())
