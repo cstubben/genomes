@@ -9,6 +9,14 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
    if (class(x)[1] != "genomes") {
         stop("x must be a genomes table")
     }
+   # no release date?
+   if(!"released" %in% names(x)){
+     valid <- c( "created", "submitted")
+     n <- which(names(x) %in% valid)[1] 
+     if(is.na(n)){ stop("No released, created or submitted date columns found")}
+     names(x)[n]<-"released"
+  }
+
     if (!missing(subset)) {
         r <- eval(substitute(subset), x, parent.frame())
         if (!is.logical(r)) 

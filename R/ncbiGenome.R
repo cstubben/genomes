@@ -7,8 +7,8 @@ ncbiGenome<-function(term, refseq = FALSE)
    # get reference and derived genbank
    x1 <- esummary(elink)
 
-   #  get Other INSDC Genome Sequences
-   x2 <-  try( esummary( elink ( elink, db="nuccore",  linkname="nuccore_nuccore_samespecies_rsgb")))
+   #  get Other INSDC Genome Sequences - may not exist
+   x2 <-  try( esummary( elink ( elink, db="nuccore",  linkname="nuccore_nuccore_samespecies_rsgb")), silent=TRUE)
    if(class(x2) != "try-error"){  
       x1 <- rbind(x1,x2)
    }

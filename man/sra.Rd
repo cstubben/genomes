@@ -7,7 +7,7 @@ at the European Nucleotide Archive (ENA).
 }
 \usage{data(sra)}
 \format{
-  A data frame with 18279 observations on the following 13 variables.
+  A genomes data frame with 18279 observations on the following 13 variables.
   \describe{
     \item{\code{taxid}}{ taxonomy id}
     \item{\code{name}}{ scientific name (if missing, then title) }
@@ -19,7 +19,7 @@ at the European Nucleotide Archive (ENA).
     \item{\code{center}}{sequencing center}
     \item{\code{bases}}{ number of bases}
     \item{\code{reads}}{ number of reads}
-    \item{\code{submit}}{ submission date}
+    \item{\code{submitted}}{ submission date}
     \item{\code{model}}{ model of sequencer }
     \item{\code{type}}{ study type }
   }

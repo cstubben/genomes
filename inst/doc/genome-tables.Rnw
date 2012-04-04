@@ -24,15 +24,13 @@ options(warn=-1, width=75, digits=2, scipen=3,  "prompt" = "R> ", "continue" = "
 options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
 @
 
-The \pkg{genomes} package collects genome project metadata from NCBI
-(\url{http://www.ncbi.nlm.nih.gov}) and the ENA (\url{http://www.ebi.ac.uk/ena}) 
-and provides tools to summarize,
-compare and plot the data in the \R~programming environment. Genome
+The \pkg{genomes} package collects genome project metadata from NCBI 
+using E-utility scripts (esearch, esummary, efetch and elink) or from the ENA 
+using the ENA Browser REST URL.  The packages also includes genome tables from NCBI and
+and provides tools to summarize, compare and plot the data in the \R~programming environment. Genome
 tables are a defined class (\emph{genomes}) and each table is a data
 frame where rows are genome projects and columns are the fields
-describing the associated metadata.  At a minimum, the table should
-have a column listing the project name, status, and release date.  A
-number of methods are available that operate on genome tables
+describing the associated metadata.  A number of methods are available that operate on genome tables
 including \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
 
 There are a number of ways to install this package.  If you are
@@ -52,7 +50,6 @@ development version for fixes in between the six month release cycle.
 install.packages("genomes", 
    repos="http://www.bioconductor.org/packages/devel/bioC", type="source")
 @ 
-
 
 
 Genome tables from the Genome database at NCBI include

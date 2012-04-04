@@ -1,8 +1,6 @@
 \name{genomes-internal}
 \alias{abbrev}
 \alias{bases}
-\alias{extract.genomes}
-\alias{[.genomes}
 \alias{latin2char}
 \alias{tax2id}
 \alias{top}

@@ -1,4 +1,6 @@
 changes in version 2.3.1 (2012-04-03)
+        * updated plot genomes to use other date columns like created or submitted
+        * removed subset genome functions since these are not really needed
         * fixed second elink in ncbiGenome (other Genome sequences).  This was returning an
           error instead of first elink (assemblies) if no results were found. 
 	* added new proks, euks, and virus genome tables from genomes/GENOME_REPORTS ftp.

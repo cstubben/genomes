@@ -9,6 +9,15 @@ summary.genomes<-function(object, subset, top=5, ...)
    if (nrow(object) == 0) { stop("No rows to summarize")}
    if (top < 1){top <- 1}
 
+
+   # no release date?
+  if(!"released" %in% names(object)){
+     valid <- c( "created", "submitted")
+     n <- which(names(object) %in% valid)[1] 
+     if(is.na(n)){ stop("No released, created or submitted date columns found")}
+     names(object)[n]<-"released"
+  }
+
    
    ## virus, metagenomes, others do not have status column (only released and name is required)
    if (!"status" %in% names(object)) {
@@ -17,7 +26,7 @@ summary.genomes<-function(object, subset, top=5, ...)
      rownames(d2) <- NULL
      
      ## format does not justify column names 
-     names(d2) <- c( "RELEASED  ",
+     names(d2) <- c( "DATE      ",
      sprintf( paste("%-",  max(nchar( d2[,2])), "s", sep=""), "NAME")  )
      ans <- list(
             "Total genomes" = noquote(paste( nrow(object), "genome projects on",
@@ -30,7 +39,7 @@ summary.genomes<-function(object, subset, top=5, ...)
      rownames(d2) <- NULL
      
      ## format does not justify column names 
-     names(d2) <- c( "RELEASED  ",
+     names(d2) <- c( "DATE      ",
      sprintf( paste("%-",  max(nchar( d2[,2])), "s", sep=""), "NAME"),
      sprintf( paste("%-",  max(nchar( d2[,3])), "s", sep=""), "STATUS")  )
      ans <- list(
