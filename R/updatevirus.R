@@ -1,7 +1,7 @@
 updatevirus <- function()
 {  
    ftp <- "ftp://ftp.ncbi.nlm.nih.gov/genomes/GENOME_REPORTS/viruses.txt"
-   x <- read.delim(ftp, comment="", stringsAsFactors=FALSE, na.strings="-")
+   x <- read.delim(ftp, comment.char="", stringsAsFactors=FALSE, na.strings="-")
    names(x) <- c("name", "acc", "group", "subgroup", "size", "gc",
      "host", "segments", "genes", "proteins", "released", "modified", "status")
    x$released <- as.Date(x$released)

@@ -1,7 +1,7 @@
 updateeuks <- function()
 {
    ftp <- "ftp://ftp.ncbi.nlm.nih.gov/genomes/GENOME_REPORTS/eukaryotes.txt"
-   x <- read.delim(ftp, comment="", stringsAsFactors=FALSE, na.strings="-")
+   x <- read.delim(ftp, comment.char="", stringsAsFactors=FALSE, na.strings="-")
    names(x) <- c("name", "acc", "group", "subgroup", "size", "gc",
     "assembly", "chromosomes", "organelles", "plasmids",
     "wgs", "scaffolds", "genes", "proteins", "released", "modified", "status")
