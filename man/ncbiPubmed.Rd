@@ -32,17 +32,10 @@ A data.frame with 9 columns
 %\references{}
 \author{ Chris Stubben }
 %\note{ }
-
-\seealso{ \code{\link{pub}} for complete microbial genome publications }
+%\seealso{ }
 \examples{
-data(lproks)
-yp<-subset(lproks, name \%like\% 'Yersinia*CO92')
-# comma-separated list
-yp$publication
-ncbiPubmed(yp$publication)
-# or vector
 ncbiPubmed( c(7542800, 7569993))
-
+# OR ncbiPubmed("7542800,7569993")
 }
 
 \keyword{methods }

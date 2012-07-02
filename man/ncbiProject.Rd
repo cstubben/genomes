@@ -29,11 +29,14 @@ Searches the new BioProject database using the ESearch utility
 
 \examples{
 
-#ncbiProject("Pan[ORGN]")
 x <- ncbiProject("Yersinia[ORGN]")
 x
-t(x[2,])  #second row
 summary(x)
+
+#Metagenomes  
+# metag <- ncbiProject("metagenome[Project Data Type]")
+# metag <- ncbiProject("metagenomes[Orgn]")
+
 
 }
 \keyword{ methods}

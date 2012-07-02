@@ -53,8 +53,8 @@ image2(x, col = rev(heat.colors(24)), breaks, log = FALSE,
 
 
 ## top 20 Genus by year
-data(lproks)
-z<-table2(genus(lproks$name), year(lproks$released), n=20)
+data(proks)
+z<-table2(genus(proks$name), year(proks$released), n=20)
  image2(z[,-ncol(z)], sort=TRUE, mar=c(1,10,3,1), cex=.8)
 
 }

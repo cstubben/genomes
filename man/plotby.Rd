@@ -60,18 +60,15 @@ group.}
 
 \seealso{ \code{\link{plot.genomes}}  }
 \examples{
-data(lproks)
+data(proks)
 # default group is status
-plotby(lproks)
-plotby(lproks, 'habitat', top=3)
+plotby(proks, top=2)
 
 ## groupby can be a vector
-plotby(lproks, genus(lproks$name), log='y', lcex=.7)
-plotby(lproks, factor(lproks$pathogen \%in\% c("No"),
-   labels=c("Pathogen", "Non-pathogen")), pathogen!="")
+plotby(proks, genus(proks$name), log='y', lcex=.7)
 
 # OR plot labels
-plotby(lproks, subset=name \%like\% 'Yersinia pestis*', labels=TRUE, cex=.7, lbty='n')
+plotby(proks, subset=name \%like\% 'Haemophilus influenzae*', labels=TRUE, cex=.7, lbty='n')
 
 }
 

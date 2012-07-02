@@ -27,10 +27,10 @@ Chris Stubben
 % \seealso{ }
 \examples{
 
-data(lproks)
-table(year(lproks$released))
+data(proks)
+table(year(proks$released))
 # just complete genomes
-table(year(lproks$released[lproks$status=="Complete"]))
+table(year(proks$released[proks$status=="Complete"]))
 
 }
 

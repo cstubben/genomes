@@ -35,10 +35,10 @@ mostly be useful in conjunction with the \code{\link[base]{subset}} function.
 \seealso{  \code{\link{grep}}, \code{\link{glob2rx}}, \code{\link[base]{subset}} }
 
 \examples{
-data(lproks)
-subset(lproks, name \%like\% 'Yersinia*', c(name, released))
+data(proks)
+subset(proks, name \%like\% 'Yersinia*', c(name, released))
 # also works with date or numeric fields
-subset(lproks, released \%like\% '2008-01*', c(name, released))
+subset(proks, released \%like\% '2008-01*', c(name, released))
 }
 
 \keyword{ manip }

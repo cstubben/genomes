@@ -30,9 +30,9 @@ the doubling time
 %\seealso{ \code{\link{help}}   }
 
 \examples{
-data(lproks)
-doublingTime(lproks)
-doublingTime(lproks, status == 'Complete', time='months')
+data(proks)
+doublingTime(proks)
+doublingTime(proks, status == 'Complete', time='months')
 }
 
 \keyword{ methods }

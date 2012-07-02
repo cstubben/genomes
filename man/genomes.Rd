@@ -9,9 +9,9 @@ Genomes sequencing project statistics from prokaryotes, eukaryotes, and metageno
 %\references{  }
 \keyword{ package }
 \examples{
-data(lproks)
-lproks
-summary(lproks)
-plot(lproks)
-\dontrun{update(lproks)}
+data(proks)
+proks
+summary(proks)
+plot(proks)
+\dontrun{update(proks)}
 }

@@ -32,8 +32,8 @@ A plot of the cumulative total of genomes by release date.
 %\note{ }
 \seealso{ \code{\link{plotby}} to plot release dates by any grouping column }
 \examples{
-data(lproks)
-plot(lproks)
-plot(lproks, name \%like\% 'Yersinia*', ylab="Yersinia genomes")
+data(proks)
+plot(proks)
+plot(proks, name \%like\% 'Yersinia*', ylab="Yersinia genomes")
 }
 \keyword{ hplot }

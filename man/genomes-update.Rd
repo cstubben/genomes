@@ -32,13 +32,13 @@ will restore the older version.  If you have write permission, one option is to 
 %\note{ }
 \seealso{\code{\link{genomes-summary}}, \code{\link{genomes-plot}} }
 \examples{
-\dontrun{data(lproks)}
-\dontrun{update(lproks)}
+\dontrun{data(proks)}
+\dontrun{update(proks)}
 
 # to replace the data set permanently
-x <- system.file("data", "lproks.rda", package="genomes")
+x <- system.file("data", "proks.rda", package="genomes")
 x
-\dontrun{save(lproks, file=x)}
+\dontrun{save(proks, file=x)}
 
 }
 \keyword{ methods }

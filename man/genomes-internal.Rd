@@ -4,7 +4,6 @@
 \alias{latin2char}
 \alias{tax2id}
 \alias{top}
-\alias{updatelproks}
 \alias{updateproks}
 \alias{updateeuks}
 \alias{updatevirus}

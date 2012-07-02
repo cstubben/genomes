@@ -26,8 +26,8 @@ A vector of genus names
 \seealso{ \code{\link{species}}   }
 \examples{
 genus("Bacillus anthracis Ames")
-data(lproks)
-x <- table2(genus(lproks$name))[1:10,]
+data(proks)
+x <- table2(genus(proks$name))[1:10,]
 dotchart(rev(x), xlab="Genomes", pch=16)
 }
 

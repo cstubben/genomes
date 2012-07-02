@@ -1,3 +1,7 @@
+changes in version 2.3.2 (2012-07-01)
+        * deleted lproks tables that no longer exists (and removed related pub and 
+          complete tables)
+
 changes in version 2.3.1 (2012-04-03)
         * updated plot genomes to use other date columns like created or submitted
         * removed subset genome functions since these are not really needed

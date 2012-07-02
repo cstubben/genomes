@@ -13,7 +13,7 @@ Print method for genome tables
 \details{  Prints the first four columns and first five and last row of a
   genomes data.frame.   To view all the columns in a genome table,
   you can either select fewer than 7 rows or convert the object
-  to a data.frame (\code{data.frame(lproks)} ) }
+  to a data.frame (\code{data.frame(proks)} ) }
 
 %\references{ }
 \author{ Chris Stubben}
@@ -21,10 +21,10 @@ Print method for genome tables
 %\seealso{ }
 
 \examples{
-data(lproks)
-lproks
+data(proks)
+proks
 ## full table printed  if 6 rows or less 
-lproks[1,] 
+proks[1,] 
 }
 
 \keyword{methods }

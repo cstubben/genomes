@@ -29,11 +29,11 @@ A vector of species names
 species("Bacillus anthracis Ames")
 species("Bacillus anthracis Ames", abbrev=TRUE)
 species("Bacillus anthracis Ames", epithet=TRUE)
-data(lproks)
-x <- table2(species(lproks$name))[1:10,]
+data(proks)
+x <- table2(species(proks$name))[1:10,]
 dotchart(rev(x), xlab="Genomes", pch=16)
 ## abbreviate genus name
-x <- subset(lproks, name \%like\% 'Bacillus*')
+x <- subset(proks, name \%like\% 'Bacillus*')
 x <- table2(species(x$name))[1:10, ]
 names(x) <- species(names(x), TRUE)
 dotchart(rev(x), xlab=expression(italic(Bacillus) ~ genomes), pch=16)

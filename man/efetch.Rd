@@ -35,7 +35,7 @@ x <- esearch("bioconductor[TITLE]", usehistory="n", retmax=5, reldate=360 )
 x
 efetch(x, rettype="abstract")
 
-# Sequence default is 700 sequences
+# Sequence default is 700 bases
 efetch( esearch( "Yersinia pestis CO92[ORGN] AND refseq[FILTER] AND plasmid[Filter]", "nuccore"), rettype="fasta")
 
 # set seq_stop = "" for full sequence

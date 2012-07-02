@@ -20,7 +20,7 @@ xattr <-function(doc, tag, att) {
       y <- xpathApply(doc, tag, xmlAttrs)
      # no matches to tag (give warning)
       if(length(y)==0){ 
-         print(paste("Warning: no matches to", tag))
+         # print(paste("Warning: no matches to", tag))
          NA 
      } else{
       if( att %in% names(y[[1]]) )

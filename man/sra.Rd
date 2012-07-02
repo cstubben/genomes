@@ -2,12 +2,12 @@
 \alias{sra}
 \docType{data}
 \title{ Microbial SRA samples at the ENA }
-\description{ Next-generation sequencing projects from microbes in the Sequence Read Archive (SRA)
+\description{ Next-generation sequencing samples from microbes in the Sequence Read Archive (SRA)
 at the European Nucleotide Archive (ENA). 
 }
 \usage{data(sra)}
 \format{
-  A genomes data frame with 18279 observations on the following 13 variables.
+  A genomes data frame with 33925 observations on the following 13 variables.
   \describe{
     \item{\code{taxid}}{ taxonomy id}
     \item{\code{name}}{ scientific name (if missing, then title) }
@@ -24,9 +24,9 @@ at the European Nucleotide Archive (ENA).
     \item{\code{type}}{ study type }
   }
 }
-\details{ Downloaded from ENA on Oct 27, 2011.  Created by joining \code{enaSRA("Bacteria")} and 
+\details{ Downloaded from ENA on May 21, 2012.  Created by joining \code{enaSRA("Bacteria")} and 
  \code{enaSRA("Archaea")} and adding submission dates using \code{\link{enaSubmission}}, model 
-  using \code{\link{enaExperiment}} and study type using \code{\link{enaStudy}}.  Microbes represent ~6\% of the total bases in the SRA.
+  using \code{\link{enaExperiment}} and study type using \code{\link{enaStudy}}.  Microbes represent ~7\% of the total bases in the SRA.
 }
 \source{ SRA sample portal at ENA }
 %\references{ }
