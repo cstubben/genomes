@@ -11,6 +11,7 @@ latin2char<-function(x)
    ## google search latin1 table for hex codes
    x[n] <- gsub("<96>", "-", x[n])   # dash in lenvs name
    x[n] <- gsub("<b0>", " ", x[n])   # degree symbol in lproks range
+   x[n] <- gsub("<a0>", " ", x[n])   
    
    ## maybe add upper case if needed - 
    x[n] <- gsub("<e0>", "a", x[n])

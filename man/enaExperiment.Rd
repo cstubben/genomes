@@ -16,7 +16,7 @@ enaExperiment(accs, batchsize = 100)
 %\note{}
 
 
-\seealso{ \code{\link{sra}} and \code{\link{enaSRA}}  }
+\seealso{  \code{\link{enaSRA}}  }
 \examples{
 # compare to http://www.ebi.ac.uk/ena/data/view/ERX007105
  enaExperiment("ERX007105")

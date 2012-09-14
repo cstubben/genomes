@@ -16,7 +16,7 @@ enaSubmission(accs, batchsize = 100)
 %\note{ }
 
 
-\seealso{ \code{\link{sra}} and \code{\link{enaSRA}}  }
+\seealso{  \code{\link{enaSRA}}  }
 \examples{
 #compare to http://www.ebi.ac.uk/ena/data/view/ERA000746
 enaSubmission("ERA000746")

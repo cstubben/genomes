@@ -8,16 +8,17 @@ Searches the PubMed database at NCBI and returns a short
 citation with author, year, title, journal and published date. 
  }
 \usage{
-ncbiPubmed(term)
+ncbiPubmed(term, abstract = FALSE)
 }
 \arguments{
   \item{term}{ Any valid combination of Entrez search terms or a vector of pubmed IDs}
+  \item{abstract}{ Include abstract in result table, default FALSE }
 }
 \details{
   The function searches the PubMed database and parses the efetch XML summary to return a short citation
 }
 \value{
-A data.frame with 9 columns
+A data.frame with 9 or 10 columns
    \item{\code{pmid}}{PubMed id}
     \item{\code{authors}}{first 3 author names}
     \item{\code{year}}{year journal was published }
@@ -27,7 +28,7 @@ A data.frame with 9 columns
     \item{\code{pages}}{pages}
     \item{\code{pubdate}}{ date journal was published (from PubDate tag)}
     \item{\code{artdate}}{ date electronic copy was available (from ArticleDate tag)}
-
+    \item{\code{abstract}}{ abstract}
 }
 %\references{}
 \author{ Chris Stubben }

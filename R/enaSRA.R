@@ -1,4 +1,4 @@
-enaSRA <-function(tax, limit = 5000)
+enaSRA <-function(tax, limit = 500)
 {
    if( length(tax) > 1){tax <- tax[1]; print("Warning: only the first id will be used")}
    #check if number passed as character, eg  2  = "2"

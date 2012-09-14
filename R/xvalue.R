@@ -12,6 +12,9 @@ xvalue <- function(doc, tag) {
         else NA
     }
 
+
+
+
 # 2) attributes within tags, for example, find the center within the SAMPLE tag
 # <SAMPLE accession="SRS000899" center_name="Broad Institute, Cambridge, MA, USA" alias="24604.0"> 
 

@@ -66,6 +66,10 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
     if (length(col) < top) {
         col <- rep(col, length = top)
     }
+    if (length(lty) < top) {
+        lty <- rep(lty, length = top)      
+    }
+
     #--------------------------------------------------------------------------#
    ## PLOT groups using one line with different symbols and labeled points
     if (labels) {
@@ -88,7 +92,12 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
             flip <- nrow(x[x$released < x2, ])
         }
         n <- flip
-        plot(x$released, x$y, type = type, col = "gray70", 
+        # July 2012 added missing ylim option to plot
+        if (any(is.na(ylim))) {
+            ylim <- c(1, max(x$y) )
+        }
+
+        plot(x$released, x$y, type = type, col = "gray70", ylim = ylim, 
             lty = lty, xlab = xlab, ylab = ylab, las = las, lwd = lwd, 
             ...)
         ## order top groups alphabetically ???
