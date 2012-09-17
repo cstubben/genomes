@@ -1,5 +1,4 @@
 changes in version 2.3.3 (2012-09-14)
-        * added function to plot GRanges
 	* added functions to read files in NCBI genomes ftp including GRange 
           objects (gff, ptt, rnt, GeneMarkHMM, Glimmer, Prodigal files) and 
           Biostrings (faa, fna, ffn, frn sequence files).  read.ncbi.ftp is a wrapper. 
