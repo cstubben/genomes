@@ -39,9 +39,9 @@ summary.genomes<-function(object, subset, top=5, ...)
      rownames(d2) <- NULL
      
      ## format does not justify column names 
-     names(d2) <- c( "DATE      ",
-     sprintf( paste("%-",  max(nchar( d2[,2])), "s", sep=""), "NAME"),
-     sprintf( paste("%-",  max(nchar( d2[,3])), "s", sep=""), "STATUS")  )
+     names(d2) <- c( "released  ",
+     sprintf( paste("%-",  max(nchar( d2[,2])), "s", sep=""), "name"),
+     sprintf( paste("%-",  max(nchar( d2[,3])), "s", sep=""), "status")  )
      ans <- list(
             "Total genomes" = noquote(paste( nrow(object), "genome projects on",
                                format( attributes(object)$date, "%b %d, %Y"))),

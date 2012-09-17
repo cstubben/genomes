@@ -10,6 +10,7 @@
 \alias{xattr}
 \alias{xtags}
 \alias{xvalue}
+\alias{strsplit2}
 \title{Internal genomes Functions}
 \description{
   Internal genomes functions.

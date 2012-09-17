@@ -1,4 +1,5 @@
-importFrom(XML, xmlTreeParse, xmlRoot, xmlName, xmlAttrs, xpathApply, xmlSApply, xmlValue, xpathSApply, xmlParse, xmlDoc, free, getNodeSet)
+import(XML, GenomicRanges, IRanges, Biostrings)
+importFrom(RCurl, getURL)
 
 #  All functions exported other than those starting with "."
 exportPattern("^[^\\.]")

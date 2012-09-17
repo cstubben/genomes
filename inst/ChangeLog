@@ -1,3 +1,11 @@
+changes in version 2.3.3 (2012-09-14)
+        * added function to plot GRanges
+	* added functions to read files in NCBI genomes ftp including GRange 
+          objects (gff, ptt, rnt, GeneMarkHMM, Glimmer, Prodigal files) and 
+          Biostrings (faa, fna, ffn, frn sequence files).  read.ncbi.ftp is a wrapper. 
+        * added ftpList to list directories and files in NCBI and other ftps.  
+        * deleted sra table due to recent problems with many SRA taxonomy links
+
 changes in version 2.3.2 (2012-07-01)
         * deleted lproks tables that no longer exists (and removed related pub and 
           complete tables)

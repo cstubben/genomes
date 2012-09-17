@@ -6,7 +6,7 @@ Date: 2012-09-14
 Author: Chris Stubben
 Maintainer: Chris Stubben <stubben@lanl.gov>
 License: Artistic-2.0
-Depends: R (>= 2.10), XML
+Depends: R (>= 2.10), XML, RCurl, GenomicRanges, IRanges, Biostrings
 biocViews: Annotation, Genetics
-Description: Collects genome sequencing project data from NCBI using E-utility scripts (esearch, esummary, efetch and elink) or from the ENA using the Browser REST URL.
+Description: Collects genome sequencing project data from NCBI and the ENA.
 
