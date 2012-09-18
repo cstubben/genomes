@@ -27,12 +27,13 @@ uses E-fetch, so retrievals to the genome and other database will not work. }
 
 #Yersinia pestis  reference sequences
 ncbiSubmit("Yersinia pestis CO92[ORGN] AND refseq[FILTER]")
+\dontrun{
 # Ebola virus - no patents or references
 ebola<- ncbiSubmit("Ebolavirus[ORGN] NOT gbdiv_pat[PROP] NOT refseq[FILTER]")
 head(ebola)
 # a few early submissions may be missing
 subset(ebola, is.na(submitted))
 table(year(ebola$submit))
-
+}
 }
 \keyword{ methods }

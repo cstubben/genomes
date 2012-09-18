@@ -28,17 +28,17 @@ esummary(id, db = "pubmed", parse = TRUE, ...)
 \examples{
 
 # BioC articles published in the last year
-# use entrez search field or esearch reldate key
-# bioconductor[TITLE] AND 2012[Date - Publication]
 x <- esearch("bioconductor[TITLE]", reldate=360)
 y <- esummary(x, version="2.0")
 y[, c(1, 42, 6, 3, 8, 10)]
+
+\dontrun{
 # Y. pestis CO92 refseqs
 x <- esearch( "Yersinia pestis CO92[ORGN] AND refseq[FILTER]", "nuccore")
 y <- esummary(x)
 y[, c(2,3,5,10)]
 # Taxonomy database
 esummary(esearch("Mouse[Subtree]", db="taxonomy"))
-
+}
 }
 \keyword{ methods }

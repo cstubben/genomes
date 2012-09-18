@@ -18,12 +18,17 @@ elink(id, cmd = "neighbor_history", parse = TRUE, ...)
 
 \references{\url{http://www.ncbi.nlm.nih.gov/books/NBK25499} }
 \author{ Chris Stubben}
-\note{If EntrezHistory results are the input, then the database listed in that object is used as the \code{dbfrom} key. }
+\note{If EntrezHistory results are the input, then the database listed in that object 
+is used as the \code{dbfrom} key. Some additional checks are needed to catch timeout
+ and other errors returned by the NCBI servers.  }
+
 % \seealso{}
 \examples{
 
+\dontrun{
 elink("15718680,157427902", dbfrom="protein", db="gene")
 elink("15718680,157427902", dbfrom="protein", db="gene", cmd="neighbor")
+
 # list linknames
 einfo("genome", TRUE)[, 1:2]
 x <- esearch("Nipah virus", "genome")
@@ -34,6 +39,6 @@ y
 esummary(y)
 # OR link to Other genomes for Species
 esummary( elink(x, db="nuccore", linkname="genome_nuccore_samespecies"))
-
+}
 }
 \keyword{ methods }

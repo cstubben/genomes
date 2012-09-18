@@ -85,7 +85,7 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
       ## check duplicate tags (combined using JOINs)
 
       if( any(table(genes$locus)>1) ){
-         # 
+         # or create GRange and then reduce()
          print("Warning: grouping coordinates for duplicate locus tags") 
          genes2 <- by(genes, genes$locus, function(x){
              data.frame(locus=x$locus[1], seqid=x$seqid[1], start=min(x$start), end = max(x$end), strand= x$strand[1], 

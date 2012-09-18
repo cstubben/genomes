@@ -29,7 +29,7 @@ duplicate RefSeq from results).  }
 \examples{
 
  ncbiGenome('Nipah virus[orgn]')
- ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
+ # ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
 
 }
 

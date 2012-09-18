@@ -16,14 +16,16 @@ ftpList(ftp, fileonly = FALSE)
 % \note{ }
 % \seealso{}
 \examples{
+
+\dontrun{
  # all Y. pestis files
  ftp<- "ftp.ncbi.nih.gov/genomes/Bacteria/Yersinia_pestis_CO92_uid57621"
  x<-ftpList(ftp)
  x
-
-# all genome directories
-# ftp<-"ftp.ncbi.nih.gov/genomes/Bacteria"
-# x <- ftpList(ftp)
+#all genome directories
+ ftp<-"ftp.ncbi.nih.gov/genomes/Bacteria"
+ x <- ftpList(ftp)
+}
 
 }
 \keyword{ file }

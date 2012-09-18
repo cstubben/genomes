@@ -20,6 +20,7 @@ einfo(db, links=FALSE)
 % \note{ }
 % \seealso{ }
 \examples{
+
 einfo()
 einfo("bioproject")
 einfo("bioproject", TRUE)
