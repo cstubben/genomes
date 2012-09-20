@@ -20,6 +20,7 @@ enaStudy(accs, batchsize = 100)
 # compare to http://www.ebi.ac.uk/ena/data/view/ERP000054
 enaStudy("ERP000054")
 
+\dontrun{
 # chimps
 pan<-enaSRA(9596) 
 head(pan)
@@ -27,5 +28,7 @@ pan2 <-enaStudy(pan$study)
 head( pan2,2)
 pan2[,1:2]
 table2(pan2$type)
+}
+
 }
 \keyword{ methods }

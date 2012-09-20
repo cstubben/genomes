@@ -73,10 +73,13 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
        genes$feature [genes$feature == "gene" ] <-  "other"   
 
 
-      ## get gene symbol
+      ## get gene AND gene_synonym
       genes$gene <- NA
       n<-grep("gene=", genes$tag)
       if(length(n)>0)  genes$gene[n] <- gsub(".*gene=([^;]*).*", "\\1", genes$tags[n])
+
+      n<-grep("gene_synonym=", genes$tag)
+      if(length(n)>0)  genes$gene[n] <- paste( genes$gene[n] ,  gsub(".*gene_synonym=([^;]*).*", "\\1", genes$tags[n]) , sep=",")
 
       n   <- grep("%", genes$gene)
       # if no matches, avoid changing genes to list() 

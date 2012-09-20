@@ -21,6 +21,7 @@ enaExperiment(accs, batchsize = 100)
 # compare to http://www.ebi.ac.uk/ena/data/view/ERX007105
  enaExperiment("ERX007105")
 
+\dontrun{
 # chimps
 pan<-enaSRA(9596) 
 head(pan)
@@ -28,6 +29,7 @@ head(pan)
 pan2<-enaExperiment(substr(pan$experiment, 1,9))
 head(pan2)
 table2(pan2$model)
+}
 
 }
 \keyword{ methods }
