@@ -16,6 +16,7 @@ ncbiTaxonomy <- function(term, summary=TRUE)
         # suppress warning about incomplete final line in XML file
          x <- suppressWarnings( efetch( term, "taxonomy", rettype="xml"))
       }
+   ## SEARCH terms
    }else{
       if(summary){ 
          x <- esummary(esearch( term, "taxonomy"))
@@ -24,10 +25,19 @@ ncbiTaxonomy <- function(term, summary=TRUE)
       }
    }
    if(summary){
-       names(x) <- c("id", "rank", "division", "name", "common", "taxid", "nucl", "prot", "struct", "genome", "gene", "genus", "species", "subsp")
-        # change counts to numeric
-        x[c(1,6:11)] <- apply( x[c(1,6:11)], 2, as.numeric)
-        x <- x[, c(6,4,2,3,7:11)]   # subset?
+       ## sep 19, 2012 - esummary output columns changed from 14 to 12 (remove counts of nucl, protein, gene, genomes)
+       ## check if empty data.frame... problems with esummary
+       if(nrow(x)>0){
+           # check if 12 columns ... changes to esummary output
+           if(ncol(x)==12){
+              names(x) <- c("id", "status", "rank", "division", "name", "common", "taxid", "akataxid", "genus", "species", "subsp", "modified")
+              # change taxid to numeric
+              x[,7] <- as.numeric(x[,7])
+              # modified date
+              x[,12] <- as.Date(substr(x[,12], 1,10))
+              x <- x[, c(7,5,3,4, 9:11, 6,2,12)]   # subset?
+           }
+        }
         x  
     ## Efetch
    }else{

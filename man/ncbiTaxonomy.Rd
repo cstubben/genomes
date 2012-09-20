@@ -24,15 +24,20 @@ of taxonomy Ids (joined using a comma) or taxonomy names (joined using "OR").
 
 \examples{
 
+ncbiTaxonomy("Yersinia pestis")
+ncbiTaxonomy("Yersinia pestis", summary=FALSE)
+
+\dontrun{
 ncbiTaxonomy(c("Bacillus anthracis", "Yersinia pestis"))
 ncbiTaxonomy("cellular organisms[Next Level]")  
 # new Hantavirus species added in 2012
 ncbiTaxonomy("Hantavirus[subtree] AND 2012[date] AND species[rank]") 
-# efetch results
-ncbiTaxonomy (1145238, FALSE)
-# can also use Lineage field
-ncbiTaxonomy("Necocli virus[Lineage]")
 
+# can also use Lineage field with esummary
+ncbiTaxonomy("Necocli virus[Lineage]")
+# compare to efetch results
+ncbiTaxonomy (1145238, FALSE)
+}
 
 }
 \keyword{ methods }

@@ -28,8 +28,10 @@ duplicate RefSeq from results).  }
 
 \examples{
 
- ncbiGenome('Nipah virus[orgn]')
- # ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
+\dontrun{
+ncbiGenome('Nipah virus[orgn]')
+ncbiGenome('Nipah virus[orgn]', refseq=TRUE)
+}
 
 }
 
