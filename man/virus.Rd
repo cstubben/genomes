@@ -43,8 +43,10 @@ table(virus$segments)
 table2(virus$host)
 ## most common phages
 table2(species(grep("phage", virus$name, value=TRUE)))
+\dontrun{
 # TABLE only includes RefSeq genomes - see ncbiGenome for links
 subset(virus, name=="Nipah virus")
 ncbiGenome('Nipah virus[ORGN]')
+}
 }
 \keyword{datasets}
