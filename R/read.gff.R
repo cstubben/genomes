@@ -1,4 +1,4 @@
-read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
+read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
 
    # columns 1 and 2 are saved in metadata (full seqid with version# and source )
   #  columns 4 = start , 5 = end and 7 = strand are saved in GRange
@@ -15,7 +15,7 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
    x$id <-  gsub("ID=([^;]*).*", "\\1", x$tags)   # .1 second -always at start of tags?
 
    ## FULL table (except score and phase)
-   if(!only.genes){
+   if(!locus.tags){
       gff <- GRanges(seqnames=x$seqid, ranges=IRanges( x$start, x$end), strand=x$strand, data.frame(x[, c(10, 3, 6,8, 9 ) ])  )
 
    }else{

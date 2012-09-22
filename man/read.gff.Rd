@@ -13,7 +13,7 @@ read.gff(file,  locus.tags = TRUE, nrows = -1) }
   directory, \url{ftp://ftp.ncbi.nih.gov/genomes}.
 }
 \value{ GRanges with 4 elementMetadata columns: locus, feature, description and gene 
-name.  If all rows are returned (\code{only.genes=FALSE}), then score, phase and tags 
+name.  If all rows are returned (\code{locus.tags=FALSE}), then score, phase and tags 
 are included.  The seqid and source are saved in metadata.
 }
 \references{ see \url{http://www.sequenceontology.org/gff3.shtml} for details about Generic Feature Format
@@ -23,7 +23,7 @@ are included.  The seqid and source are saved in metadata.
 and names are assigned from child records by matching Parent tags.  
 
 The function is intended to load GFF files from NCBI only.  GFF files from other sources have not been tested
- and may not parse (and set locus.tags = FALSE to load the entire file). }
+ and may not parse. }
 
 
 \seealso{ \code{\link{read.ncbi.ftp}}  }
