@@ -9,8 +9,8 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
    #metadata
 
    seqid  <- unique(x$seqid)
-   # remove version#  (NCBI gff)
-   x$seqid<- strsplit2(x$seqid, ".", fixed=TRUE)
+   # remove version#  (ONLY NCBI ) - strsplit2 in limma
+   if( all(grepl("\\.[0-9]$", seqid )) )  x$seqid<- genomes::strsplit2(x$seqid, ".", fixed=TRUE)
    ## extra ID tag added for plotting 
    x$id <-  gsub("ID=([^;]*).*", "\\1", x$tags)   # .1 second -always at start of tags?
 
@@ -30,12 +30,12 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
       n <- y$tags %like% '*Parent=*'
       y$parent[n] <- gsub(".*Parent=([^;]*).*", "\\1", y$tags[n])
 
-      # get Products
-      y$product <- NA
+      # get Products 
+      y$product <- ""
       n<- y$tags %like% '*product=*'
-      y$product[n]  <-  gsub(".*product=([^;]*).*", "\\1", y$tags[n])
-  
-      ## add notes if missing (for ncRNAs and  transposase fragments)
+      if(sum(n)>0) y$product[n]  <-  gsub(".*product=([^;]*).*", "\\1", y$tags[n])
+    
+      ## add notes if missing product (for ncRNAs and  transposase fragments)
       n<- is.na(y$product) & y$tags %like% '*Note=*'
       y$product[n]  <-  gsub(".*Note=([^;]*).*", "\\1", y$tags[n])
 
@@ -48,7 +48,9 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
       ## FIND protein coding and other genes types USING parent key
        n <- match(  genes$id, y$parent )  
       n2 <- !is.na(n) 
-      genes$feature[n2] <-  y$feature[n[n2]]   # overwirte pseudo tags
+      genes$feature[n2] <-  y$feature[n[n2]]   # overwrite pseudo tags
+      
+       genes$description <- ""
       genes$description[n2] <-  y$product[n[n2]]
 
        ###   FIX pseudogenes
@@ -74,7 +76,7 @@ read.gff <- function(file,  only.genes=TRUE, nrows = -1  ){
 
 
       ## get gene AND gene_synonym
-      genes$gene <- NA
+      genes$gene <- ""
       n<-grep("gene=", genes$tag)
       if(length(n)>0)  genes$gene[n] <- gsub(".*gene=([^;]*).*", "\\1", genes$tags[n])
 

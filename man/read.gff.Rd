@@ -1,12 +1,12 @@
 \name{read.gff}
 \alias{read.gff}
-\title{ Read a GFF file }
-\description{ Read a GFF file from NCBI (version 3) }
+\title{ Read a GFF file from NCBI}
+\description{ Read a GFF file from NCBI genomes ftp (version 3) }
 \usage{
-read.gff(file, only.genes = TRUE, nrows = -1) }
+read.gff(file,  locus.tags = TRUE, nrows = -1) }
 \arguments{
   \item{file}{ a GFF file }
-  \item{only.genes}{ only return genes with locus tags }
+  \item{locus.tags}{ only return genes with locus tags }
   \item{nrows}{ number of rows to read }
 }
 \details{ GFF files are available from the NCBI genomes ftp
@@ -19,10 +19,11 @@ are included.  The seqid and source are saved in metadata.
 \references{ see \url{http://www.sequenceontology.org/gff3.shtml} for details about Generic Feature Format
 }
 \author{ Chris Stubben }
-\note{ By default, the GFF file is parsed to return only genes with a locus tag.  Features, 
-descriptions and genes names are assigned from child records by matching Parent tags.  
+\note{ By default, the GFF file is parsed to return only features with locus_tag keys. Gene types, products 
+and names are assigned from child records by matching Parent tags.  
 
-If a GFF file includes a sequence, use the nrows option to restrict the nubmer of rows scanned }
+The function is intended to load GFF files from NCBI only.  GFF files from other sources have not been tested
+ and may not parse (and set locus.tags = FALSE to load the entire file). }
 
 
 \seealso{ \code{\link{read.ncbi.ftp}}  }
