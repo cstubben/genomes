@@ -16,7 +16,10 @@ plot.genomes<-function(x, subset, xlab, ylab="Genomes",
    }
    if (nrow(x[!is.na(x[,n]),]) == 0) { stop("No rows to plot")}
   
-   genomes <- table(x[,n])
+   #   genomes <- table(x[,n])
+   # inlcude today's date
+   genomes <- table(c(x[,n], Sys.Date()) )
+   genomes[length(genomes)] <- 0
    plot(as.Date(names(genomes)), cumsum(genomes), 
      type=type, col=col,
      xlab=xlab, ylab=ylab, ...)

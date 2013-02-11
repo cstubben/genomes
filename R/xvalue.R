@@ -19,6 +19,8 @@ xvalue <- function(doc, tag) {
 # <SAMPLE accession="SRS000899" center_name="Broad Institute, Cambridge, MA, USA" alias="24604.0"> 
 
 
+##  use xmlGetAttr insteadd
+
 xattr <-function(doc, tag, att) {
       y <- xpathApply(doc, tag, xmlAttrs)
      # no matches to tag (give warning)

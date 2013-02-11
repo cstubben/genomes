@@ -1,3 +1,8 @@
+changes in version 2.5.1 (2013-02-11)
+	* updated plot.genomes and plotby to extend x-axis to current date.
+	* replaced 6 ena* functions with a single ena() function to retrieve data 
+	  from the REST browser and a separate enaParse() function to parse XML output
+
 changes in version 2.3.3 (2012-09-14)
         * update ncbiTaxonomy function due to changes in eSummary output 
 	* added functions to read files in NCBI genomes ftp including GRange 

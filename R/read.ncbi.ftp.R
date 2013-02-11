@@ -72,7 +72,8 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria"
       for(i in 1:n){
          print(paste("Downloading", files[i]))
          file <- paste(ftpdir, files[i], sep="/")
-         z[[i]] <- read.DNAStringSet(file, ...)
+         ## feb 15, 2013 'read.DNAStringSet' is deprecated
+         z[[i]] <- readDNAStringSet(file, ...)
       }
       z <- do.call("c", z) 
       ## check if single sequence (then use DNAString instead of DNAStringSet)

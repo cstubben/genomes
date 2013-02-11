@@ -116,6 +116,11 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
    ## plot GROUPs using multiple lines
     else {
         genomes <- table(x$released, x$groupby)
+        # add today's date
+        if(curdate) {
+           genomes <- rbind(genomes, 0)
+           rownames(genomes)[nrow(genomes)]<- as.character(Sys.Date() )
+        }
         genomes <- apply(genomes, 2, cumsum)
         ystart <- 0
         #start log scale at 1

@@ -21,10 +21,11 @@ einfo(db, links=FALSE)
 % \seealso{ }
 \examples{
 
+\dontrun{
 einfo()
 einfo("bioproject")
 einfo("bioproject", TRUE)
-
+}
 
 }
 \keyword{ methods }

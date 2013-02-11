@@ -1,4 +1,4 @@
-efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, ...)
+efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, showURL=FALSE, ...)
 {  
    email <- Sys.getenv("email")  
    if(email == ""){print("WARNING: please set your email using Sys.setenv(email='name@email.com')" ) }
@@ -17,7 +17,7 @@ efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, ...
    if( any(duplicated(names(opts)))){ stop("Duplicated keys are not allowed in url strings")}
    fetch <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
    fetch <- paste(fetch, opts, sep = "?")
-   # print(fetch)
+   if(showURL) print(fetch)
 
    # if retmode=xml-  will complain about  incomplete final line - use getURL 
    gp <- readLines(fetch)

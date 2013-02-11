@@ -51,7 +51,5 @@ ncbiTaxonomy <- function(term, summary=TRUE)
 
         data.frame(taxid, name, parentid, rank, lineage, stringsAsFactors=FALSE)
 
-
-
    }
 }

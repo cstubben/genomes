@@ -26,7 +26,7 @@ ncbiPubmed<-function(term, abstract=FALSE)
        a2<-xpathSApply(z2, "//Author/Initials", xmlValue)
        a3<-paste(a1,a2)  # always same length? if not recycles.
 
-        if(length(a3)>3){authors<-paste(c(a3[1:3], "et al."),  collapse=", ")}
+        if(length(a3)>3){authors<-paste(c(a3[1:3], "et al"),  collapse=", ")}
         else{authors<-paste(a3,  collapse=", ")}
 
          year    <- as.numeric(xvalue(z2, "//PubDate/Year"))

@@ -25,6 +25,8 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
       genes <- subset(x, n)
       y <-  subset(x, !n)
 
+      ##FIX: gffs from IMG with exit with error since no rows in y (all locus tags)
+
       # get Parent ids for matching
       y$parent<-NA
       n <- y$tags %like% '*Parent=*'

@@ -1,12 +1,12 @@
 Package: genomes
 Type: Package
 Title: Genome sequencing project metadata
-Version: 2.5.0
-Date: 2012-09-14
+Version: 2.5.1
+Date: 2013-02-11
 Author: Chris Stubben
 Maintainer: Chris Stubben <stubben@lanl.gov>
 License: Artistic-2.0
-Depends: R (>= 2.10), XML, RCurl, GenomicRanges, IRanges, Biostrings
+Depends: R (>= 2.11), XML, RCurl, GenomicRanges, IRanges, Biostrings
 biocViews: Annotation, Genetics
 Description: Collects genome sequencing project data from NCBI and the ENA.
 

@@ -3,13 +3,14 @@
 \title{ Entrez database links }
 \description{ Find links between Entrez databases at NCBI  }
 \usage{
-elink(id, cmd = "neighbor_history", parse = TRUE, ...)
+elink(id, cmd = "neighbor_history", parse = TRUE, showURL = FALSE, ...)
 }
 \arguments{
   \item{id}{ An EntrezHistory object or vector of Ids }
   \item{cmd}{ Command mode }
   \item{parse}{  Parse results into an EntrezHistory object (default) or 
       vector of linked Ids (if cmd="neighbor").  All other cmd options return XML }
+  \item{showURL}{ display URL string }
   \item{\dots}{ Other key-value pairs such as dbfrom, db, linkname  passed to the elink url string }
 }
 \details{ See \code{\link{einfo}} to find available links  }

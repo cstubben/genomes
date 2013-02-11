@@ -1,4 +1,4 @@
-elink <-function(id, cmd="neighbor_history", parse=TRUE, ...)
+elink <-function(id, cmd="neighbor_history", parse=TRUE, showURL=FALSE,  ...)
 {  
    email <- Sys.getenv("email")  
    if(email == ""){print("WARNING: please set your email using Sys.setenv(email='name@email.com')" ) }
@@ -15,6 +15,8 @@ elink <-function(id, cmd="neighbor_history", parse=TRUE, ...)
    if( any(duplicated(names(opts)))){ stop("Duplicated keys are not allowed in url strings")}
    link <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi"   
    link <- paste(link, opts, sep = "?")
+    if(showURL) print(link)
+
    gp <-xmlParse( readLines(link) )
    # parse the output
    if(parse){
