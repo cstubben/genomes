@@ -31,6 +31,7 @@ The default EntrezHistory object may be passed directly to the other E-utilities
 % \note{ }
 %\seealso{ }
 \examples{
+\dontrun{
 # EntrezHistory object
 esearch("bioconductor[TITLE]", showURL=TRUE)
 # taxonomy IDs
@@ -38,6 +39,6 @@ esearch("mouse", db="taxonomy", usehistory="n")
 esearch("AE017223 OR ACBJ00000000", db="nuccore")
 # comma-separated (or vector) to search Primary accessions
 esummary( esearch("AE017223,ACBJ00000000", db="nuccore"))
-
+}
 }
 \keyword{ methods }

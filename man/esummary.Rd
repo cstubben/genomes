@@ -27,12 +27,12 @@ esummary(id, db = "pubmed", parse = TRUE, ...)
 %\seealso{}
 \examples{
 
+\dontrun{
 # BioC articles published in the last year
 x <- esearch("bioconductor[TITLE]", reldate=360)
 y <- esummary(x, version="2.0")
 y[, c(1, 42, 6, 3, 8, 10)]
 
-\dontrun{
 # Y. pestis CO92 refseqs
 x <- esearch( "Yersinia pestis CO92[ORGN] AND refseq[FILTER]", "nuccore")
 y <- esummary(x)

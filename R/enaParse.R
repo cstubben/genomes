@@ -6,7 +6,7 @@
 
 enaParse<-function( doc ){
    portal <- attr(doc, "portal")
-   if(is.null(portal)){stop("Cannot parse XML without portal attribute") }
+   if(is.null(portal)){stop("Cannot parse XML without portal attribute describing record type") }
 
 # SAMPLES
    if(portal == "sample"){
@@ -161,7 +161,7 @@ enaParse<-function( doc ){
       ## save date 
       attr(exps, "date")   <- Sys.Date()
       exps
-# SUBMISSIONS - NOT a portal - search for multiple submission ids
+# SUBMISSIONS - NOT a portal - but can parse after searching for multiple submission ids
    }else if(portal == "submission"){
       ## NO LOOP 
       ## Feb 15, 2013  some with namespaces causes error using sapply
