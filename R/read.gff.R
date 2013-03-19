@@ -44,8 +44,9 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
       n   <- grep("%", y$product)
       if(length(n)>0) y$product[n] <- as.vector(sapply(y$product[n] , URLdecode))
    
-      ## ADD locus tags
-      genes$locus <- gsub(".*locus_tag=([^;]*).*", "\\1", genes$tags)
+      ## ADD locus tags  
+      # Mar 2013 Mycoplasma has old_locus_tag, add semi-colon    ;locus_tag=MG_515;old_locus_tag=MG323.1
+      genes$locus <- gsub(".*;locus_tag=([^;]*).*", "\\1", genes$tags)
    
       ## FIND protein coding and other genes types USING parent key
        n <- match(  genes$id, y$parent )  
