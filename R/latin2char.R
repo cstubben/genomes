@@ -1,54 +1,53 @@
+                                                 
+## FIND characters to fix
+
+# USE loop to check every column?  see old updatelproks
+## isLatin1 <- apply(prj, 2, function(y) any( grepl("NOT ASCII", iconv(y, "latin1","ASCII", sub="NOT ASCII"))))
+
+## OR just center
+#  x <- unique(c(proks$center, euks$center) )
+#  n <- is.na(iconv(x, "latin1", "ASCII"))
+#  y <- iconv(x[n], "latin1", "ASCII", sub="byte")
+#  z <-sort(gsub("--", "><", unique(unlist(str_extract_all(gsub("><", "--",y),  "<[^>]*>")))))
+
+#  cat(noquote( paste('   x[n] <- gsub("', z, '", "", x[n])', sep="")), sep="\n")
+
+
 latin2char<-function(x)
 {
    n <- is.na(iconv(x, "latin1", "ASCII"))
    x[n] <- iconv(x[n], "latin1", "ASCII", sub="byte")
 
-   ## missing hex codes in some lproks centers
-   x[n] <- gsub("Troms<ef><bf><bd>", "Tromso", x[n])
-   x[n] <- gsub("Unit<ef><bf><bd>",  "Unite", x[n])
-   x[n] <- gsub("<ef><bf><bd>", "?", x[n])  ## any others
 
-   ## google search latin1 table for hex codes
-   x[n] <- gsub("<96>", "-", x[n])   # dash in lenvs name
-   x[n] <- gsub("<b0>", " ", x[n])   # degree symbol in lproks range
-   x[n] <- gsub("<a0>", " ", x[n])   
-   
-   ## maybe add upper case if needed - 
-   x[n] <- gsub("<e0>", "a", x[n])
-   x[n] <- gsub("<e1>", "a", x[n])
-   x[n] <- gsub("<e2>", "a", x[n])
-   x[n] <- gsub("<e3>", "a", x[n])   # lproks center
-   x[n] <- gsub("<e4>", "a", x[n])   # lproks center
-   x[n] <- gsub("<e5>", "a", x[n])   # lproks center
-   x[n] <- gsub("<e6>", "ae", x[n])
-
-   x[n] <- gsub("<e7>", "c", x[n])   # lproks center
-
-   x[n] <- gsub("<e8>", "e", x[n])   # lproks center
-   x[n] <- gsub("<e9>", "e", x[n])   # lproks center
-   x[n] <- gsub("<e9>", "e", x[n]) 
-   x[n] <- gsub("<ea>", "e", x[n]) 
-   x[n] <- gsub("<eb>", "e", x[n]) 
-
-   x[n] <- gsub("<ec>", "i", x[n]) 
-   x[n] <- gsub("<ed>", "i", x[n])   # lproks center
-   x[n] <- gsub("<ee>", "i", x[n])  
-   x[n] <- gsub("<ef>", "i", x[n])  
-
-   x[n] <- gsub("<f1>", "n", x[n])
-
-   x[n] <- gsub("<f2>", "o", x[n])
-   x[n] <- gsub("<f3>", "o", x[n])   # lproks center
-   x[n] <- gsub("<f4>", "o", x[n])
-   x[n] <- gsub("<f5>", "o", x[n])
-   x[n] <- gsub("<f6>", "o", x[n])   # lproks center
-   x[n] <- gsub("<f8>", "o", x[n])
-
-   x[n] <- gsub("<f9>", "u", x[n])
-   x[n] <- gsub("<fa>", "u", x[n])   # lproks center
-   x[n] <- gsub("<fb>", "u", x[n])
-   x[n] <- gsub("<fc>", "u", x[n])   # lproks center
+   x[n] <- gsub("<c3><af><c2><bf><c2><bd>", "a", x[n])  # Ullev*a*l
+  x[n] <- gsub("<c2><a1><c2><af>", "'", x[n])  # Xi'an
+   x[n] <- gsub("<e2><80><93>", "-", x[n])
+   x[n] <- gsub("<e2><80><99>", "'", x[n])
+   x[n] <- gsub("<e2><80><9c>", "", x[n])  # double quotes
+   x[n] <- gsub("<e2><80><9d>", "", x[n]) # double quotes
+   x[n] <- gsub("<ef><bc><8c>", ",", x[n])
 
 
+   x[n] <- gsub("<c2><81>", ",", x[n])
+
+   x[n] <- gsub("<c3><a0>", "a", x[n])
+   x[n] <- gsub("<c3><a1>", "a", x[n])
+   x[n] <- gsub("<c3><a3>", "a", x[n]) 
+   x[n] <- gsub("<c3><a4>", "a", x[n])
+ 
+   x[n] <- gsub("<c3><a7>", "c", x[n])
+
+   x[n] <- gsub("<c3><a8>", "e", x[n])
+   x[n] <- gsub("<c3><a9>", "e", x[n])
+   x[n] <- gsub("<c3><aa>", "e", x[n])
+
+   x[n] <- gsub("<c3><ad>", "i", x[n])
+
+   x[n] <- gsub("<c3><b3>", "o", x[n])
+   x[n] <- gsub("<c3><b4>", "o", x[n])
+   x[n] <- gsub("<c3><b6>", "o", x[n])
+
+   x[n] <- gsub("<c3><ba>", "u", x[n])
+   x[n] <- gsub("<c3><bc>", "u", x[n])
    x
 }

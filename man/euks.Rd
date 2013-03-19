@@ -6,12 +6,14 @@
 }
 \usage{data(euks)}
 \format{
-  A genomes data frame with observations on the following 17 variables.
+  A genomes data frame with observations on the following 20 variables.
   \describe{
-    \item{\code{acc}}{ BioProject Accession number }
+    \item{\code{acc}}{ BioProject id }
     \item{\code{name}}{ Organism name }
-    \item{\code{status}}{ Highest level of assembly; Chromosome, Scaffolds, SRA or No data}
+    \item{\code{status}}{ Chromosome, Scaffolds or contigs, SRA or No data}
     \item{\code{released}}{First public sequence release}
+    \item{\code{taxid}}{ Taxonomy id }
+   \item{\code{acc}}{ BioProject Accession number }
     \item{\code{group}}{Phylum}
     \item{\code{subgroup}}{Class level}
     \item{\code{size}}{Total length of DNA (Mb)}
@@ -24,7 +26,8 @@
     \item{\code{scaffolds}}{Number of scaffolds}
     \item{\code{genes}}{Number of genes}
     \item{\code{proteins}}{Number of proteins}
-    \item{\code{modified}}{Sequence modification date}
+    \item{\code{modified}}{Last modification date}
+    \item{\code{center }}{Sequencing center}
   }
 }
 \details{Excludes projects that represent only organelles}
@@ -39,6 +42,7 @@ t(euks[1,])
 plot(euks)
 summary(euks)
 table2(euks$subgroup)
+# table2(euks$subgroup, euks$status)
 
 }
 \keyword{datasets}

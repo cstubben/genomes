@@ -17,8 +17,8 @@ ncbiNucleotide<-function(term)
 
    x <- x[, c(2,3, 6, 10,9, 5, 11, 1,4,7,8,12,13)] 
   
-   ##  add class
-   class(x) <- c("genomes", "data.frame")
+   ##  add class?
+   # class(x) <- c("genomes", "data.frame")
    attr(x, "date")   <- Sys.Date()
    attr(x, "term")   <- term
    x

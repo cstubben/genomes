@@ -12,10 +12,12 @@
 \format{
   A genomes data frame with the following 13 variables.
   \describe{
-    \item{\code{acc}}{ BioProject Accession number }
+     \item{\code{acc}}{ BioProject id }
     \item{\code{name}}{ Organism name }
     \item{\code{status}}{ Highest level of assembly; Complete, SRA or No data}
     \item{\code{released}}{First public sequence release}
+    \item{\code{taxid}}{ Taxonomy id }
+   \item{\code{acc}}{ BioProject Accession number }
     \item{\code{group}}{Phylum}
     \item{\code{subgroup}}{Class level}
     \item{\code{size}}{Total length of DNA (Mb)}

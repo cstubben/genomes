@@ -1,4 +1,6 @@
-changes in version 2.5.1 (2013-02-11)
+changes in version 2.5.1 (2013-03-18)
+	* added new columns (taxid and center) to proks and euks datasets. Also 
+	  replaced non ASCII characters in center names (which cause Warnings).
 	* updated plot.genomes and plotby to extend x-axis to current date.
 	* replaced 6 ena* functions with a single ena() function to retrieve data 
 	  from the REST browser and a separate enaParse() function to parse XML output
