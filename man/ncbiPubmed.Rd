@@ -35,8 +35,10 @@ A data.frame with 9 or 10 columns
 %\note{ }
 %\seealso{ }
 \examples{
+\dontrun{
 ncbiPubmed( c(7542800, 7569993))
 # OR ncbiPubmed("7542800,7569993")
+}
 }
 
 \keyword{methods }

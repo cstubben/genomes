@@ -25,9 +25,9 @@ uses E-fetch, so retrievals to the genome and other database will not work. }
 \seealso{ \code{\link{ncbiRelease}}  }
 \examples{
 
+\dontrun{
 #Yersinia pestis  reference sequences
 ncbiSubmit("Yersinia pestis CO92[ORGN] AND refseq[FILTER]")
-\dontrun{
 # Ebola virus - no patents or references
 ebola<- ncbiSubmit("Ebolavirus[ORGN] NOT gbdiv_pat[PROP] NOT refseq[FILTER]")
 head(ebola)

@@ -29,14 +29,15 @@ Searches the new BioProject database using the ESearch utility
 
 \examples{
 
+\dontrun{
 x <- ncbiProject("Yersinia[ORGN]")
 x
 summary(x)
 
 #Metagenomes  
-# metag <- ncbiProject("metagenome[Project Data Type]")
-# metag <- ncbiProject("metagenomes[Orgn]")
-
+metag <- ncbiProject("metagenome[Project Data Type]")
+metag2 <- ncbiProject("metagenomes[Orgn]")
+}
 
 }
 \keyword{ methods}

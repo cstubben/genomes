@@ -24,10 +24,9 @@ of taxonomy Ids (joined using a comma) or taxonomy names (joined using "OR").
 
 \examples{
 
+\dontrun{
 ncbiTaxonomy("Yersinia pestis")
 ncbiTaxonomy("Yersinia pestis", summary=FALSE)
-
-\dontrun{
 ncbiTaxonomy(c("Bacillus anthracis", "Yersinia pestis"))
 ncbiTaxonomy("cellular organisms[Next Level]")  
 # new Hantavirus species added in 2012
