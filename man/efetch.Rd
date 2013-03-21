@@ -4,7 +4,7 @@
 \description{  Retrieve Entrez database records at NCBI in a variety of formats
 }
 \usage{
-efetch(id, db = "pubmed", rettype = "", retmode = "text", seq_stop = 700, showURL = FALSE, ...)
+efetch(id, db = "pubmed", rettype = "", retmode = "text", seq_stop = 700, showURL = FALSE, destfile, ...)
 }
 \arguments{
   \item{id}{ An EntrezHistory object or vector of Ids }
@@ -14,6 +14,7 @@ efetch(id, db = "pubmed", rettype = "", retmode = "text", seq_stop = 700, showUR
   \item{seq_stop}{ Last sequence base to retrieve.  The stop is set low to avoid 
      unintentional downloads of large sequences.  Set to NA or an empty string to download the entire sequence.}
   \item{showURL}{ display URL string }
+  \item{destfile}{ location to save downloaded file using download.file. If missing, the url is loaded into R using readLines }
   \item{\dots}{ Other key-value pairs passed to the efetch url string }
 }
 %\details{ }

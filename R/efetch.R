@@ -1,4 +1,4 @@
-efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, showURL=FALSE, ...)
+efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, showURL=FALSE, destfile, ...)
 {  
    email <- Sys.getenv("email")  
    if(email == ""){print("WARNING: please set your email using Sys.setenv(email='name@email.com')" ) }
@@ -19,7 +19,11 @@ efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, sho
    fetch <- paste(fetch, opts, sep = "?")
    if(showURL) print(fetch)
 
-   # if retmode=xml-  will complain about  incomplete final line - use getURL 
-   gp <- readLines(fetch)
-   gp
+    # if retmode=xml-  will complain about  incomplete final line - use getURL 
+   if(missing(destfile)){
+      gp <- readLines(fetch)
+      gp
+   }else{
+      download.file(fetch, destfile)
+   }
 }
