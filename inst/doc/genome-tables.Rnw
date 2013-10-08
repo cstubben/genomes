@@ -96,7 +96,7 @@ year from the release date  (Figure \ref{complete}).
 
 <<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
 complete <- subset(proks, status == "Complete")
-x<-table(year(complete$released))
+x <- table(year(complete$released))
 barplot(x, col="blue", ylim=c(0,max(x)*1.04), space=0.5, las=1,
 axis.lty=1, xlab="Year", ylab="Genomes per year")
 box()
@@ -114,13 +114,13 @@ box()
 Because subsets of tables are often needed, the binary operator \Rcmd{like} allows
 pattern matching using wildcards.   The \Rcmd{plotby} function can
 then be used to plot the release dates by status using labeled points,
-in this case to identify complete and draft sequences of \emph{Yersinia pestis} (Figure
+in this case to identify complete and draft sequences of \emph{Yersinia pestis} released before 2012 (Figure
 \ref{yersinia}).  
 
 <<yersinia, fig=TRUE, include=FALSE, height=5, width=5>>=
 ## Yersinia pestis
-yp<-subset(proks, name %like% 'Yersinia pestis*')
-plotby(yp, labels=TRUE, cex=.5, lbty='n')
+yp<-subset(proks, name %like% 'Yersinia pestis*' & year(released)<2012 )
+plotby(yp, labels=TRUE, cex=.5, lbty='n', curdate=FALSE)
 
 @ 
 

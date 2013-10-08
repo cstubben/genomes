@@ -61,7 +61,7 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria"
       for(i in 1:n){
          print(paste("Downloading", files[i]))
          file <- paste(ftpdir, files[i], sep="/")
-         z[[i]] <- read.AAStringSet(file, ...)
+         z[[i]] <- readAAStringSet(file, ...)
       }
       z <- do.call("c", z) 
    }

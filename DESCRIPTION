@@ -9,4 +9,4 @@ License: Artistic-2.0
 Depends: R (>= 2.11), XML, RCurl, GenomicRanges, IRanges, Biostrings
 biocViews: Annotation, Genetics
 Description: Collects genome sequencing project data from NCBI and the ENA.
-
+Packaged: 2013-10-08 21:09:32 UTC; stubben
