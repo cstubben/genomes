@@ -5,7 +5,7 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria"
    files <- grep(filePattern, x$name, value=TRUE)
    if(length(files) == 0){stop("No files matching ", filePattern, " found")}
    # get file endings
-   fileTypes <- strsplit2(files, ".", 2, fixed=TRUE)
+   fileTypes <- genomes::strsplit2(files, ".", 2, fixed=TRUE)
     # CANNOT read these files
    n0 <- which( fileTypes %in% c("asn", "gbk", "val", "GeneMark-2", "rpt"))
    if(length(n0) > 0 ){
@@ -50,9 +50,7 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria"
       n <- order(seqlengths(z), decreasing=TRUE)
       seqlevels(z) <- seqlevels(z)[n]
      z <- z[order( match(IRanges::as.vector(seqnames(z)),  seqlevels(z)), start(z)), ]
-      # also order deflines but not files because rnt and ptt possible
-      if(length(n) == length(deflines)) deflines <- deflines[n]
-
+ 
       # add new metadata
       metadata(z) <- list(ftp = ftpdir, files=files,  defline=deflines, date=Sys.Date() )
    }
@@ -82,7 +80,7 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria"
 
 
    ## z is empty ? mixed file types???
-   if(is.list(z) &&  all(sapply(z, is.null)) ) stop("Too many different file types: ", paste(unique(fileTypes), collapse=", "))
+  # if(is.list(z) &&  all(sapply(z, is.null)) ) stop("Too many different file types: ", paste(unique(fileTypes), collapse=", "))
    z
 }
 

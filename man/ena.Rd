@@ -13,7 +13,7 @@ ena(ids, portal, subtree = TRUE, limit = 1000, display = "xml") }
 }
 \details{  If portal is missing, then records matching one or more EMBL accessions are returned in either XML, FASTA, or plain text formats depending on the display option.  EMBL accessions can be a vector, comma-separated list, range, or single ID.  
 
-If portal is specified, then records associated with a single taxonomy ID or name are returned.  Valid portal names include study, sample, analysis, read_sample, read_experiment, read_run, sequence_coding, sequence_release and others described on the help page listed in references.  
+If portal is specified, then records associated with a single taxonomy ID or name are returned.  Valid portal names include stats, study, sample, analysis, read_sample, read_experiment, read_run, sequence_coding, sequence_release and others described on the help page listed in references.  
 }
 \value{ A DNAStringSet object if display="fasta", an XMLInternalDocument if display="xml", or a character vector.
 }

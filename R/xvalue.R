@@ -46,6 +46,8 @@ xattr <-function(doc, tag, att) {
 #        <ID>SRX001146</ID>
 #    </XREF_LINK>
 
+# xtags(doc, "//XREF_LINK", "DB", "ID", "ENA-STUDY")
+
 xtags <- function(doc, tag, subtag1, subtag2, value1 ) {
          n <- xpathSApply(doc, paste(tag, subtag1, sep="/"), xmlValue)==value1
          if ( any(n) ) 

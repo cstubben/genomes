@@ -8,11 +8,14 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
    colnames(x) <- c("seqid", "source", "feature", "start", "end", "score", "strand", "phase", "tags")
    #metadata
 
+
+   # SAVE OR remove version number?   - strsplit2 in limma
    seqid  <- unique(x$seqid)
-   # remove version#  (ONLY NCBI ) - strsplit2 in limma
    if( all(grepl("\\.[0-9]$", seqid )) )  x$seqid<- genomes::strsplit2(x$seqid, ".", fixed=TRUE)
+
+
    ## extra ID tag added for plotting 
-   x$id <-  gsub("ID=([^;]*).*", "\\1", x$tags)   # .1 second -always at start of tags?
+   x$id <-  gsub("ID=([^;]*).*", "\\1", x$tags)   #  -always at start of tags?
 
    ## FULL table (except score and phase)
    if(!locus.tags){
@@ -112,8 +115,8 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
    ##  sequence length should be in first row (and max end) 
    ## gff may have multiple seq ids (then find if "source" tag present
    if(length(seqid)==1)  seqlengths(gff) <- max(x$end)
-   # add defline for read.gff - parse from source tag???
-   metadata(gff) <- list(seqid=seqid, source=unique(x$source) , defline="")
+   # add defline for read.gff - parse from source tag???  - use full acc with version number
+   metadata(gff) <- list(source=unique(x$source) , defline=seqid)
    gff
 }
 

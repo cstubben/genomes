@@ -1,4 +1,7 @@
-efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, showURL=FALSE, destfile, ...)
+# MAr 26 - drop default seq_stop=700
+# TO DO: add options to readDNAStringSet directly from url
+
+efetch <-function(id, db="pubmed", rettype="", retmode="text", showURL=FALSE, destfile, ...)
 {  
    email <- Sys.getenv("email")  
    if(email == ""){print("WARNING: please set your email using Sys.setenv(email='name@email.com')" ) }
@@ -12,7 +15,7 @@ efetch <-function(id, db="pubmed", rettype="", retmode="text", seq_stop=700, sho
       if(is.vector(id)) id<-paste(id, collapse=",")
       opts<-c( id=id, db=db)
    }
-   opts <- c(email=email, tool="efetch.R", opts, rettype=rettype, retmode=retmode, seq_stop=seq_stop, ...)
+   opts <- c(email=email, tool="efetch.R", opts, rettype=rettype, retmode=retmode, ...)
    opts <- paste( paste(names(opts), opts, sep="="), collapse="&")  
    if( any(duplicated(names(opts)))){ stop("Duplicated keys are not allowed in url strings")}
    fetch <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
