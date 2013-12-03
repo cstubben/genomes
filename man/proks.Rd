@@ -9,7 +9,7 @@
   \describe{
     \item{\code{pid}}{ BioProject id }
     \item{\code{name}}{ Organism name }
-    \item{\code{status}}{ Complete, Scaffolds or contigs, SRA or No data}
+    \item{\code{status}}{ Complete, Scaffolds or contigs, SRA or Traces}
     \item{\code{released}}{First public sequence release}
     \item{\code{taxid}}{ Taxonomy id }
     \item{\code{acc}}{ BioProject Accession number }
@@ -28,8 +28,8 @@
     \item{\code{modified}}{Last modification date}
     \item{\code{center }}{Sequencing center}
     \item{\code{biosample }}{BioSample Accession number} 
-    \item{\code{ assembly}}{ Assembly Accession number}
-    \item{\code{ reference}}{ Reference or representative genome }
+    \item{\code{assembly}}{ Assembly Accession number}
+    \item{\code{reference}}{ Reference or representative genome }
   }
 }
 \details{ BioProject IDs are no longer unique and the table was modified on Nov 1, 2013 to include BioSample and Assembly accessions.  See email on NCBI announcement regarding bacterial strain-level TaxID management for details}
