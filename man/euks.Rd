@@ -6,7 +6,7 @@
 }
 \usage{data(euks)}
 \format{
-  A genomes data frame with observations on the following 20 variables.
+  A genomes data frame with observations on the following 21 variables.
   \describe{
     \item{\code{acc}}{ BioProject id }
     \item{\code{name}}{ Organism name }
@@ -28,6 +28,7 @@
     \item{\code{proteins}}{Number of proteins}
     \item{\code{modified}}{Last modification date}
     \item{\code{center }}{Sequencing center}
+    \item{\code{biosample }}{BioSample Accession number} 
   }
 }
 \details{Excludes projects that represent only organelles}

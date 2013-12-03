@@ -2,17 +2,17 @@ updateeuks <- function()
 {
    ftp <- "ftp://ftp.ncbi.nlm.nih.gov/genomes/GENOME_REPORTS/eukaryotes.txt"
    x <- read.delim(ftp, comment.char="", stringsAsFactors=FALSE, na.strings="-")
-   if(ncol(x) != 20){
+   if(ncol(x) != 21){
       print("Warning - number of columns have changed")
       prj <- x
    }else{
        names(x) <- c("name", "taxid", "acc", "pid", "group", "subgroup", "size", "gc",
       "assembly", "chromosomes", "organelles", "plasmids",
-      "wgs", "scaffolds", "genes", "proteins", "released", "modified", "status", "center")
+      "wgs", "scaffolds", "genes", "proteins", "released", "modified", "status", "center", "biosample")
       x$released <- as.Date(x$released)
       x$modified <- as.Date(x$modified)
       x$status[x$status == "Scaffolds or contigs"] <- "Assembly"
-      prj <- x[order(x$name), c(4,1,19,17, 2, 3, 5:16,18, 20)]
+      prj <- x[order(x$name), c(4,1,19,17, 2, 3, 5:16,18, 20:21)]
       rownames(prj) <- NULL
 
    }
