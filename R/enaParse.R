@@ -1,18 +1,18 @@
 
 ## parse XML from ENA
 
-# see http://www.ebi.ac.uk/ena/about/sra_preparing_metadata
 
+enaParse<-function( doc, node ){
 
-enaParse<-function( doc ){
-   portal <- attr(doc, "portal")
-   if(is.null(portal)){stop("Cannot parse XML without portal attribute describing record type") }
+   node <- unique( xpathSApply(doc, "//ROOT/child::node()", xmlName) )
+   if(length(node)>1) stop("Cannot parse:  More than 1 unique child node")
+   if(length(node)==0) stop("Cannot parse: No child node of ROOT found")
+
 
 # SAMPLES
-   if(portal == "sample"){
+   if(node == "SAMPLE"){
       z <- getNodeSet(doc, "//SAMPLE")
       n <- length(z)
-      if(n==0) stop("Cannot parse sample tags") 
       sra <- vector("list", n)
       for (i in 1:n) {
          z2 <- xmlDoc(z[[i]])
@@ -29,7 +29,9 @@ enaParse<-function( doc ){
          center <- gsub("([^,]*).*", "\\1",center)    # multiple centers?
         description <- xvalue(z2, "//DESCRIPTION")
 
-         biosample      <- xtags(z2, "//ENTREZ_LINK", "DB", "ID", "biosample")
+         biosample      <- xvalue(z2, "//EXTERNAL_ID[@namespace='BioSample']")
+         #biosample      <- xtags(z2, "//ENTREZ_LINK", "DB", "ID", "biosample")
+
          study      <- xtags(z2, "//XREF_LINK", "DB", "ID", "ENA-STUDY")
          submission <- xtags(z2, "//XREF_LINK", "DB", "ID", "ENA-SUBMISSION")
          experiment <- xtags(z2, "//XREF_LINK", "DB", "ID", "ENA-EXPERIMENT")
@@ -43,12 +45,10 @@ enaParse<-function( doc ){
       sra <- sra[order(sra$name, sra$alias),]
       rownames(sra) <- NULL
       sra
-# STUDIES
-   }else if(portal == "study"){
+# 
+   }else if(node == "PROJECT"){
       z <- getNodeSet(doc, "//PROJECT") 
       n <- length(z)
-      if(n==0) stop("Cannot parse project tags") 
-
       prj <- vector("list", n)
       for (i in 1:n) {
          z2  <- xmlDoc(z[[i]])
@@ -85,11 +85,10 @@ enaParse<-function( doc ){
        ## save date 
        attr(prj, "date")   <- Sys.Date()
       prj
-# READ STUDIES
-   }else if(portal == "read_study"){
+# STUDIES
+   }else if(node == "STUDY"){
       z <- getNodeSet(doc, "//STUDY")
       n <- length(z)
-      if(n == 0) stop("Cannot parse study tags") 
       stdy <- vector("list", n)
       for (i in 1:n) {
          z2 <- xmlDoc(z[[i]])
@@ -105,8 +104,9 @@ enaParse<-function( doc ){
          #xvalue(z2, "CENTER_PROJECT_NAME")  # same as title
         abstract <- xvalue(z2, "//STUDY_ABSTRACT") 
 
-         project <-  xtags(z2, "//RELATED_LINK", "DB", "LABEL", "bioproject") 
-         
+        # project <-  xtags(z2, "//RELATED_LINK", "DB", "LABEL", "bioproject") 
+         project <-  xvalue(z2, "//SECONDARY_ID")
+
          # samples, experiment, run, submission, and anlysis
          sample <-  xtags(z2, "//XREF_LINK", "DB", "ID", "ENA-SAMPLE") 
          ## analysis<- xtags(z2, "//XREF_LINK", "DB", "ID", "ENA-ANALYSIS") 
@@ -114,7 +114,7 @@ enaParse<-function( doc ){
          bases  <- as.numeric( xtags(z2, "//STUDY_ATTRIBUTE", "TAG", "VALUE", "ENA-BASE-COUNT") )
          reads  <- as.numeric( xtags(z2, "//STUDY_ATTRIBUTE", "TAG", "VALUE", "ENA-SPOT-COUNT") )
 
-         stdy[[i]] <- data.frame(study, title, type, project, center,  sample,  bases, reads, abstract, stringsAsFactors = FALSE)
+         stdy[[i]] <- data.frame(study, title, type, center, project, sample,  bases, reads, abstract, stringsAsFactors = FALSE)
          free(z2)
       }
 
@@ -124,11 +124,10 @@ enaParse<-function( doc ){
       ## save date 
        attr(stdy, "date")   <- Sys.Date()
       stdy
-# READ EXPERIMENTS
-   }else if(portal == "read_experiment"){
+# EXPERIMENTS
+   }else if(node == "EXPERIMENT"){
       z <- getNodeSet(doc, "//EXPERIMENT")
       n <- length(z)
-      if(n == 0) stop("No read experiments found")  
       exp <- vector("list", n)
       for (i in 1:n) {
          z2 <- xmlDoc(z[[i]])
@@ -144,7 +143,7 @@ enaParse<-function( doc ){
          # LIBRARY
          library      <- xvalue(z2, "//LIBRARY_NAME")
          # strategy  <-xvalue(z2, "//LIBRARY_STRATEGY") # all wgs?
-         protocol <- xvalue(z2, "//LIBRARY_CONSTRUCTION_PROTOCOL")
+         protocol <- xvalue(z2, "//LIBRARY_CONSTRUCTION_PROTOCOL")   ## dropped?
 
          layout    <- xpathSApply(z2, "//LIBRARY_LAYOUT/*", xmlName)
          source    <- xvalue(z2, "//LIBRARY_SOURCE")
@@ -161,8 +160,8 @@ enaParse<-function( doc ){
       ## save date 
       attr(exps, "date")   <- Sys.Date()
       exps
-# SUBMISSIONS - NOT a portal - but can parse after searching for multiple submission ids
-   }else if(portal == "submission"){
+# SUBMISSIONS -
+   }else if(node == "SUBMISSION"){
       ## NO LOOP 
       ## Feb 15, 2013  some with namespaces causes error using sapply
       y     <- xpathApply(doc, "//SUBMISSION", xmlAttrs, addNamespaceURLs=FALSE)
@@ -175,7 +174,7 @@ enaParse<-function( doc ){
       submit
 
    }else{
-      print(paste("No parser for", portal, "available"))
+      print(paste("No parser for", sQuote(node), "available"))
    }
 
 

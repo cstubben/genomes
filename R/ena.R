@@ -24,8 +24,9 @@ ena <- function( ids, portal, subtree=TRUE, limit =1000, display="xml")
       if(display == "fasta"){
          readDNAStringSet(url)
       }else{
-         x <- readLines(url, encoding="latin1")
-    
+          # warning on incomplete final line
+         x <- suppressWarnings( readLines(url, encoding="latin1") )
+     
         ## added Feb 5, 2013 - urls may be empty
          if(length(x) == 0){
             print("No results found")
@@ -59,15 +60,16 @@ ena <- function( ids, portal, subtree=TRUE, limit =1000, display="xml")
          if(display == "fasta"){
             readDNAStringSet(url)
          }else{
-            x <- readLines(url, encoding="latin1")
+            x <- suppressWarnings( readLines(url, encoding="latin1") )
  
             if(length(x)==0){
                print("No results found")
             } else if(display == "xml"){
-               ##Avoid error : Extra content at the end of the document
-               x <-c("<ENA>", x, "</ENA>")
+     
+             ## DELETE "Entry:  display type is either not supported or entry is not found." 
+             x <-  grep("^Entry:  display", x, invert=TRUE, value=TRUE)
+             
                doc <- xmlParse(x)
-               attr(doc, "portal") <- portal
                doc
             ## text, fastq?
             }else{
