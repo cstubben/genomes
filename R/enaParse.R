@@ -2,7 +2,7 @@
 ## parse XML from ENA
 
 
-enaParse<-function( doc, node ){
+enaParse<-function( doc ){
 
    node <- unique( xpathSApply(doc, "//ROOT/child::node()", xmlName) )
    if(length(node)>1) stop("Cannot parse:  More than 1 unique child node")

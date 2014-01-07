@@ -35,6 +35,11 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
       n <- y$tags %like% '*Parent=*'
       y$parent[n] <- gsub(".*Parent=([^;]*).*", "\\1", y$tags[n])
 
+     # get protein_ids (for matching to fasta and other files)   ## ADDED Dec 23, 2013
+     y$pid <- ""
+      n<- y$tags %like% '*protein_id=*'
+      if(sum(n)>0) y$pid[n]  <-  gsub(".*protein_id=([^;.]*).*", "\\1", y$tags[n])
+
       # get Products 
       y$product <- ""
       n<- y$tags %like% '*product=*'
@@ -58,6 +63,7 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
       
        genes$description <- ""
       genes$description[n2] <-  y$product[n[n2]]
+      genes$pid[n2]         <-  y$pid[n[n2]]
 
        ###   FIX pseudogenes
       genes$feature[ genes$tags %like% '*pseudo=true*'] <- "pseudo"
@@ -100,7 +106,7 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
          print("Warning: grouping coordinates for duplicate locus tags") 
          genes2 <- by(genes, genes$locus, function(x){
              data.frame(locus=x$locus[1], seqid=x$seqid[1], start=min(x$start), end = max(x$end), strand= x$strand[1], 
-                        feature=x$feature[1], description=x$description[1], gene=x$gene[1] ) 
+                        pid=x$pid[1], feature=x$feature[1], description=x$description[1], gene=x$gene[1] ) 
                    })
          genes <- do.call('rbind', genes2) 
 
@@ -110,7 +116,7 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
       if( any(diff(order(genes$start))!=1) ){
          genes <-genes[order(genes$start),] 
       }
-      gff <- GRanges(seqnames=genes$seqid, ranges=IRanges( genes$start, genes$end), strand=genes$strand, genes[, c("locus", "feature", "description", "gene") ]  )
+      gff <- GRanges(seqnames=genes$seqid, ranges=IRanges( genes$start, genes$end), strand=genes$strand, genes[, c("locus", "pid", "feature", "description", "gene") ]  )
    }
    ##  sequence length should be in first row (and max end) 
    ## gff may have multiple seq ids (then find if "source" tag present
