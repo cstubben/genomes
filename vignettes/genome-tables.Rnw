@@ -25,34 +25,14 @@ options(SweaveHooks=list(fig=function() par(mar=c(5,4.2,1,1))))
 @
 
 The \pkg{genomes} package collects genome project metadata from NCBI 
-using E-utility scripts (esearch, esummary, efetch and elink) or from the ENA 
-using the ENA Browser REST URL.  The packages also includes genome tables from NCBI and
-and provides tools to summarize, compare and plot the data in the \R~programming environment. Genome
+using E-utility scripts (esearch, esummary, efetch and elink) or the NCBI genomes FTP. 
+The packages also includes tools to summarize, compare and plot the data in the \R~programming environment. Genome
 tables are a defined class (\emph{genomes}) and each table is a data
 frame where rows are genome projects and columns are the fields
 describing the associated metadata.  A number of methods are available that operate on genome tables
 including \Rcmd{print}, \Rcmd{summary}, \Rcmd{plot} and \Rcmd{update}.
 
-There are a number of ways to install this package.  If you are
-running the most recent \R~version, you can use the \Rcmd{biocLite}
-command.
-
-<<biocLite, eval=FALSE>>=
-source("http://bioconductor.org/biocLite.R")
-biocLite("genomes")
-@ 
-
-Since the format of online genome tables may change (and then
-\Rcmd{update} commands may fail), I would recommend downloading the
-development version for fixes in between the six month release cycle.
-
-<<install, eval=FALSE, keep.source=TRUE>>=
-install.packages("genomes", 
-   repos="http://www.bioconductor.org/packages/devel/bioC", type="source")
-@ 
-
-
-Genome tables from the Genome database at NCBI include
+Genome tables from the Genomes FTP at NCBI include
 prokaryotic (\Rcmd{proks}), eukaryotic
 (\Rcmd{euks}) and virus genomes (\Rcmd{virus}).
 The \Rcmd{print} methods displays the first few rows and columns of
@@ -81,7 +61,9 @@ update(proks)
 
 A number of additional functions assist in selecting, sorting and
 grouping genomes.  The \Rcmd{species} and \Rcmd{genus} functions can
-be used to extract the species or genus from a scientific name.  The
+be used to extract the species or genus from a scientific name.  The \Rcmd{month} 
+and \Rcmd{year} functions can be used to extract the month or
+year from the release date. The
 \Rcmd{table2} function formats and sorts a contingency table by
 counts.
 
@@ -89,26 +71,6 @@ counts.
 spp<-species(proks$name)
 table2(spp)
 @ 
-
-The \Rcmd{month} and \Rcmd{year} functions can be used to extract the month or
-year from the release date  (Figure \ref{complete}).  
-
-
-<<complete, fig=TRUE, include=FALSE, height=3, width=5>>=
-complete <- subset(proks, status == "Complete")
-x <- table(year(complete$released))
-barplot(x, col="blue", ylim=c(0,max(x)*1.04), space=0.5, las=1,
-axis.lty=1, xlab="Year", ylab="Genomes per year")
-box()
-@ 
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[height=3in,width=5in]{genome-tables-complete.pdf}
- \caption{Number of complete microbial genomes released each year at NCBI}
-\label{complete}
-\end{figure}
 
 
 Because subsets of tables are often needed, the binary operator \Rcmd{like} allows
@@ -127,13 +89,9 @@ plotby(yp, labels=TRUE, cex=.5, lbty='n', curdate=FALSE)
 \begin{figure}[t]
 \centering
 \includegraphics[height=5in,width=5in]{genome-tables-yersinia.pdf}
- \caption{Cumulative plot of \emph{Yersinia pestis} genomes by release date.}
+ \caption{Cumulative plot of \emph{Yersinia pestis} genomes released before 2012.}
 \label{yersinia}
 \end{figure}
-
-  A number of recent functions have been added that allow \R~users to
-query NCBI databases or the European Nucleotide Archive.  These functions will be 
-described in a separate vignette.
 
 
 \end{document}

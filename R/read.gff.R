@@ -6,8 +6,13 @@ read.gff <- function(file,  locus.tags=TRUE, nrows = -1  ){
    x <- read.delim(file, stringsAsFactors=FALSE, comment.char="#", header=FALSE, nrows=nrows)
    # use tags instead of attributes() function
    colnames(x) <- c("seqid", "source", "feature", "start", "end", "score", "strand", "phase", "tags")
-   #metadata
 
+   # sep 4 , 2014 - temp fix for new FTP site with "." in strand...
+   n<- x$strand=="."
+   if(any(n)){
+     x$strand[n] <- "+"
+     print("WARNING: changing '.' to '+' in strand column")
+   }
 
    # SAVE OR remove version number?   - strsplit2 in limma
    seqid  <- unique(x$seqid)

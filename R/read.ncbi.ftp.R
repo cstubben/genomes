@@ -1,4 +1,7 @@
-read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/Bacteria", ...){
+## sep 4 2014 - using new genomes/ASSEMBLY_BACTERIA as default
+# new FTP dir does not include  GeneMarkHMM-2, Glimmer3, or Prodigal-2 (use old genomes/Bacteria)
+
+read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/ASSEMBLY_BACTERIA", ...){
    ftpdir <- paste("ftp://ftp.ncbi.nih.gov", ftp, org, sep="/")
    # list files in directory
    x <- ftpList( ftpdir )

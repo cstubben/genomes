@@ -1,5 +1,8 @@
+changes in version 2.11.1 (2014-09-04)
+	*removed ENA functions requiring updates to new data warehouse
+
 changes in version 2.5.1 (2013-03-18)
-	* fixed bug in read.gff to parse locus_tag instead of old_loucs_tag 
+	* fixed bug in read.gff to parse locus_tag instead of old_locus_tag 
 	  if present (see NC_000908.gff from Mycoplasma genitalium G37)
 	* added new columns (taxid and center) to proks and euks datasets. Also 
 	  replaced non ASCII characters in center names (which cause Warnings).
