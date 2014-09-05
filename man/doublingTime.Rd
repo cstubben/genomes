@@ -32,7 +32,7 @@ the doubling time
 \examples{
 data(proks)
 doublingTime(proks)
-doublingTime(proks, status == 'Complete', time='months')
+doublingTime(proks, status == 'Contig', time='months')
 }
 
 \keyword{ methods }

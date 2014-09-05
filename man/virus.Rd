@@ -14,7 +14,7 @@
   \describe{
      \item{\code{acc}}{ BioProject id }
     \item{\code{name}}{ Organism name }
-    \item{\code{status}}{ Highest level of assembly; Complete, SRA or No data}
+    \item{\code{status}}{ Sequencing status }
     \item{\code{released}}{First public sequence release}
     \item{\code{taxid}}{ Taxonomy id }
    \item{\code{acc}}{ BioProject Accession number }
@@ -41,7 +41,6 @@ downloaded from \url{ftp.ncbi.nlm.nih.gov/genomes/GENOME_REPORTS/viruses.txt}
 data(virus)
 plot(virus)
 summary(virus)
-table(virus$segments)
 table2(virus$host)
 ## most common phages
 table2(species(grep("phage", virus$name, value=TRUE)))

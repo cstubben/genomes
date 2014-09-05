@@ -11,7 +11,6 @@ updateeuks <- function()
       "wgs", "scaffolds", "genes", "proteins", "released", "modified", "status", "center", "biosample")
       x$released <- as.Date(x$released)
       x$modified <- as.Date(x$modified)
-      x$status[x$status == "Scaffolds or contigs"] <- "Assembly"
       prj <- x[order(x$name), c(4,1,19,17, 2, 3, 5:16,18, 20:21)]
       rownames(prj) <- NULL
 

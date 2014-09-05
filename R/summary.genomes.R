@@ -19,7 +19,6 @@ summary.genomes<-function(object, subset, top=5, ...)
   }
 
    
-   ## virus, metagenomes, others do not have status column (only released and name is required)
    if (!"status" %in% names(object)) {
 
      d2 <- head(object[order(object$released, decreasing=TRUE), c("released", "name")], n=top)

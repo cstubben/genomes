@@ -29,8 +29,7 @@ Chris Stubben
 
 data(proks)
 table(year(proks$released))
-# just complete genomes
-table(year(proks$released[proks$status=="Complete"]))
+
 
 }
 

@@ -9,7 +9,7 @@
   \describe{
     \item{\code{pid}}{ BioProject id }
     \item{\code{name}}{ Organism name }
-    \item{\code{status}}{ Complete, Scaffolds or contigs, SRA or Traces}
+    \item{\code{status}}{ Sequencing status }
     \item{\code{released}}{First public sequence release}
     \item{\code{taxid}}{ Taxonomy id }
     \item{\code{acc}}{ BioProject Accession number }
@@ -46,8 +46,7 @@ class(proks)
 attributes(proks)[c("date","url")] 
 summary(proks)
 ## check for missing release dates
-table2(proks$status, !is.na(proks$released), dnn=list("Status", "Released Date?"))
-#  table2(proks$status,!is.na(proks$wgs), dnn=list("Status", "Has WGS acc?"))
+table2(proks$status,!is.na(proks$wgs), dnn=list("Status", "Has WGS acc?"))
 plot(proks)
 plotby(proks, log='y', las=1, top=2)
 hist(proks$size[proks$size<15], br=50, main="", col="blue", xlab="Size (Mb)")

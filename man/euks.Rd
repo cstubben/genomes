@@ -10,7 +10,7 @@
   \describe{
     \item{\code{acc}}{ BioProject id }
     \item{\code{name}}{ Organism name }
-    \item{\code{status}}{ Chromosome, Scaffolds or contigs, SRA or No data}
+    \item{\code{status}}{ Sequencing status }
     \item{\code{released}}{First public sequence release}
     \item{\code{taxid}}{ Taxonomy id }
    \item{\code{acc}}{ BioProject Accession number }
@@ -43,7 +43,7 @@ t(euks[1,])
 plot(euks)
 summary(euks)
 table2(euks$subgroup)
-# table2(euks$subgroup, euks$status)
+
 
 }
 \keyword{datasets}
