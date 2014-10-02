@@ -34,6 +34,6 @@ A plot of the cumulative total of genomes by release date.
 \examples{
 data(proks)
 plot(proks)
-plot(proks, name \%like\% 'Yersinia*', ylab="Yersinia genomes")
+plot(proks, subset = name \%like\% 'Yersinia*', ylab="Yersinia genomes")
 }
 \keyword{ hplot }
