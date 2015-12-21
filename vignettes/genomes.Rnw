@@ -21,7 +21,7 @@ library(genomes)
 options(warn=-1, width=75, digits=2, scipen=3,  "prompt" = "R> ", "continue" = " ")
 @
 
-The \pkg{genomes} package reads genome or assembly reports from the NCBI genomes \href{ftp://ftp.ncbi.nih.gov/genomes/README.txt}{FTP}.  The main function \Rcmd{reports} lists files in the GENOME\_REPORTS directory (or ASSEMBLY\_REPORTS if \Rcmd{assembly=TRUE} and uses the \Rcmd{readr} package to download the tables.   Additonal functions to download genome features and sequences in the genbank and refseq directoires will be added soon (currently FTP paths in the prokaryotes.txt files are still missing).
+The \pkg{genomes} package reads genome or assembly reports from the NCBI genomes \href{ftp://ftp.ncbi.nih.gov/genomes/README.txt}{FTP}.  The main function \Rcmd{reports} lists files in the GENOME\_REPORTS directory (or ASSEMBLY\_REPORTS if \Rcmd{assembly=TRUE}) and uses the \Rcmd{readr} package to download the tables.   Additonal functions to download genome features and sequences in the genbank and refseq directories will be added soon (currently FTP paths in the prokaryotes.txt files are still missing).
 
 
 <<proks, eval=FALSE>>=
