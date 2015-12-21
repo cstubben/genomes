@@ -1,4 +1,4 @@
-reports <- function( file , assembly = FALSE ){
+reports <- function( file , assembly = FALSE, ... ){
    url <- "ftp://ftp.ncbi.nih.gov/genomes/"
    dir <- "GENOME_REPORTS/"
    if(assembly ) dir <- "ASSEMBLY_REPORTS/"
@@ -11,7 +11,7 @@ reports <- function( file , assembly = FALSE ){
    }else{
       url <- paste0(url, dir, file)
       message("Downloading ", url)
-      x <- read_delim( url, "\t", na="-", quote="")
+      x <- read_delim( url, delim="\t", na="-", quote="", ...)
       # replace # in 1st column name
       names(x)[1] <- gsub("# *", "", names(x)[1])
       # easier for indexing and subsets 

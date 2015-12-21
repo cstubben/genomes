@@ -9,3 +9,4 @@ License: GPL-3
 Depends: readr, curl
 biocViews: Annotation, Genetics
 Description: Download genome and assembly reports from NCBI 
+Packaged: 2015-12-21 22:26:04 UTC; stubben

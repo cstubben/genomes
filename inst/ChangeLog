@@ -1,3 +1,10 @@
+
+changes in version 3.0 (2015-12-20)
+	* Removed E-utility scripts that duplicate functions in rentrez or reutils
+	* Removed all functions to read old FTP directories that were moved to
+	  ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq on Dec 2, 2015
+	* Added new function to read files in GENOME_REPORTS or ASSEMBLY_REPORTS
+
 changes in version 2.11.1 (2014-09-04)
 	*removed ENA functions requiring updates to new data warehouse
 
