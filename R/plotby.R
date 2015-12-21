@@ -1,54 +1,19 @@
-plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
+plotby <- function (x, name="Organism_Name", date="Release_Date", groupby = "Status", top = 5, labels = FALSE,
     curdate=TRUE, abbrev = TRUE, flip = NA, legend = "topleft", lbty = "o", 
     lcol = 1, ltitle = NULL, lcex = 1, lsort = TRUE, cex = 1, inset=0,
     ylim = NA, las = 1, lwd = 1, log = "", xlab = "Release Date", ylab = "Genomes", type = "l",
     col = c("blue", "red", "green3", "magenta", "yellow"), lty = 1:top, pch = c(15:18, 1:3), 
     ...)
 {
-   ## genomes should have released and name columns!
-   if (class(x)[1] != "genomes") {
-        stop("x must be a genomes table")
-    }
-   # no release date?
-   if(!"released" %in% names(x)){
-     valid <- c( "created", "submitted")
-     n <- which(names(x) %in% valid)[1] 
-     if(is.na(n)){ stop("No released, created or submitted date columns found")}
-     names(x)[n]<-"released"
-  }
-
-    if (!missing(subset)) {
-        r <- eval(substitute(subset), x, parent.frame())
-        if (!is.logical(r)) 
-            stop("'subset' must evaluate to logical")
-        x <- x[r, ]
-    }
-    ## a number or column name...
-    if (length(groupby) == 1) {
-        if (is.numeric(groupby)) {
-            if (groupby > ncol(x)) {
-                stop("x only has ", ncol(x), " columns and groupby is ", 
-                  groupby)
-            }
-        }else {
-            if (!groupby %in% names(x)) {
-                stop("No column matching ", groupby)
-            }
-        }
-        groups <- x[, groupby]
-    }else {
-        groups <- groupby
-        if (!missing(subset)) {
-            groups <- groups[r]
-        }
-        if (length(groups) != length(x$released)) {
-            stop("Length of groupby vector (", length(groups), 
-                ") does not match number of rows in x")
-        }
-    }
-    x <- data.frame(released = x$released, name = x$name, groupby = groups, 
+    # check column names (or numbers) - 
+   if(!is.numeric(name) && !name %in% names(x) ) stop("No column matching ", name)
+   if(!is.numeric(date) &&  !date %in% names(x) ) stop("No column matching ", date)
+    if(!is.numeric(groupby) &&  !groupby %in% names(x) ) stop("No column matching ", groupby)
+ 
+  
+    x <- data.frame(date = x[, date], name = x[, name], groupby = x[, groupby], 
         stringsAsFactors = FALSE)
-    x <- x[!is.na(x$released), ]
+    x <- x[!is.na(x$date), ]
     if (nrow(x) == 0) {
         stop("No rows to plot")
     }
@@ -73,7 +38,7 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
     #--------------------------------------------------------------------------#
    ## PLOT groups using one line with different symbols and labeled points
     if (labels) {
-        x <- x[order(x$released, x$groupby, x$name), ]
+        x <- x[order(x$date, x$groupby, x$name), ]
        # rownames(x) <- 1:nrow(x)
         x$y<- 1:nrow(x)
         if(curdate) {
@@ -87,9 +52,9 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
           # flip labels on left or right at midway point between dates by default
          # OR just increase margins and set xpd=TRUE (write outside margins)       
         if (is.na(flip)) {
-           x2 <- mean(as.numeric(range(x$released)))
+           x2 <- mean(as.numeric(range(x$date)))
             class(x2) <- "Date"
-            flip <- nrow(x[x$released < x2, ])
+            flip <- nrow(x[x$date < x2, ])
         }
         n <- flip
         # July 2012 added missing ylim option to plot
@@ -97,7 +62,7 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
             ylim <- c(1, max(x$y) )
         }
 
-        plot(x$released, x$y, type = type, col = "gray70", ylim = ylim, 
+        plot(x$date, x$y, type = type, col = "gray70", ylim = ylim, 
             lty = lty, xlab = xlab, ylab = ylab, las = las, lwd = lwd, 
             ...)
         ## order top groups alphabetically ???
@@ -105,8 +70,8 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
         for (i in 1: max(x$y) ) {
           ## if groupby is blank, then grep matches everthing - use [1]
             j <- grep(x$groupby[i], lnames)[1]
-            points(x$released[i], i, pch = pch[j], col = col[j])
-            text(x$released[i], i, x$name[i], pos = ifelse(i > 
+            points(x$date[i], i, pch = pch[j], col = col[j])
+            text(x$date[i], i, x$name[i], pos = ifelse(i > 
                 n, 2, 4), cex = cex)
         }
         legend(legend[1], legend[2], lnames, col = col, pch = pch, 
@@ -115,7 +80,7 @@ plotby <- function (x, groupby = "status", subset = NA, top = 5, labels = FALSE,
     #--------------------------------------------------------------------------#
    ## plot GROUPs using multiple lines
     else {
-        genomes <- table(x$released, x$groupby)
+        genomes <- table(x$date, x$groupby)
         # add today's date
         if(curdate) {
            genomes <- rbind(genomes, 0)

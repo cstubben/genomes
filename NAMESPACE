@@ -1,14 +1,5 @@
-import(XML, GenomicRanges, IRanges, Biostrings)
-importFrom(RCurl, getURL)
+importFrom(curl, curl)
+importFrom(readr, read_delim)
 
 #  All functions exported other than those starting with "."
 exportPattern("^[^\\.]")
-
-
-exportClasses("genomes")
-
-S3method(plot,genomes)
-S3method(summary,genomes)
-S3method(update,genomes)
-S3method(lines,genomes)
-S3method(print,genomes)

@@ -77,8 +77,8 @@ read.ncbi.ftp <- function(org,  filePattern="ptt$|rnt$", ftp ="genomes/ASSEMBLY_
          z[[i]] <- readDNAStringSet(file, ...)
       }
       z <- do.call("c", z) 
-      ## check if single sequence (then use DNAString instead of DNAStringSet)
-      if(length(z)==1) z <- z[[1]]
+      ## check if single sequence (then use DNAString instead of DNAStringSet?)
+      # if(length(z)==1) z <- z[[1]]
    }
 
 
