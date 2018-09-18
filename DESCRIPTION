@@ -4,9 +4,9 @@ Title: Genome sequencing project metadata
 Version: 3.11.0
 Date: 2015-12-21
 Author: Chris Stubben
-Maintainer: Chris Stubben <stubben@lanl.gov>
+Maintainer: Chris Stubben <chris.stubben@hci.utah.edu>
 License: GPL-3
 Depends: readr, curl
 biocViews: Annotation, Genetics
-Description: Download genome and assembly reports from NCBI 
-Packaged: 2015-12-21 22:26:04 UTC; stubben
+Description: Download genome and assembly reports from NCBI
+PackageStatus: Deprecated
